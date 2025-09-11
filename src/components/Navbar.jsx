@@ -1,12 +1,14 @@
 import React, { useEffect,useRef, useState } from 'react'
-import { Link, Routes, Route } from 'react-router'
+import { Link,useLocation} from 'react-router'
 import categoriesData from '../data/categories'
 
 
 const Navbar = () => {
-    const[accOpen, setAccOpen] = useState(false)
+  const [accOpen, setAccOpen] = useState(false)
   const [isOpen, SetIsOpen] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
+  let location = useLocation()
+
   const toggleAcc = ()=>{
     setAccOpen(prev => !prev);
 
@@ -61,7 +63,8 @@ const Navbar = () => {
 
   return (
     <>
-      <div id='Navbar' className='flex sticky top-0 text-white bg-black font-inter h-[10vh] text-[30px] items-center z-50  sm:w-screen   justify-between   px-8 sm:px-12 '>
+    <div id='NavbarContainer' className={`${location.pathname.startsWith('/auth')?'hidden':''} sticky top-0  z-50`} >
+      <div id='Navbar' className='flex sticky top-0 text-white bg-black font-inter h-[10vh] text-[30px] items-center  sm:w-screen   justify-between   px-8 sm:px-12 '>
         <div id='Logo'>
          <Link to={'/'}> <h1 className='text-[#24BF6C] sm:text-[1em] text-[0.8em] cursor-pointer transition hover:text-green-800 '>BookShelf</h1></Link>
         </div>
@@ -89,17 +92,17 @@ const Navbar = () => {
         </div>
 
         <div id='Account' className=' text-[0.8em] sm:text-[0.5em] '>
-          <div className='flex  gap-2 items-center'><div className='flex items-center' onClick={toggleAcc} ><Link  className='hover:underline  hidden sm:block'>Account </Link><i className="fa-solid fa-user mx-2 " style={{color: "#24BF6C"}}></i></div>
+          <div className='flex  gap-2 items-center'><div className='flex items-center' onClick={toggleAcc} ><Link  className='hover:underline  hidden sm:block'> Account </Link><i className="fa-solid fa-user mx-2 " style={{color: "#24BF6C"}}></i></div>
           <span id='showNav' className='sm:hidden transition '><i ref={navIconRef} onClick={toggleNavbar} className={`${isNavOpen ?'fa-solid fa-xmark':' fa-solid fa-bars'} `}></i></span></div>
           <div className={`absolute   ${accOpen?'flex':'hidden'} transition-all border sm:text-[1em] text-[0.7em] border-white/40  rounded-sm flex-col pl-1   sm:right-[3.5vw] right-[12vw] sm:top-[45px]  w-[150px] h-[250px] bg-black`}>
             <i onClick={toggleAcc} className="fa-solid fa-xmark  text-right cursor-pointer text-[16px] hover:text-green-700 py-2 sm:pr-2 pr-3" ></i>
-              <Link onClick={toggleAcc} to='/admindashboard' className=' border-b tranistion hover:text-green-400 border-white/30 px-2 py-1'>Admin</Link>
-            <Link onClick={toggleAcc} to='/userprofile' className='border-b transition hover:text-green-400 border-white/30 px-2 py-1'>User</Link>
+            <Link onClick={toggleAcc} to='/auth/login' className='border-b transition hover:text-green-400 border-white/30 px-2 py-1'>Login</Link>
+            <Link onClick={toggleAcc} to='/auth/signup' className='border-b transition hover:text-green-400 border-white/30 px-2 py-1'>Signup</Link>
 
           </div>
         </div>
       </div>
-
+</div>
     </>
   )
 }

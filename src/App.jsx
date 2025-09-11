@@ -13,6 +13,8 @@ import DashBoardHome from './pages/AdminDashboard/DashBoardHome'
 import Profile from './pages/User/Profile'
 import Account from './pages/User/Account'
 import ManageBooks from './pages/AdminDashboard/ManageBooks'
+import Login from './pages/auth/Login'
+import Signup from './pages/auth/Signup'
 
 
 function App() {
@@ -40,7 +42,6 @@ function App() {
         <Route
           path='/categories/:catName'
           element={<Categories />} />
-
         <Route
           path='/bookcard'
           element={<BookCard />} />
@@ -59,6 +60,10 @@ function App() {
         <Route
           path='/admindashboard/managebooks'
           element={<ManageBooks />} />
+          <Route path='/auth/:authType'
+          element={<Login/>}/>
+          <Route path='/auth/signup'
+          element={<Signup/>}/>
 
       </Routes>
 
