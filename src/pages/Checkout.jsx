@@ -1,18 +1,28 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import book from '../assets/book.jpg'
 import { Link } from 'react-router'
+import { useCart } from '../context/CartContext'
+
 
 
 const Checkout = () => {
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [showAddress, setShowAddress] = useState(true);
+
+  const {itemsInCart} = useCart()
+
+ const handleDeliveryInfo = ()=>{
+   setShowAddress(prev => !prev)
+   console.log('function working')
+ }
 
   const handleConfirmPayment = ()=>{
     setShowConfirmation(true)
   }
   return (
     <>
-    <div className=' w-screen relative font-sans  px-[5vw] '>
-      <div id='Checkout' className={`flex checkout-page ${showConfirmation ? "blurred" : ""} w-[90vw] gap-1 mt-4`}>
+    <div className=' w-screen relative  font-sans  px-[5vw] '>
+      <div id='Checkout' className={`flex flex-wrap sm:flex-nowrap checkout-page ${showConfirmation ? "blurred" : ""} w-[90vw] gap-1 mt-4`}>
         <div className='w-[90vw]'>
           <div id='OrderReview' className='border w-auto pl-4 h-[30vh] '>
             <h1 className='text-[20px] sm:text-[24px]'> Order Summary</h1>
@@ -22,13 +32,13 @@ const Checkout = () => {
               </div>
               <div id='OrderDetail' className='flex justify-between px-4 mx-4 w-full '>
                 <div>
-                  <h1 className='text-[20px] font-bold'>The Rise of Dark</h1>
+                  <h1 className='text-[20px] font-bold'>{itemsInCart[0].title}</h1>
                   <p className='text-gray-500 italic'>Author: Alex Peter</p>
                 </div>
                 <div className=' flex flex-col'>
-                  <span>Price: $ 53.33</span>
-                  <span>Delievry: $12.33</span>
-                  <span>SubTotal: $65.66</span>
+                  <span>Price: <span className='text-green-500'> 1200</span></span>
+                  <span>Delievry: 249</span>
+                  <span>SubTotal: 1449</span>
                   <span>Quantity: 1</span>
                 </div>
               </div>
@@ -39,11 +49,11 @@ const Checkout = () => {
             <div className='flex w-full justify-between pr-4'>
               <h1 className=' text-[20px] sm:text-[24px]'>Delivery Details</h1>
               <div className='flex items-center gap-2'>
-                <input className='w-4 h-4 text-center' type="checkbox" />
+                <input onClick={handleDeliveryInfo} id='saveDetailCheck' className='w-4 h-4 text-center' type="checkbox" />
                 <span>Use Saved Details</span></div>
 
             </div>
-            <form className='flex flex-col gap-3 mt-3'>
+            <form className={`${showAddress?'flex':'hidden'} flex-col gap-3 mt-3`}>
               <input className='w-80 p-2 rounded-sm' type="text" name="name" placeholder='Full Name' />
               <input className='w-[80%] p-2 rounded-sm' type="text" name="name" placeholder='Address' />
               <div className=''>
@@ -99,7 +109,7 @@ const Checkout = () => {
               </label>
             </div>
             <div>
-              <div className='flex flex-col gap-2 mt-3'>
+              <div className='flex flex-col gap-2 mt-3 pb-4'>
                 <input className='w-80 my-1 mr-4 p-2 rounded-sm' type="number" name="cardNumber" placeholder='Card number' />
                 <input className='w-80 my-1 mr-4 p-2 rounded-sm' type="date" name="cardExpDate" placeholder='Expiry MM/YY e.g, 07/35 ' />
                 <input className='w-80 my-1 mr-4 p-2 rounded-sm' type="number" name="cardCv" placeholder='Security Number e.g, 054' />
@@ -116,8 +126,8 @@ const Checkout = () => {
         </div>
       </div>
     </div>
-    {showConfirmation && ( 
-      <div className='confirmation-modal'>   
+    {showConfirmation && (
+      <div className='confirmation-modal'>
               <div className='w-[450px] flex flex-col gap-3 text-[26px] items-center py-10 h-auto bg-white'>
             <h1 className='font-semibold'>Congratulations!🥳</h1>
             <p className='text-[0.6em]'>Your order is successfully placed</p>

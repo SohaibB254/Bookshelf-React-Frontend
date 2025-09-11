@@ -13,6 +13,7 @@
     { "id": 12, "name": "Business" },
     { "id": 13, "name": "Young Adult" },
     { "id": 14, "name": "Graphic Novels" },
-    { "id": 15, "name": "Travel" }
+    { "id": 15, "name": "Travel" },
+    { "id": 16, "name": "Other" }
 ]
 export default categoriesData;

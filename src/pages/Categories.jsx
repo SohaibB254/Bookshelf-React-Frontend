@@ -16,23 +16,26 @@ const Categories = () => {
   const currentPosts = booksData.slice(fistPostIndex, lastPostIndex)
   return (
     <>
-    <div className='w-screen  sm:text-[30px] '>
-      <h1 className='font-semibold mt-4 ml-12'>{catName} Books</h1>
-      <div id='bookCardContainer' className=' mt-12  flex gap-5 flex-wrap items-center sm:ml-20  w-screen  h-auto' >
+    <div className='w-screen  '>
+      <h1 className='font-semibold text-[30px] mt-4 ml-8 sm:ml-12'>{catName} Books</h1>
+      <div id='bookCardContainer' className=' sm:mt-12 mt-4  font-poppins flex gap-2 sm:gap-5 flex-wrap  sm:justify-normal sm:ml-12 sm:px-0 px-6 items-center  w-screen  h-auto' >
         {
           currentPosts.map((elm, idx) => {
-            return <div id='bookCard' key={idx} className='flex items-center px-3  flex-col w-[250px] sm:text-[25px]'>
-              <img className='w-[150px] h-[200px]' src={elm.cover_photo} alt="" />
-              <h1 className='text-[0.8em] font-semibold'>{elm.title}</h1>
-              <p className='text-[0.5em]'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod consectetur qui, at odio minima vel neque repudiandae nostrum nulla maxime!</p>
-              <div id='bookCardBtns'>
-                <Link to={`/bookcard`} className='text-[0.6em] mx-3 underline'>Purchase</Link>
-                <Link className='text-[0.6em] mx-3 underline'>Read Online</Link>
+            return <div id='bookCard' key={idx} className='flex   items-center  flex-col sm:w-[210px] p-1 border border-black/30 sm:text-[25px]'>
+              <Link to='/bookCard'><img className='sm:w-[150px] w-[70px] h-[100px] sm:h-[200px]' src={elm.cover_photo} alt="" /></Link>
+              <h1 className='text-[0.7em] font-semibold tracking-tighter'>{elm.title}</h1>
+                <h1 className='italic text-[0.6em] text-gray-500 hidden sm:inline-block  '>by: {elm.author}</h1>
+                   <p className=' text-[0.6em] hidden sm:inline-block'>{elm.length}</p>
+                   <p  className=' text-[0.6em] hidden sm:inline-block' >Publihed on: {elm.date_published}</p>
+                   <p className='text-[0.6em]'>Price: <span className='text-green-500 font-semibold'>{elm.price}</span></p>
+              <div id='bookCardBtns' className='hidden  w-full rounded-sm gap-2 sm:flex'>
+                <Link to={`/bookcard`} className='text-[0.6em] hover:bg-green-500 hover:text-white/80 transition p-2 rounded-sm '>Purchase</Link>
+                <Link className='text-[0.6em]  hover:bg-green-500 hover:text-white/80 transition p-2 rounded-sm '>Read Online</Link>
 
               </div>
             </div>
 
-          })
+          })  
         }
 
       </div>

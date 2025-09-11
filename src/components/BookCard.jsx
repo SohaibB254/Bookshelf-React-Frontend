@@ -16,12 +16,14 @@ const BookCard = () => {
     }
   return (
     <>
-    <div className='border font-sans flex w-[100%] gap-20 mt-10 text-[24px] p-12'>
+    <div className='border font-sans flex flex-col sm:flex-row
+       w-[100%] sm:gap-20 mt-10 text-[24px] sm:p-12 p-8'>
       <div>
-        <img className='w-[30vw]' src={book} alt="" />
+        <img className='sm:w-[30vw] w-full cursor-pointer' src={book} alt="" />
       </div>
       <div className='text-[0.8em] w-full '>
-        <h1 className='text-[2.25em] font-semibold'>The Past is Rising</h1>
+        <div className=''><h1 className='sm:text-[2.25em] text-[1.5em] font-semibold'>The Past is Rising</h1>
+        <h1 className='font-bold text-[1.5em]'><span className='text-green-600'>$43.34</span></h1></div>
         <div className='flex flex-col text-[0.8em]'>
             <span id='reviewStars'>
                 <i className="fa-solid fa-star text-yellow-500"></i>
@@ -33,27 +35,27 @@ const BookCard = () => {
             </span>
             <p className='text-gray-500 italic'>Author: Optimus Prime</p>
         </div>
-        <div className='text-[1em] flex flex-col gap-1 mt-10'>
+        <div className='text-[1em] flex flex-col gap-1 sm:mt-2'>
         <p>Total sold: 389</p>
-        <h1 className='font-bold'>Price: $ 43.34</h1>
-        <p className='text-gray-500'>Date Published: June 2019</p>
-        <p className='text-gray-500'>Category: Fantasy</p>
-        <p className='text-gray-500'>Languages: English, French, Korean</p>
-        <p className='text-gray-500'>Book Length: 430 pages</p>   
+        <p className='text-gray-700'>Date Published: June 2019</p>
+        <p className='text-gray-700'>Category: Fantasy</p>
+        <p className='text-gray-700'>Languages: English, French, Korean</p>
+        <p className='text-gray-700'>Book Length: 430 pages</p>
+
         </div>
-      <div className="Book-card-btn flex flex-col  mt-10 w-full">
-        <div className='flex text-[0.8em] justify-between items-end w-full'>
-        <span className='border border-black text-[1.5em] w-44  flex justify-center py-2 px-3 gap-3'><button  disabled={qtyCount === 1}
+      <div className="Book-card-btn flex flex-col  mt-3 sm:mt-10 w-full">
+        <div className='flex text-[0.8em] gap-10 items-center w-full'>
+        <span className='border border-black text-[1.5em] w-44   flex justify-center py-2 px-3 gap-3'><button  disabled={qtyCount === 1}
   style={{ opacity: qtyCount === 1 ? 0.5 : 1}} onClick={handleQtyDecrease} className=' font-semibold'>-</button> <span>{qtyCount}</span> <button onClick={handleQtyIncrease} className=' font-semibold'>+</button></span>
             <p className='hover:underline cursor-pointer'><i class="fa-solid fa-share"></i> Share</p>
         </div>
-        <div className='text-[0.8em] flex justify-between items-end '>
-       <Link to='/checkout'> <button className='bg-black w-44 my-1 text-base text-white px-3 py-3 hover:underline'>Checkout <i className="fa-solid fa-bag-shopping mx-4 text-[1.1em] "></i></button></Link>
+        <div className='text-[0.8em] flex gap-10 items-center '>
+       <Link to='/checkout'> <button className='bg-black my-1  w-44 text-base text-white px-3 py-3 hover:underline'>Checkout <i className="fa-solid fa-bag-shopping mx-4 text-[1.1em] "></i></button></Link>
             <p className='hover:underline cursor-pointer'><i class="fa-solid fa-cart-shopping"></i> Add to cart</p>
         </div>
       </div>
-      <div>
-        <p>Delivery Time: 3 to 4 days on your location</p>
+      <div className='mt-3'>
+        <p>Delivery Time <i className="fa-solid fa-truck-fast"></i> : 3 to 4 days on your location</p>
       </div>
       </div>
     </div>

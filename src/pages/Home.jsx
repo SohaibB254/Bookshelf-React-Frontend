@@ -10,25 +10,25 @@ import { Link } from 'react-router'
 const Home = () => {
   return (
     <>
-    <div id='Home' className=' w-screen flex font-sans items-center text-white h-[90vh]'>
-      <div className='h-auto w-[50vw] fade-elm flex
-       flex-col items-center '>
-        <div className='w-[100%] pl-20 h-[70%] '>
-          <h1 id='TitleText' className='sm:text-[76px] font-merri  font-bold'>An Online Library <br/>And<span className='text-[#24BF6C]'> Book Store</span> </h1>
-          <p className='font-inter mt-6'>Explore worlds from <strong>millions</strong> of authors across every genre imaginable <br/><span className='italic font-inter'>Epic tales, self-help gems, and timeless classics</span> </p>
-        <div className='flex gap-2 mt-8 self-start'>
-          <button className='u-btn rounded-sm  '>Start Reading</button>
-         <Link to='/store'><button className='u-btn rounded-sm '>Browse Books</button></Link>
+    <div id='Home' className=' w-screen flex-col sm:flex-row flex font-sans   sm:items-center text-white h-[90vh]'>
+      <div className='h-auto w-screen pt-10 sm:pt-0 sm:w-[50vw] fade-elm flex
+       flex-col items-center'>
+        <div className='w-[100%] px-10 sm:pl-20 h-[70%] '>
+          <h1 id='TitleText' className='sm:text-[46px] md:text-[76px] text-[36px] text-center sm:text-left mt-10 sm:mt-0 font-merri  font-bold'>An Online Library <br/>And<span className='text-[#24BF6C]'> Book Store</span> </h1>
+          <p className='font-inter mt-6 text-center sm:text-left'>Explore worlds from <strong>millions</strong> of authors across every genre imaginable <br/><span className='italic font-inter hidden sm:block'>Epic tales, self-help gems, and timeless classics</span> </p>
+        <div className='flex sm:flex-row flex-col gap-2 mt-12 sm:mt-8 self-start'>
+          <button className='u-btn sm:rounded-sm rounded-md   '>Start Reading</button>
+         <Link to='/store'><button className='u-btn sm:rounded-sm rounded-md w-full'>Browse Books</button></Link>
         </div>
         </div>
       </div>
-        <div className='flex items-end justify-end w-[50vw] h-full pb-4'>
-            <ul className='flex gap-5'>
+        <div className='flex items-end mr-10 sm:justify-end sm:w-[50vw] sm:h-full sm:mr-0 h-[50%]'>
+            <ul className='flex sm:flex-row  ml-10 sm:mr-10 mb-4 gap-8 sm:gap-5'>
                 <i className=" cursor-pointer hover:scale-110 transition-all fa-brands fa-instagram"></i>
                 <i className=" cursor-pointer hover:scale-110 transition-all fa-brands fa-youtube"></i>
                 <i className=" cursor-pointer hover:scale-110 transition-all fa-brands fa-facebook-f"></i>
                 <i className=" cursor-pointer hover:scale-110 transition-all fa-brands fa-twitter"></i>
-                <i class=" cursor-pointer hover:scale-110 transition-all fa-brands fa-pinterest-p"></i>
+                <i className=" cursor-pointer hover:scale-110 transition-all fa-brands fa-pinterest-p"></i>
             </ul>
         </div>
     </div>

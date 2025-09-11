@@ -1,16 +1,22 @@
 import React, {useState} from 'react'
+import { motion } from 'motion/react'
+
 
 const Footer = () => {
       const [language, setLanguage] = useState('EN');
       const [currency, setCurrency] = useState('PKR');
   return (
-    <div id='footerContainer'>    
-    <div id='Footer' className='w-full h-auto flex border-b border-t justify-evenly mt-8 px-20 py-20'>
-      <div className='flex flex-col gap-20'>
-        <div>
+    <div id='footerContainer'>
+    <div id='Footer' className='w-full h-auto flex flex-col gap-4  sm:flex-row border-b border-t justify-evenly mt-8 px-20 py-20'>
+      <div className='flex flex-col gap-8 sm:gap-20'>
+        <motion.div
+         initial={{ opacity: 0.1 }}
+         whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        >
             <h1 className='font-kavoon text-[30px] cursor-pointer text-[#24BF6C]'>BookShelf</h1>
             <p className='text-gray-500'>H.N J232, Street 35 Block B Wapda Town,<br/>Lahore Pakistan</p>
-        </div>
+        </motion.div>
         <div>
             <ul className='flex gap-5'>
                 <i className=" cursor-pointer hover:scale-110 transition-all fa-brands fa-instagram"></i>
@@ -21,8 +27,15 @@ const Footer = () => {
             </ul>
         </div>
       </div>
-      <div>
-        <div id='FooterLinks' className='flex gap-20'>
+      <motion.div
+        initial={{ opacity: 0.1,x: -100 }}
+         whileInView={{ opacity: 1,x: 0 }}
+        viewport={{ once: true }}
+        transition={{
+          ease:'easeIn'
+        }}
+      >
+        <div id='FooterLinks' className='flex sm:flex-nowrap flex-wrap gap-12 sm:gap-20'>
             <ul>
                 <h1 className='font-semibold text-[18px] cursor-pointer'>Links</h1>
                 <li className='hover:underline cursor-pointer'>Home</li>
@@ -57,7 +70,7 @@ const Footer = () => {
                 <li className='hover:underline cursor-pointer'>Fantasy</li>
             </ul>
         </div>
-      </div>
+      </motion.div>
     </div>
     <div className='flex items-center justify-between px-10 py-12'>
         <div>

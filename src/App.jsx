@@ -12,6 +12,7 @@ import BookCard from './components/BookCard'
 import DashBoardHome from './pages/AdminDashboard/DashBoardHome'
 import Profile from './pages/User/Profile'
 import Account from './pages/User/Account'
+import ManageBooks from './pages/AdminDashboard/ManageBooks'
 
 
 function App() {
@@ -55,6 +56,9 @@ function App() {
         <Route
           path='/userprofile/account'
           element={<Account />} />
+        <Route
+          path='/admindashboard/managebooks'
+          element={<ManageBooks />} />
 
       </Routes>
 

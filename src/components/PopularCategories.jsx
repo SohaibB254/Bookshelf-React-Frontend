@@ -4,6 +4,8 @@ import scienceImg from '../assets/science.png';
 import historyImg from '../assets/history.png';
 import businessImg from '../assets/business.png';
 import mysteryImg from '../assets/mystery.png';
+import { motion, useAnimation } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 
 const PopularCategories = () => {
     const FamousCatData = [
@@ -13,22 +15,63 @@ const PopularCategories = () => {
     { CatName: "Bussiness", image: businessImg },
     { CatName: "Mystery", image: mysteryImg },
 ];
+ const controls = useAnimation();
+  const containerRef = useRef();
+
+  useEffect(() => {
+    controls.start({
+      x: ['-50%', '0%'],
+      transition: {
+        x: {
+          repeat: Infinity,
+          repeatType: 'loop',
+          duration: 15,
+          ease: 'linear',
+        },
+      },
+    });
+  }, [controls]);
+
+  const handlePause = () => controls.stop();
+  const handlePlay = () =>
+    controls.start({
+      x: ['-50%', '0%'],
+      transition: {
+        x: {
+          repeat: Infinity,
+          repeatType: 'loop',
+          duration: 15,
+          ease: 'linear',
+        },
+      },
+    });
+
   return (
-    <div className='h-auto font-inter   text-[30px] px-20 text-center pt-10'>
-    <h1 className='font-semibold text-[1.3em] mb-10'>Popular Categories</h1>
-    <div className='grid  grid-cols-2 sm:grid-cols-5    md:grid-col-3  gap-4 justify-center items-center'>
-    {
-        FamousCatData.map((elm, idx)=>{
-            return  <div key={idx} className='cursor-pointer hover:animate-pulse transition-transform flex flex-col items-center'>
-                    <img className='h-24' src={elm.image} alt="" />
-                <h1 className=' text-[0.5em] p-3'>{elm.CatName}</h1>
-                </div>
-              
-        })
-    }
+    <div className="w-full overflow-hidden relative group mt-10">
+        <h1 className='text-center mb-8 font-semibold sm:text-[39px] text-[30px]'>Popular Categories</h1>
+      {/* Scrolling Div */}
+      <motion.div
+        ref={containerRef}
+        animate={controls}
+        className="flex w-max"
+        onMouseEnter={handlePause}
+        onMouseLeave={handlePlay}
+        onTouchStart={handlePause}
+        onTouchEnd={handlePlay}
+      >
+        {/* Doubled items for seamless loop */}
+        {[...FamousCatData, ...FamousCatData].map((elm, idx) => (
+          <div
+            key={idx}
+            className="cursor-pointer hover:animate-pulse transition-transform flex flex-col items-center mx-4"
+          >
+            <img className="h-24 sm:h-52" src={elm.image} alt={elm.CatName} />
+            <h1 className="sm:text-xl p-3">{elm.CatName}</h1>
+          </div>
+        ))}
+      </motion.div>
     </div>
-    </div>
-  )
-}
+  );
+};
 
 export default PopularCategories

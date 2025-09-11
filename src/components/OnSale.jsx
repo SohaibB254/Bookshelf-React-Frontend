@@ -1,32 +1,67 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import booksData from '../data/books'
 import { Link } from 'react-router';
+import { motion } from 'framer-motion';
 
 const OnSale = () => {
         const top3Trending = booksData.slice(4,7)
-    
+        const [isMobile, setIsMobile] = useState(false)
+            const animatedBooks = isMobile
+    ? [...top3Trending, ...top3Trending]
+    : top3Trending;
+
+        useEffect((()=>{
+                   const checkScreen = () => {
+    const width = window.innerWidth;
+    const isPhone = width <= 640;
+
+    setIsMobile(isPhone);
+  };
+                checkScreen();
+
+                window.addEventListener('resize',checkScreen);
+                return () => window.removeEventListener('resize',checkScreen)
+        }),[])
+
+
   return (
-        <div className='h-auto font-inter text-[30px] px-20 pt-10'>
-            <h1 className='font-semibold text-[1.3em] mb-10'>On Sale</h1>
-            <div className='flex gap-2 justify-center '>
+        <div className='h-auto font-inter text-[30px] overflow-x-hidden  px-8 sm:px-20 pt-10'>
+            <h1 className='font-semibold sm:text-[1.3em] mb-10'>On Sale</h1>
+            <motion.div
+            animate={isMobile?{x:['0%','-50%']}:{}}
+            transition={isMobile?{
+                repeat: Infinity,
+                repeatType: 'loop',
+                duration:12,
+                 ease: 'linear'
+            }:{}}
+            className='flex gap-4 sm:flex-nowrap sm:w-full w-max '>
                 {
-                    top3Trending.map((elm) => {
+                 animatedBooks.map((elm,idx) => {
                         return (
-                            <div key={elm.id} className='h-[70vh] border border-black cursor-pointer w-[30vw] relative' style={{
+                            <motion.div key={idx}
+                               initial={{ scale: 0.6,opacity:0.2 }}
+                              whileInView={{ scale: 1,opacity:1 }}
+                               viewport={{ once: true }}
+                               transition={{
+                                duration: 0.3
+                               }}
+                                className='sm:h-[70vh] group h-[40vh] border border-black w-[250px]   sm:w-[30vw] cursor-pointer relative' style={{
                                 backgroundImage: `url(${elm.cover_photo})`,
                                 backgroundRepeat: 'no-repeat',
                                 backgroundSize: 'cover',
                             }}>
                                 <h1 className='font-bold text-red-800 bg-yellow-300 text-[40px] text-center'>{elm.sale_percent}% OFF</h1>
-                                <div className=' flex absolute items-center justify-center  w-full text-sm bg-black px-8 bottom-0  gap-4'>
-                                    <button className='text-white    px-3 py-1'>Read Online</button>
+                                <div className=' flex absolute items-center transition   group-hover:opacity-100 sm:opacity-0 justify-center  w-full text-sm bg-black px-8 bottom-0  gap-4'>
+                                    <button className='text-white    sm:px-3 py-1'>Read Online</button>
                                     <Link to={'/checkout'}><button className='underline  px-3 py-1 text-white'>Checkout</button></Link>
                                 </div>
-                            </div>
+                            </motion.div>
                         );
                     })
                 }
-            </div>
+            </motion.div>
+            <Link to={'/store'}  className='text-base sm:mx-0 mx-8  text-center my-4 hover:underline w-auto' >See More</Link>
         </div>
     );
 }
