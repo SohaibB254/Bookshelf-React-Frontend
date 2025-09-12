@@ -17,7 +17,7 @@ const Home = () => {
           <h1 id='TitleText' className='sm:text-[46px] md:text-[76px] text-[36px] text-center sm:text-left mt-10 sm:mt-0 font-merri  font-bold'>An Online Library <br/>And<span className='text-[#24BF6C]'> Book Store</span> </h1>
           <p className='font-inter mt-6 text-center sm:text-left'>Explore worlds from <strong>millions</strong> of authors across every genre imaginable <br/><span className='italic font-inter hidden sm:block'>Epic tales, self-help gems, and timeless classics</span> </p>
         <div className='flex sm:flex-row flex-col gap-2 mt-12 sm:mt-8 self-start'>
-          <button className='u-btn sm:rounded-sm rounded-md   '>Start Reading</button>
+         <Link to={'/library'}><button  className='u-btn sm:rounded-sm rounded-md w-full'>Start Reading</button></Link>
          <Link to='/store'><button className='u-btn sm:rounded-sm rounded-md w-full'>Browse Books</button></Link>
         </div>
         </div>

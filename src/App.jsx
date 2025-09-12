@@ -15,6 +15,8 @@ import Account from './pages/User/Account'
 import ManageBooks from './pages/AdminDashboard/ManageBooks'
 import Login from './pages/auth/Login'
 import Signup from './pages/auth/Signup'
+import Library from './components/Library'
+import ReaderPage from './components/ReaderPage'
 
 
 function App() {
@@ -39,6 +41,12 @@ function App() {
         <Route
           path='/cart'
           element={<Cart />} />
+        <Route
+          path='/library'
+          element={<Library />} />
+        <Route
+          path='/library/readbook'
+          element={<ReaderPage />} />
         <Route
           path='/categories/:catName'
           element={<Categories />} />

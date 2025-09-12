@@ -6,11 +6,12 @@ import NewsLetter from '../components/NewsLetter'
 import Footer from '../components/Footer'
 import { Link } from 'react-router'
 import { useCart } from '../context/CartContext'
+import { useLibrary } from '../context/LibraryContext'
 
 const Store = () => {
   const [itemsCount, setItemsCount] = useState(6)
   const dislpayedItems = booksData.slice(0, itemsCount);
-
+  const{ addToLibrary } = useLibrary()
   const{ addToCart } = useCart()
   return (
     <>
@@ -23,15 +24,15 @@ const Store = () => {
             dislpayedItems.map((elm, idx)=> {
               return <div key={idx} className='h-auto   sm:w-[15vw] w-auto sm:px-4 py-2 flex flex-col border shadow text-[16px]'>
                 <Link to={'/bookCard'}><img className='sm:w-[40vw] w-[160px] sm:h-[40vh] cursor-pointer' src={elm.cover_photo} alt="" /></Link>
-                   <h1 className=' sm:text-[18px] font-semibold tracking-tighter '>{elm.title}</h1>
-
+                   <h1 className=' sm:text-[18px] font-semibold  tracking-tighter bg-gray-200 '>{elm.title}</h1>
                    <h1 className='italic text-gray-500 hidden sm:inline-block  '>by: {elm.author}</h1>
-                   <p className='hidden sm:inline-block'>{elm.length}</p>
-                   <p  className='hidden sm:inline-block' >Publihed on: {elm.date_published}</p>
                    <p>Price: <span className='text-green-500 font-semibold'>{elm.price}</span></p>
                    <div className=' hidden sm:flex flex-wrap justify-between mt-4 ]'>
                    <Link to='/checkout' className='hover:underline'>Purchase</Link>
                    <button onClick={()=> addToCart(elm) } className='hover:underline'>Add to cart</button>
+                   </div>
+                   <div className='w-full text-center'>
+                    <button onClick={()=> addToLibrary(elm) }className='bg-green-500 w-full py-2 hover:text-white'>Add to Library</button>
                    </div>
                      </div>
 

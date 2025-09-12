@@ -23,7 +23,7 @@ const Footer = () => {
                 <i className=" cursor-pointer hover:scale-110 transition-all fa-brands fa-youtube"></i>
                 <i className=" cursor-pointer hover:scale-110 transition-all fa-brands fa-facebook-f"></i>
                 <i className=" cursor-pointer hover:scale-110 transition-all fa-brands fa-twitter"></i>
-                <i class=" cursor-pointer hover:scale-110 transition-all fa-brands fa-pinterest-p"></i>
+                <i className=" cursor-pointer hover:scale-110 transition-all fa-brands fa-pinterest-p"></i>
             </ul>
         </div>
       </div>

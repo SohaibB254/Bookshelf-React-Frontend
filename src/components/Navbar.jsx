@@ -86,13 +86,14 @@ const Navbar = () => {
             <Link onClick={toggleNavbar} to='/store' > <li>Store</li></Link>
             <Link className='flex items-center gap-2' onClick={toggleNavbar} to='/cart'> <li>Cart
               </li><span className='sm:hidden'><i className="fa-solid fa-cart-shopping "></i></span></Link>
+            <Link onClick={toggleNavbar} to='/library'> <li>Library</li></Link>
             <Link onClick={toggleNavbar} to='/contact'> <li>Contact</li></Link>
             <Link onClick={toggleNavbar} to='/about'> <li>About</li></Link>
           </ul>
         </div>
 
         <div id='Account' className=' text-[0.8em] sm:text-[0.5em] '>
-          <div className='flex  gap-2 items-center'><div className='flex items-center' onClick={toggleAcc} ><Link  className='hover:underline  hidden sm:block'> Account </Link><i className="fa-solid fa-user mx-2 " style={{color: "#24BF6C"}}></i></div>
+          <div className='flex  gap-2 items-center'><div className='flex items-center' onClick={toggleAcc} ><Link  className='hover:underline  hidden sm:block'>Join now </Link><i className="fa-solid fa-user mx-2 " style={{color: "#24BF6C"}}></i></div>
           <span id='showNav' className='sm:hidden transition '><i ref={navIconRef} onClick={toggleNavbar} className={`${isNavOpen ?'fa-solid fa-xmark':' fa-solid fa-bars'} `}></i></span></div>
           <div className={`absolute   ${accOpen?'flex':'hidden'} transition-all border sm:text-[1em] text-[0.7em] border-white/40  rounded-sm flex-col pl-1   sm:right-[3.5vw] right-[12vw] sm:top-[45px]  w-[150px] h-[250px] bg-black`}>
             <i onClick={toggleAcc} className="fa-solid fa-xmark  text-right cursor-pointer text-[16px] hover:text-green-700 py-2 sm:pr-2 pr-3" ></i>
