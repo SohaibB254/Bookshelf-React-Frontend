@@ -4,10 +4,13 @@ const checkoutContext = createContext();
 
 export const CheckoutProvider = ({children})=>{
     const [checkoutItem,setCheckoutItem] = useState(()=>{
-        const savedItem = localStorage.getItem('checkoutItem');
+        const savedItem = localStorage.getItem('itemToCheckout');
         return savedItem ? JSON.parse(savedItem):{};
     });
 
+    useEffect(()=>{
+        localStorage.setItem('itemToCheckout',JSON.stringify(checkoutItem));
+    },[checkoutItem])
 
     const addToCheckout = (item)=>{
         setCheckoutItem(item)

@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import Footer from './Footer'
 import { useCart } from '../context/CartContext'
 const Cart = () => {
-    const{itemsInCart, setItemsInCart } =useCart()
+  const{itemsInCart, setItemsInCart } =useCart()
   const cartItemsCount = itemsInCart.length;
   const handleRemoveItem = (id) => {
     setItemsInCart(prev => prev.filter(item => item.id !== id))

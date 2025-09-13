@@ -14,15 +14,27 @@ const Store = () => {
   const [itemsCount, setItemsCount] = useState(6)
   const [popView, setPopView] = useState('hidden')
   const [popType, setPopType] = useState('')
-  const [popBg, setPopBg] = useState('')
-  const dislpayedItems = booksData.slice(0, itemsCount);
-  const { addToLibrary } = useLibrary()
+  const [popBg, setPopBg] = useState('');
+  const dislpayItems = booksData.slice(0, itemsCount);
+  const [dislpayedItems,setDisplayedItems] = useState(dislpayItems)
+  const { addToLibrary,bookExistLib } = useLibrary()
   const { addToCart } = useCart()
   const { addToCheckout } = useCheckout();
 
+  const handleSearch = (searchValue)=>{
+    const value = searchValue.toLowerCase().trim();
+    if(value){
+      const filteredItems = booksData.filter(item =>
+      item.category.toLowerCase().includes(value) ||
+      item.title.toLowerCase().includes(value));
+      setDisplayedItems(filteredItems);
+    }else{
+      setDisplayedItems(dislpayItems)
+    }
+  }
   const handlePopupLib = () => {
     setPopView('block');
-    setPopType('Library');
+    setPopType(bookExistLib);
     setPopBg('bg-blue-400');
     setTimeout(() => {
       setPopView('hidden')
@@ -30,7 +42,7 @@ const Store = () => {
   }
   const handlePopupCart = () => {
     setPopView('block');
-    setPopType('Cart');
+    setPopType('Book added to Cart');
     setPopBg('bg-green-400');
     setTimeout(() => {
       setPopView('hidden')
@@ -42,11 +54,15 @@ const Store = () => {
 
       <div id='storeContainer' className='sm:p-12 p-4 font-poppins'>
         <div id="storeSearchBox" className='flex  items-center justify-center py-3 px-3  sm:pt-12'>
-          <input className='sm:w-[40vw] w-full border rounded-sm border-black sm:p-3 py-1 px-2  ' type="text" name="" id="storeSearch" placeholder='Search by Name or Category' />
+          <input className='sm:w-[40vw] w-full border rounded-sm border-black sm:p-3 py-1 px-2'
+           onChange={(e)=>handleSearch(e.target.value)}
+           type="text"
+           name="search"
+           id="storeSearch"
+          placeholder='Search by Name or Category' />
         </div>
         <div id='storeItemsContainer' className='flex gap-[0.5rem] py-8 justify-center sm:justify-normal flex-wrap'>
-          {
-            dislpayedItems.map((elm, idx) => {
+          {dislpayedItems.length >0?( dislpayedItems.map((elm, idx) => {
               return <div key={idx} className='h-auto   sm:w-[15vw] w-auto sm:px-4 py-2 flex flex-col border shadow text-[16px]'>
 
                 <Link onClick={() => addToCheckout(elm)} to={'/bookCard'}>
@@ -55,7 +71,7 @@ const Store = () => {
                 <h1 className=' sm:text-[18px] font-semibold  tracking-tighter bg-gray-200 '>{elm.title}</h1>
                 <h1 className='italic text-gray-500 hidden sm:inline-block  '>by: {elm.author}</h1>
                 <p>Price: <span className='text-green-500 font-semibold'>{elm.price}</span></p>
-                <div className=' hidden sm:flex flex-wrap justify-between mt-4 ]'>
+                <div className=' hidden sm:flex flex-wrap justify-between mt-2 ]'>
                   <Link to='/checkout' onClick={() => addToCheckout(elm)} className='hover:underline'>Purchase</Link>
                   <button onClick={() => { addToCart(elm), handlePopupCart() }} className='hover:underline'>Add to cart</button>
                 </div>
@@ -64,7 +80,8 @@ const Store = () => {
                 </div>
               </div>
 
-            })
+            })):(    <p className="text-gray-500 text-lg font-semibold text-center w-full">No books found</p> )
+
           }
         </div>
         <div className='flex gap-2 justify-center sm:bg-transparent bg-green-500'>

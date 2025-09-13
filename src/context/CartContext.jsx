@@ -15,7 +15,14 @@ export function CartProvider({children}){
 
 
     const addToCart =(book)=>{
-        setItemsInCart((prev)=>[...prev,book])
+     const foundBook = itemsInCart.some(item => item.id === book.id);
+     if(foundBook){
+      setItemsInCart(prev => prev.map(item=>item.id === book.id?{...item,quantity: item.quantity + 1}:{item}))
+
+     }else{
+
+       setItemsInCart((prev)=>[...prev,book])
+     }
     };
     return (
         <CartContext.Provider value={{itemsInCart,addToCart ,setItemsInCart}}>
