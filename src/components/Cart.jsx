@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import book3 from '../assets/book3.png'
 import { Link } from 'react-router'
 import Footer from './Footer'
 import { useCart } from '../context/CartContext'

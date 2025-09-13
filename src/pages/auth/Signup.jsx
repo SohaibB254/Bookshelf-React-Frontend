@@ -9,9 +9,9 @@ const Signup = () => {
         setIsShown(prev => !prev)
     }
   return (
-    <div>
+    <div className='h-fit'>
          <Link to={'/'} className='mx-3 inline-block mt-2 text-blue-500'>Go back to home</Link>
-       <div className=' font-inter w-full min-h-screen pt-12 flex justify-center '>
+       <div className=' font-inter w-full h-fit pt-12 flex justify-center '>
         <div className='shadow w-fit h-fit pt-4  p-12 rounded-md '>
             <h1 class="text-center text-3xl py-8 font-semibold ">Join <span className='text-[#24BF6C] font-kavoon'>Bookshelf</span> now!</h1>
         <form className=' flex flex-col gap-2' action="">

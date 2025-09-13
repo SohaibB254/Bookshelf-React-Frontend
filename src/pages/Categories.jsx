@@ -4,12 +4,15 @@ import { Link, Routes, useParams, Route } from 'react-router'
 import Paginations from '../components/Paginations';
 import Footer from '../components/Footer';
 import TrendingNow from '../components/TrendingNow';
+import { useCheckout } from '../context/CheckoutContext';
+
 
 
 const Categories = () => {
   const { catName } = useParams();
   const [postsPerPage, setPostsPerPage] = useState(6)
   const [currentPage, setCurrentPage] = useState(1)
+  const {addToCheckout} = useCheckout()
 
   const lastPostIndex = currentPage * postsPerPage;
   const fistPostIndex = lastPostIndex - postsPerPage;
@@ -22,7 +25,7 @@ const Categories = () => {
         {
           currentPosts.map((elm, idx) => {
             return <div id='bookCard' key={idx} className='flex   items-center  flex-col sm:w-[210px] p-1 border border-black/30 sm:text-[25px]'>
-              <Link to='/bookCard'><img className='sm:w-[150px] w-[70px] h-[100px] sm:h-[200px]' src={elm.cover_photo} alt="" /></Link>
+              <Link onClick={()=>addToCheckout(elm)} to='/bookCard'><img className='sm:w-[150px] w-[70px] h-[100px] sm:h-[200px]' src={elm.cover_photo} alt="" /></Link>
               <h1 className='text-[0.7em] font-semibold tracking-tighter'>{elm.title}</h1>
                 <h1 className='italic text-[0.6em] text-gray-500 hidden sm:inline-block  '>by: {elm.author}</h1>
                    <p className=' text-[0.6em] hidden sm:inline-block'>{elm.length}</p>
@@ -35,7 +38,7 @@ const Categories = () => {
               </div>
             </div>
 
-          })  
+          })
         }
 
       </div>

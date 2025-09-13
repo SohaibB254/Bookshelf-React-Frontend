@@ -5,7 +5,7 @@ const Login = () => {
   return (
     <>
     <Link to={'/'} className='mx-3 inline-block mt-2 text-blue-500'>Go back to home</Link>
-    <div className=' font-inter w-full min-h-screen pt-12 flex justify-center  ' >
+    <div className=' font-inter w-full h-fit pt-12 flex justify-center  ' >
         <div className='shadow  w-fit h-fit pt-4  p-12 rounded-md '>
             <h1 class="text-center text-3xl py-8 font-semibold ">Welcome back</h1>
         <form className=' flex flex-col gap-2' action="">

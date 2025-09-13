@@ -1,13 +1,15 @@
 import React, { useEffect,useRef, useState } from 'react'
 import { Link,useLocation} from 'react-router'
 import categoriesData from '../data/categories'
+import { useCart } from '../context/CartContext'
 
 
 const Navbar = () => {
   const [accOpen, setAccOpen] = useState(false)
   const [isOpen, SetIsOpen] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
-  let location = useLocation()
+  const {itemsInCart} = useCart()
+  const path = useLocation().pathname
 
   const toggleAcc = ()=>{
     setAccOpen(prev => !prev);
@@ -63,7 +65,7 @@ const Navbar = () => {
 
   return (
     <>
-    <div id='NavbarContainer' className={`${location.pathname.startsWith('/auth')?'hidden':''} sticky top-0  z-50`} >
+    <div id='NavbarContainer' className={`${path.startsWith('/auth')?'hidden':''} sticky top-0  z-40`} >
       <div id='Navbar' className='flex sticky top-0 text-white bg-black font-inter h-[10vh] text-[30px] items-center  sm:w-screen   justify-between   px-8 sm:px-12 '>
         <div id='Logo'>
          <Link to={'/'}> <h1 className='text-[#24BF6C] sm:text-[1em] text-[0.8em] cursor-pointer transition hover:text-green-800 '>BookShelf</h1></Link>
@@ -84,8 +86,13 @@ const Navbar = () => {
               </div>
             </li>
             <Link onClick={toggleNavbar} to='/store' > <li>Store</li></Link>
-            <Link className='flex items-center gap-2' onClick={toggleNavbar} to='/cart'> <li>Cart
-              </li><span className='sm:hidden'><i className="fa-solid fa-cart-shopping "></i></span></Link>
+            <Link className='flex items-center gap-2 relative sm:py-8' onClick={toggleNavbar} to='/cart'> <li>Cart
+              </li><span className='sm:hidden'><i className="fa-solid fa-cart-shopping "></i></span>
+              { itemsInCart.length > 0 &&
+              <span className='w-5 h-5 bg-red-500 text-center rounded-full absolute sm:top-5   sm:-right-4'>
+               {itemsInCart.length}</span>
+              }
+               </Link>
             <Link onClick={toggleNavbar} to='/library'> <li>Library</li></Link>
             <Link onClick={toggleNavbar} to='/contact'> <li>Contact</li></Link>
             <Link onClick={toggleNavbar} to='/about'> <li>About</li></Link>

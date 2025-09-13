@@ -26,8 +26,8 @@ const Library = () => {
                    <h1 className='italic text-gray-500 hidden sm:inline-block  '>by: {item.author}</h1>
                    <p className='hidden sm:inline-block'>{item.length}</p>
                    <p  className='hidden sm:inline-block' >Publihed on: {item.date_published}</p>
-                   <div className=' hidden sm:flex flex-wrap justify-between mt-4 ]'>
-                   <Link to='/library/readbook' className='hover:underline'>Read Now</Link>
+                   <div className='flex flex-wrap justify-between mt-4 ]'>
+                   <Link to='/library/readbook' className='hover:underline  hidden sm:inline-block '>Read Now</Link>
                    <button onClick={()=>removeBook(item.id)}  className=' text-gray-500 hover:text-red-500'>Remove book</button>
                    </div>
                      </div>

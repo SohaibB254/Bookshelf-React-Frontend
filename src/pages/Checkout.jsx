@@ -1,19 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react'
-import book from '../assets/book.jpg'
 import { Link } from 'react-router'
-import { useCart } from '../context/CartContext'
+import { useCheckout } from '../context/CheckoutContext'
 
 
 
 const Checkout = () => {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [showAddress, setShowAddress] = useState(true);
-
-  const {itemsInCart} = useCart()
+  const {checkoutItem} = useCheckout()
 
  const handleDeliveryInfo = ()=>{
    setShowAddress(prev => !prev)
-   console.log('function working')
  }
 
   const handleConfirmPayment = ()=>{
@@ -28,18 +25,18 @@ const Checkout = () => {
             <h1 className='text-[20px] sm:text-[24px]'> Order Summary</h1>
             <div className='flex gap-3 mt-3'>
               <div id='OrderImg'>
-                <img className='w-[100px]' src={book} alt="" />
+                <img className='w-[100px]' src={checkoutItem.cover_photo} alt="" />
               </div>
               <div id='OrderDetail' className='flex justify-between px-4 mx-4 w-full '>
                 <div>
-                  <h1 className='text-[20px] font-bold'>{itemsInCart[0].title}</h1>
-                  <p className='text-gray-500 italic'>Author: Alex Peter</p>
+                  <h1 className='text-[20px] font-bold'>{checkoutItem.title}</h1>
+                  <p className='text-gray-500 italic'>Author: {checkoutItem.author}</p>
                 </div>
                 <div className=' flex flex-col'>
-                  <span>Price: <span className='text-green-500'> 1200</span></span>
-                  <span>Delievry: 249</span>
-                  <span>SubTotal: 1449</span>
-                  <span>Quantity: 1</span>
+                  <span>Price: <span className='text-green-500'> {checkoutItem.price}</span></span>
+                  <span>Delievry: {checkoutItem.delivery}</span>
+                  <span>SubTotal: {checkoutItem.price + checkoutItem.delivery }</span>
+                  <span>Quantity: {checkoutItem.quantity}</span>
                 </div>
               </div>
             </div>

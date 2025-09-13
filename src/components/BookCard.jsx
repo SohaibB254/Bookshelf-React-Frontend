@@ -5,9 +5,12 @@ import RelatedProducts from './RelatedProducts';
 import Review from './Review';
 import NewsLetter from './NewsLetter'
 import Footer from './Footer'
+import { useCheckout } from '../context/CheckoutContext';
+
 
 const BookCard = () => {
     const [qtyCount, setQtyCount] = useState(1);
+    const {checkoutItem} = useCheckout()
     const handleQtyIncrease = ()=>{
         setQtyCount(prev => prev + 1)
     }
@@ -19,11 +22,11 @@ const BookCard = () => {
     <div className='border font-sans flex flex-col sm:flex-row
        w-[100%] sm:gap-20 mt-10 text-[24px] sm:p-12 p-8'>
       <div>
-        <img className='sm:w-[30vw] w-full cursor-pointer' src={book} alt="" />
+        <img className='sm:w-[30vw] w-full cursor-pointer' src={checkoutItem.cover_photo} alt="" />
       </div>
       <div className='text-[0.8em] w-full '>
-        <div className=''><h1 className='sm:text-[2.25em] text-[1.5em] font-semibold'>The Past is Rising</h1>
-        <h1 className='font-bold text-[1.5em]'><span className='text-green-600'>$43.34</span></h1></div>
+        <div className=''><h1 className='sm:text-[2.25em] text-[1.5em] font-semibold'>{checkoutItem.title}</h1>
+        <h1 className='font-bold text-[1.5em]'><span className='text-green-600'>{checkoutItem.price}</span></h1></div>
         <div className='flex flex-col text-[0.8em]'>
             <span id='reviewStars'>
                 <i className="fa-solid fa-star text-yellow-500"></i>
@@ -33,14 +36,14 @@ const BookCard = () => {
                 <i className="fa-solid fa-star text-yellow-500"></i>
                   5/5
             </span>
-            <p className='text-gray-500 italic'>Author: Optimus Prime</p>
+            <p className='text-gray-500 italic'>Author: {checkoutItem.author}</p>
         </div>
         <div className='text-[1em] flex flex-col gap-1 sm:mt-2'>
         <p>Total sold: 389</p>
-        <p className='text-gray-700'>Date Published: June 2019</p>
-        <p className='text-gray-700'>Category: Fantasy</p>
+        <p className='text-gray-700'>Date Published: {checkoutItem.date_published}</p>
+        <p className='text-gray-700'>Category: {checkoutItem.category}</p>
         <p className='text-gray-700'>Languages: English, French, Korean</p>
-        <p className='text-gray-700'>Book Length: 430 pages</p>
+        <p className='text-gray-700'>Book Length: {checkoutItem.length}</p>
 
         </div>
       <div className="Book-card-btn flex flex-col  mt-3 sm:mt-10 w-full">

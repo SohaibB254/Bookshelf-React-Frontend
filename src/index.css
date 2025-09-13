@@ -63,6 +63,11 @@ body{
     appearance: textfield;
    -moz-appearance: textfield;
 }
+/*Making a custom bg for popular categories component*/
+.fade-bg{
+    background:linear-gradient(to right,white,rgba(128, 128, 128, 0.579),white);
+}
+
 
 @media (max-width: 620px) {
     #Home{

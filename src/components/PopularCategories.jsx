@@ -1,19 +1,14 @@
 import React from 'react'
-import fantasyImg from '../assets/fantasy.png';
-import scienceImg from '../assets/science.png';
-import historyImg from '../assets/history.png';
-import businessImg from '../assets/business.png';
-import mysteryImg from '../assets/mystery.png';
 import { motion, useAnimation } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 
 const PopularCategories = () => {
     const FamousCatData = [
-    { CatName: "Fantasy", image: fantasyImg },
-    { CatName: "Science Fiction", image: scienceImg },
-    { CatName: "History", image: historyImg },
-    { CatName: "Bussiness", image: businessImg },
-    { CatName: "Mystery", image: mysteryImg },
+    { CatName: "Fantasy", },
+    { CatName: "Science Fiction",},
+    { CatName: "History", },
+    { CatName: "Bussiness",  },
+    { CatName: "Mystery", },
 ];
  const controls = useAnimation();
   const containerRef = useRef();
@@ -47,29 +42,33 @@ const PopularCategories = () => {
     });
 
   return (
-    <div className="w-full overflow-hidden relative group mt-10">
+    <div className="w-full overflow-hidden relative group mt-10 font-inter">
         <h1 className='text-center mb-8 font-semibold sm:text-[39px] text-[30px]'>Popular Categories</h1>
-      {/* Scrolling Div */}
+        <div className='w-screen py-8 fade-bg'>
+          {/* Scrolling Div */}
       <motion.div
         ref={containerRef}
         animate={controls}
-        className="flex w-max"
+        className="flex w-max "
         onMouseEnter={handlePause}
         onMouseLeave={handlePlay}
         onTouchStart={handlePause}
         onTouchEnd={handlePlay}
+
       >
         {/* Doubled items for seamless loop */}
         {[...FamousCatData, ...FamousCatData].map((elm, idx) => (
           <div
             key={idx}
-            className="cursor-pointer hover:animate-pulse transition-transform flex flex-col items-center mx-4"
+            className="cursor-pointer hover:animate-pulse transition-transformflex  items-center mx-4"
           >
-            <img className="h-24 sm:h-52" src={elm.image} alt={elm.CatName} />
-            <h1 className="sm:text-xl p-3">{elm.CatName}</h1>
+            <h1 className="sm:text-[50px] text-xl p-3  ">{elm.CatName}</h1>
           </div>
         ))}
       </motion.div>
+
+
+      </div>
     </div>
   );
 };

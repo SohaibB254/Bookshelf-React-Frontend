@@ -1,6 +1,6 @@
 import './App.css'
 import Home from './pages/Home'
-import { Route, Routes } from 'react-router'
+import { Route, Routes, } from 'react-router'
 import Store from './pages/Store'
 import Contact from './pages/Contact'
 import About from './pages/About'
@@ -17,21 +17,47 @@ import Login from './pages/auth/Login'
 import Signup from './pages/auth/Signup'
 import Library from './components/Library'
 import ReaderPage from './components/ReaderPage'
+import { CartProvider } from './context/CartContext.jsx'
+import { LibraryProvider } from './context/LibraryContext.jsx'
+import { CheckoutProvider } from './context/CheckoutContext.jsx'
 
 
 function App() {
 
   return (
     <>
-      <Navbar />
+      <CheckoutProvider>
+        <LibraryProvider>
+          <CartProvider>
+            <Navbar />
+            <Routes>
+              <Route
+                path='/store'
+                element={<Store />} />
+              <Route
+                path='/cart'
+                element={<Cart />} />
+              <Route
+                path='/library'
+                element={<Library />} />
+              <Route
+                path='/checkout'
+                element={<Checkout />} />
+              <Route
+                path='/bookcard'
+                element={<BookCard />} />
+              <Route
+                path='/categories/:catName'
+                element={<Categories />} />
+            </Routes>
+          </CartProvider>
+        </LibraryProvider>
+      </CheckoutProvider>
       <Routes>
         <Route
           path='/'
           element={<Home />}
         />
-        <Route
-          path='/store'
-          element={<Store />} />
         <Route
           path='/contact'
           element={<Contact />} />
@@ -39,23 +65,10 @@ function App() {
           path='/about'
           element={<About />} />
         <Route
-          path='/cart'
-          element={<Cart />} />
-        <Route
-          path='/library'
-          element={<Library />} />
-        <Route
           path='/library/readbook'
           element={<ReaderPage />} />
-        <Route
-          path='/categories/:catName'
-          element={<Categories />} />
-        <Route
-          path='/bookcard'
-          element={<BookCard />} />
-        <Route
-          path='/checkout'
-          element={<Checkout />} />
+
+
         <Route
           path='/admindashboard'
           element={<DashBoardHome />} />
@@ -68,11 +81,11 @@ function App() {
         <Route
           path='/admindashboard/managebooks'
           element={<ManageBooks />} />
-          <Route path='/auth/:authType'
-          element={<Login/>}/>
-          <Route path='/auth/signup'
-          element={<Signup/>}/>
-
+        <Route path='/auth/login
+        '
+          element={<Login />} />
+        <Route path='/auth/signup'
+          element={<Signup />} />
       </Routes>
 
     </>
