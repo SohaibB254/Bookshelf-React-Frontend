@@ -6,7 +6,7 @@ const RelatedProducts = ()=>{
     const top3Trending = booksData.slice(6,9)
     return (
           <div className='h-autofont-inter flex flex-col border-b text-[30px] px-20 py-10'>
-            <h1 className='font-semibold text-[1.3em] mb-10'>Related Books</h1>
+            <h1 className='font-semibold sm:text-[1.3em] mb-10'>Related Books</h1>
             <div className='flex gap-2 justify-center flex-wrap sm:flex-nowrap '>
                 {
                     top3Trending.map((elm) => {

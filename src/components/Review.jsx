@@ -28,17 +28,18 @@ const Review = () => {
             key={idx}
             className="text-[0.5em] my-4 sm:my-10 border-b flex flex-col gap-3 border-b-black/70"
           >
-           <div className='flex items-center gap-2 '> <div className='w-10 h-10 bg-gray-400 overflow-hidden rounded-full'><img className='object-cover'  src={elm.image} alt="" /></div> <p className="font-semibold border-b">{elm.username}</p></div>
+            <div className='flex items-center gap-2 '> <div className='w-10 h-10 bg-gray-400 overflow-hidden rounded-full'><img className='object-cover' src={elm.image} alt="" /></div> <p className="font-semibold border-b">{elm.username}</p><p className='text-gray-500'> {elm.reviewDate}</p></div>
             <p className="">{elm.message}</p>
             <div className="flex gap-5 text-gray-500">
               <p>
                 Rating:{' '}
                 <span className="text-yellow-500 font-bold">{elm.rating}</span>
               </p>
-              <p>Review Date: {elm.reviewDate}</p>
+
               <p>
                 <i className="fa-solid fa-thumbs-up cursor-pointer text-blue-500"></i>: {elm.likes}
               </p>
+              <p className='cursor-pointer text-black'>Reply</p>
             </div>
           </div>
         ))}

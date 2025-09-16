@@ -2,6 +2,8 @@ import React, { useEffect,useRef, useState } from 'react'
 import { Link,useLocation} from 'react-router'
 import categoriesData from '../data/categories'
 import { useCart } from '../context/CartContext'
+import { useLibrary } from '../context/LibraryContext'
+
 
 
 const Navbar = () => {
@@ -9,6 +11,7 @@ const Navbar = () => {
   const [isOpen, SetIsOpen] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const {itemsInCart} = useCart()
+  const {libraryItems} = useLibrary()
   const path = useLocation().pathname
 
   const toggleAcc = ()=>{
@@ -89,11 +92,16 @@ const Navbar = () => {
             <Link className='flex items-center gap-2 relative sm:py-8' onClick={toggleNavbar} to='/cart'> <li>Cart
               </li><span className='sm:hidden'><i className="fa-solid fa-cart-shopping "></i></span>
               { itemsInCart.length > 0 &&
-              <span className='w-5 h-5 bg-red-500 text-center rounded-full absolute sm:top-5   sm:-right-4'>
+              <span className='w-5 h-5 bg-red-500 text-center rounded-full absolute sm:top-5   -right-4'>
                {itemsInCart.length}</span>
               }
                </Link>
-            <Link onClick={toggleNavbar} to='/library'> <li>Library</li></Link>
+            <Link className='flex items-center gap-2 relative sm:py-8' onClick={toggleNavbar} to='/library'> <li>Library</li>
+             { libraryItems.length > 0 &&
+              <span className='w-5 h-5 bg-green-500 text-center rounded-full absolute sm:top-5   -right-4'>
+               {libraryItems.length}</span>
+              }
+            </Link>
             <Link onClick={toggleNavbar} to='/contact'> <li>Contact</li></Link>
             <Link onClick={toggleNavbar} to='/about'> <li>About</li></Link>
           </ul>

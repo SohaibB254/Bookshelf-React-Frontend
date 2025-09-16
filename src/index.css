@@ -46,13 +46,24 @@ body{
 #TitleText {
     line-height: 1.1;
 }
-.u-btn {
+.u-btn{
     background-color: #24BF6C;
     padding: 10px 8px;
     font-family: 'Inter';
     font-weight: 500;
     color: white;
     transition: all 0.2s ease;
+}
+.u-btn3{
+    padding: 10px 8px;
+    font-family: 'Inter';
+    font-weight: 400;
+    color: white;
+    transition: all 0.2s ease;
+    border: solid 1px #24BF6C;
+}
+.u-btn3:hover{
+    background:#24BF6C;
 }
 .no-spinner::-webkit-outer-spin-button,
 .no-spinner::-webkit-inner-spin-button {
