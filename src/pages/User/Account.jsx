@@ -5,7 +5,7 @@ import UserSidebar from './UserSidebar'
 
 const Account = () => {
   return (
-  <>   <UserSidebar/>       <div id="DashBoardContent" className=' w-[90vw] ml-[10vw] px-12 font-inter py-10'>
+  <>   <UserSidebar/>       <div id="DashBoardContent" className=' sm:w-[90vw] sm:ml-[10vw] px-12 font-inter py-10'>
            <div className=' border rounded-md shadow-sm shadow-black h-auto py-12 px-3'>
             <ul className='flex flex-col gap-3'>
                 <li className='py-2  cursor-pointer border-black'>Account Information

@@ -1,7 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router'
-import userProfile from '../../assets/user-profile.svg'
-import analytics from '../../assets/analytics.jpg'
 import UserSidebar from './UserSidebar'
 
 const Profile = () => {
@@ -37,15 +35,8 @@ const Profile = () => {
                         </div>
                     <div className=' sm:text-[24px] sm:w-[35%] py-3 px-4 rounded-md  shadow-sm shadow-black'>
                         <h1 className='font-semibold py-2 border-b'>Spent this month</h1>
-                            <h1 className='flex items-center gap-3 mt-4'>Total Spent: <span className='text-red-700'>$765</span></h1>
+                            <h1 className='flex items-center gap-3 mt-4'>Total Spent: <span className='text-red-700 font-semibold'>$765</span></h1>
                         </div>
-                </div>
-                <div className='sm:text-[24px] py-3 px-4 rounded-md  shadow-sm shadow-black'>
-
-                        <h1 className='font-semibold cursor-pointer  py-2 border-b'>Analytics</h1>
-                       <div className=''>
-                        <img src={analytics} alt="" />
-                       </div>
                 </div>
                 </div>
         </div>

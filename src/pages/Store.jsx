@@ -4,27 +4,35 @@ import TrendingNow from '../components/TrendingNow'
 import OnSale from '../components/OnSale'
 import NewsLetter from '../components/NewsLetter'
 import Footer from '../components/Footer'
-import { Link } from 'react-router'
+import { Link, useLocation } from 'react-router'
 import { useCart } from '../context/CartContext'
 import { useLibrary } from '../context/LibraryContext'
 import { useCheckout } from '../context/CheckoutContext'
 import Popup from '../components/Popup'
 
+
 const Store = () => {
   const [itemsCount, setItemsCount] = useState(6)
   const [popView, setPopView] = useState('hidden')
   const [popType, setPopType] = useState('')
+  const [searchStr, setSearchStr] = useState('')
   const [popBg, setPopBg] = useState('');
+  const saleBooks = booksData.filter(item => item.sale_percent !== 0)
   const dislpayBooks = booksData.slice(0, itemsCount);
   const [filteredBooks, setFilteredBooks] = useState(dislpayBooks)
   const { addToLibrary, bookExistLib } = useLibrary()
   const { addToCart } = useCart()
   const { addToCheckout } = useCheckout();
+  const location = useLocation()
 
   useEffect(() => {
     setFilteredBooks(booksData.slice(0, itemsCount))
+    if (location.pathname === '/store/salebooks') {
+      setFilteredBooks(saleBooks)
+    }
   }, [itemsCount]);
 
+  //Search Function
   const handleSearch = (searchValue) => {
     const value = searchValue.toLowerCase().trim();
     if (value) {
@@ -32,10 +40,14 @@ const Store = () => {
         item.category.toLowerCase().includes(value) ||
         item.title.toLowerCase().includes(value));
       setFilteredBooks(filteredItems);
+      setSearchStr(value);
+      console.log(searchStr);
     } else {
       setFilteredBooks(dislpayBooks)
+      setSearchStr('')
     }
   }
+  //Popup for library
   const handlePopupLib = () => {
     setPopView('block');
     setPopType(bookExistLib);
@@ -44,6 +56,7 @@ const Store = () => {
       setPopView('hidden')
     }, 2500);
   }
+  //Popup for cart
   const handlePopupCart = () => {
     setPopView('block');
     setPopType('Book added to Cart');
@@ -54,6 +67,7 @@ const Store = () => {
   }
   return (
     <>
+
       <Popup display={popView} popType={popType} popBg={popBg} />
 
       <div id='storeContainer' className='sm:p-12 p-4 font-poppins'>
@@ -65,22 +79,23 @@ const Store = () => {
             id="storeSearch"
             placeholder='Search by Name or Category' />
         </div>
-        <div id='storeItemsContainer' className='flex gap-[0.5rem] py-8 justify-center sm:justify-normal flex-wrap'>
+
+          {searchStr && <h1>Showing results for "{searchStr}"</h1>}
+        <div id='storeItemsContainer' className='flex gap-[0.5rem] py-8 justify-center md:justify-normal  flex-wrap'>
           {filteredBooks.length > 0 ?
             (filteredBooks.map((elm, idx) => {
-              return <div key={idx} className='h-auto   sm:w-[15vw] w-auto sm:px-4 py-2 flex flex-col border shadow text-[16px]'>
+              return <div key={idx} className='sm:h-auto h-[250px] relative  md:w-[15vw] w-[160px] sm:px-4 py-2 flex flex-col  border shadow text-[16px]'>
 
                 <Link onClick={() => addToCheckout(elm)} to={'/bookCard'}>
-                <div>
-
-                  <img className='sm:w-[40vw] w-[160px] sm:h-[40vh] h-[200px] cursor-pointer' src={elm.cover_photo} alt="" />
-                </div>
+                  <div className='justify-self-center'>
+                    <img className='sm:w-[150px] w-[70px] h-[100px] sm:h-[200px] cursor-pointer' src={elm.cover_photo} alt="" />
+                  </div>
                 </Link>
                 <h1 className=' sm:text-[18px] font-semibold  tracking-tighter bg-gray-200 '>{elm.title}</h1>
                 <h1 className='italic text-gray-500 hidden sm:inline-block  '>by: {elm.author}</h1>
-                <div className='flex justify-between'>
-                <p>Rs: {elm.price - (elm.price * elm.sale_percent) / 100} <span className={`${elm.sale_percent === 0 ? 'hidden' : ''} italic text-gray-500 line-through`}>{elm.price}</span></p>
-                <p className={`${elm.sale_percent === 0 ? 'hidden' : ''}`}><span className='text-red-500 font-semibold'>{elm.sale_percent}% OFF</span></p>
+                <div className='flex sm:justify-between'>
+                  <p>Rs: {elm.price - (elm.price * elm.sale_percent) / 100} <span className={`${elm.sale_percent === 0 ? 'hidden' : ''} italic text-gray-500 line-through`}>{elm.price}</span></p>
+                  <p className={`${elm.sale_percent === 0 ? 'hidden' : ''}`}><span className='text-red-500 absolute bg-white/70 top-2 left-3 font-semibold'>{elm.sale_percent}% OFF</span></p>
                 </div>
                 <div className=' hidden sm:flex flex-wrap  justify-between mt-2 ]'>
                   <Link to='/checkout' onClick={() => addToCheckout(elm)} className='hover:underline'>Purchase</Link>

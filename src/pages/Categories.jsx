@@ -25,14 +25,16 @@ const Categories = () => {
         {
           currentPosts.map((elm, idx) => {
             return <div id='bookCard' key={idx} className='flex   items-center  flex-col sm:w-[210px] p-1 border border-black/30 sm:text-[25px]'>
-              <Link onClick={()=>addToCheckout(elm)} to='/bookCard'><img className='sm:w-[150px] w-[70px] h-[100px] sm:h-[200px]' src={elm.cover_photo} alt="" /></Link>
+              <Link onClick={()=>addToCheckout(elm)} to='/bookCard'>
+              <img className='sm:w-[150px] w-[70px] h-[100px] sm:h-[200px]' src={elm.cover_photo} alt="" />
+              </Link>
               <h1 className='text-[0.7em] font-semibold tracking-tighter'>{elm.title}</h1>
                 <h1 className='italic text-[0.6em] text-gray-500 hidden sm:inline-block  '>by: {elm.author}</h1>
                    <p className=' text-[0.6em] hidden sm:inline-block'>{elm.length}</p>
                    <p  className=' text-[0.6em] hidden sm:inline-block' >Publihed on: {elm.date_published}</p>
                    <p className='text-[0.6em]'>Price: <span className='text-green-500 font-semibold'>{elm.price}</span></p>
               <div id='bookCardBtns' className='hidden  w-full rounded-sm gap-2 sm:flex'>
-                <Link to={`/bookcard`} className='text-[0.6em] hover:bg-green-500 hover:text-white/80 transition p-2 rounded-sm '>Purchase</Link>
+                <Link to={`/checkout`} onClick={()=>addToCheckout(elm)} className='text-[0.6em] hover:bg-green-500 hover:text-white/80 transition p-2 rounded-sm '>Purchase</Link>
                 <Link className='text-[0.6em]  hover:bg-green-500 hover:text-white/80 transition p-2 rounded-sm '>Read Online</Link>
 
               </div>

@@ -18,7 +18,7 @@ const Checkout = () => {
   }
   return (
     <>
-    <div className=' w-screen relative  font-sans  px-[5vw] '>
+    <div className=' w-screen relative  font-inter  px-[5vw] '>
       <div id='Checkout' className={`flex flex-wrap sm:flex-nowrap checkout-page ${showConfirmation ? "blurred" : ""} w-[90vw] gap-1 mt-4`}>
         <div className='w-[90vw]'>
           <div id='OrderReview' className='border w-auto pl-4 h-[30vh] '>
@@ -129,7 +129,7 @@ const Checkout = () => {
             <h1 className='font-semibold'>Congratulations!🥳</h1>
             <p className='text-[0.6em]'>Your order is successfully placed</p>
             <i className="fa-solid fa-circle-check text-[54px] animate-pulse text-[#4fbe81]" style={{color:'#63E6BE;'}}></i>
-            <Link to='/store' className='hover:underline text-[0.5em]'>Continue Shopping!</Link>
+            <Link to='/store/all' className='hover:underline text-[0.5em]'>Continue Shopping!</Link>
           </div>
       </div>
 

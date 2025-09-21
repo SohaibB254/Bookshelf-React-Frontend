@@ -17,7 +17,7 @@ const Login = () => {
         <div className='mt-3 flex items-center gap-2'>
        <button class=" rounded border my-1 px-2 tracking-tight  border-black/20 py-2 hover:bg-green-500   cursor-pointer transition" type="submit" >Continue with google</button>
        or
-       <button class="  rounded border my-1 px-2 tracking-tight  border-black/20 py-2  hover:bg-green-500  cursor-pointer transition" type="submit" >Conitnue with facebook</button>
+       <button class="  rounded border my-1 px-2 tracking-tight  border-black/20 py-2  hover:bg-blue-600/60  cursor-pointer transition" type="submit" >Conitnue with facebook</button>
         </div>
         </div>
 

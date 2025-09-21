@@ -8,7 +8,10 @@ const UserSidebar = () => {
 
 
       const toggleSidebar = ()=>{
-        setIsShown(oldValue => !oldValue)
+        if(isMobile){
+
+          setIsShown(oldValue => !oldValue)
+        }
       };
         useEffect((() => {
           const checkScreen = () => {
@@ -22,7 +25,7 @@ const UserSidebar = () => {
         }), [])
   return (
     <>
-    <div id="DashBoardNav" className={`bg-white  z-50 fixed border border-b-0 ${isShown?'flex':'hidden'} flex-col py-3  h-[90vh]`}>
+    <div id="DashBoardNav" className={`bg-white  z-40 fixed border border-b-0 ${isShown?'flex':'hidden'} flex-col py-3  h-[90vh]`}>
         <div className={`${isMobile?'':'hidden'}`}>
           <i onClick={toggleSidebar} className="fa-solid fa-xmark text-xl  text-right w-full  px-2"></i>
         </div>

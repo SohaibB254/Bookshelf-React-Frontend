@@ -20,19 +20,29 @@ import ReaderPage from './components/ReaderPage'
 import { CartProvider } from './context/CartContext.jsx'
 import { LibraryProvider } from './context/LibraryContext.jsx'
 import { CheckoutProvider } from './context/CheckoutContext.jsx'
+import Loader from './components/Loader.jsx'
+import { useEffect, useState } from 'react'
 
 
 function App() {
+    const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    // Loader runs for a few seconds, then disappears
+    const timer = setTimeout(() => setLoading(false), 4500); // matches Loader duration
+    return () => clearTimeout(timer);
+  }, []);
   return (
     <>
+      {loading && <Loader duration={3000} />} {/* Loader on top */}
+
       <CheckoutProvider>
         <LibraryProvider>
           <CartProvider>
             <Navbar />
             <Routes>
               <Route
-                path='/store'
+                path='/store/:booktype'
                 element={<Store />} />
               <Route
                 path='/cart'

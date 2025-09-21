@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router';
 import { useLibrary } from '../context/LibraryContext';
+import Footer from './Footer';
 
 
 const Library = () => {
@@ -16,7 +17,7 @@ const Library = () => {
           <div id='LibraryBooks' className='flex gap-3 flex-wrap' >
 
             {libraryItems.length === 0 ? (
-              <h1 className='text-gray-400'>Your Library is Empty <Link to={'/store'} className='text-blue-500'>Add books now</Link> </h1>)
+              <h1 className='text-gray-400'>Your Library is Empty <Link to={'/store/all'} className='text-blue-500'>Add books now</Link> </h1>)
 
               : libraryItems.map((item) => {
                 return <div key={item.id} id='LibraryBook' className=''>
@@ -45,6 +46,7 @@ const Library = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   )
 }

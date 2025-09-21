@@ -174,32 +174,7 @@ textarea{
     box-shadow: none;
 }
 /* Custom Animations */
-.fade-elm{
-    transition: all 0.3s ease;
-    animation: fade-elm 0.5s ease-in;
-}
-.move-elm-ltr {
-    transition: all 0.3s ease;
-    animation: move-elm-ltr 0.5s ease-in;
-}
-@keyframes fade-elm {
-    from{
-        opacity: 0.1;
-    }
-    to{
-        opacity: 1;
-    }
-}
-@keyframes move-elm-ltr {
-    from{
-        opacity: 0.3;
-        transform: translateX(-50px);
-    }
-    to{
-          opacity: 1;
-        transform: translateX(0);
-    }
-}
+
 @keyframes animate_scale {
     from {
         scale:1;
