@@ -1,6 +1,6 @@
 import './App.css'
 import Home from './pages/Home'
-import { Route, Routes, } from 'react-router'
+import { Route, Routes, Router } from 'react-router'
 import Store from './pages/Store'
 import Contact from './pages/Contact'
 import About from './pages/About'
@@ -9,7 +9,6 @@ import Navbar from './components/Navbar'
 import Categories from './pages/Categories'
 import Checkout from './pages/Checkout'
 import BookCard from './components/BookCard'
-import DashBoardHome from './pages/AdminDashboard/DashBoardHome'
 import Profile from './pages/User/Profile'
 import Account from './pages/User/Account'
 import ManageBooks from './pages/AdminDashboard/ManageBooks'
@@ -22,6 +21,7 @@ import { LibraryProvider } from './context/LibraryContext.jsx'
 import { CheckoutProvider } from './context/CheckoutContext.jsx'
 import Loader from './components/Loader.jsx'
 import { useEffect, useState } from 'react'
+import ScrollToTop from './components/ScrollToTop.jsx'
 
 
 function App() {
@@ -34,6 +34,8 @@ function App() {
   }, []);
   return (
     <>
+
+      <ScrollToTop/>
       {loading && <Loader duration={3000} />} {/*Loader on top*/}
 
       <CheckoutProvider>
@@ -88,13 +90,12 @@ function App() {
         <Route
           path='/userprofile/account'
           element={<Account />} />
-          
+
         <Route path='/auth/login'
           element={<Login />} />
         <Route path='/auth/signup'
           element={<Signup />} />
       </Routes>
-
     </>
   )
 }
