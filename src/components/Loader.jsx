@@ -26,8 +26,8 @@ const Loader = ({ duration }) => {
       {!done && (
         <motion.div
           className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#24BF6C]"
-          initial={{ y: 0 }}
-          exit={{ y:'-100%' }}
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
           {/* Animated Book */}

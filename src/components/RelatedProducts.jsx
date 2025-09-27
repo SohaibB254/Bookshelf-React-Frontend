@@ -25,7 +25,7 @@ const RelatedProducts = ()=>{
                     })
                 }
             </div>
-            <Link to={'/store'} className="text-base hover:underline text-center my-10 ">See More</Link>
+            <Link to={'/store/all'} className="text-base hover:underline  my-10 ">See More</Link>
         </div>
     )
 }

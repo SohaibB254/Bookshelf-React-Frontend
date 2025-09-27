@@ -1,9 +1,12 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Kavoon&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+:root{
+    --baseColor: #24BF6C;
+}
+
 
 body{
     overflow-x: hidden;
@@ -34,7 +37,7 @@ body{
 }
 #Menu li:hover {
       transition: all 0.3s ease;
-      color: #24BF6C;
+      color:  var(--baseColor);
 }
 
 /* Home Page Custom Styling */
@@ -47,7 +50,7 @@ body{
     line-height: 1.1;
 }
 .u-btn{
-    background-color: #24BF6C;
+    background-color: var(--baseColor);
     padding: 10px 8px;
     font-family: 'Inter';
     font-weight: 500;
@@ -60,10 +63,10 @@ body{
     font-weight: 400;
     color: white;
     transition: all 0.2s ease;
-    border: solid 1px #24BF6C;
+    border: solid 1px  var(--baseColor);
 }
 .u-btn3:hover{
-    background:#24BF6C;
+    background: var(--baseColor);
 }
 .no-spinner::-webkit-outer-spin-button,
 .no-spinner::-webkit-inner-spin-button {

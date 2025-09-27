@@ -34,7 +34,7 @@ function App() {
   }, []);
   return (
     <>
-      {loading && <Loader duration={3000} />} {/* Loader on top */}
+      {loading && <Loader duration={3000} />} {/*Loader on top*/}
 
       <CheckoutProvider>
         <LibraryProvider>

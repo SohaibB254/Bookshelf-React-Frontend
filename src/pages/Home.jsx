@@ -7,6 +7,7 @@ import Footer from '../components/Footer'
 import LatestReleases from '../components/LatestReleases'
 import { Link } from 'react-router'
 import Ad from '../components/Ad'
+import ChatWidget from '../components/Chatwidget'
 const Home = () => {
   return (
     <>
@@ -33,7 +34,7 @@ const Home = () => {
           </ul>
         </div>
       </div>
-
+      <ChatWidget/>
       <PopularCategories />
       <Ad />
       <OnSale />

@@ -92,18 +92,14 @@ const Navbar = () => {
               </h1>
             </Link>
           </div>
-          <div id="Menu"
+          <div
+            id="Menu"
             ref={menuRef}
             className={`${isNavOpen ? "block" : "hidden"} md:block`}
           >
             <ul className="flex-col sm:flex-row sm:bg-transparent   bg-black  border-b sm:border-0  fixed sm:top-0 sm:relative  top-[9.9vh] px-8 left-0 h-auto w-screen flex sm:gap-8 gap-3 text-[0.5em] font-[400] sm:w-[40vw] sm:mr-[66px] sm:items-center py-10 sm:py-3 justify-center ">
               <Link to="/" onClick={toggleNavbar}>
-                <li className="relative group">
-                  Home
-                  <div className="w-36 h-36 rotate-2 hidden group-hover:block bg-gray-500 absolute">
-                    <img className="h-full w-full" src={homeHover} alt="" />
-                  </div>
-                </li>
+                <li className="relative group">Home</li>
               </Link>
               <li
                 className="relative group"
@@ -111,9 +107,6 @@ const Navbar = () => {
                 onClick={toggleDropMenu}
               >
                 Categories
-                <div className="w-36 h-36 -rotate-6 hidden group-hover:block bg-gray-500 absolute">
-                  <img className="h-full w-full" src={catHover} alt="" />
-                </div>
                 <div
                   ref={categoryRef}
                   id="category"
@@ -142,12 +135,7 @@ const Navbar = () => {
               </li>
               <Link onClick={toggleNavbar} to="/store/all">
                 {" "}
-                <li className="relative group">
-                  Store
-                  <div className="w-36 h-36 rotate-2 hidden group-hover:block bg-gray-500 absolute">
-                    <img className="h-full w-full" src={storeHover} alt="" />
-                  </div>
-                </li>
+                <li className="relative group">Store</li>
               </Link>
               <Link
                 className="flex items-center gap-2 relative sm:py-8"
@@ -155,12 +143,7 @@ const Navbar = () => {
                 to="/cart"
               >
                 {" "}
-                <li className="relative group">
-                  Cart
-                  <div className="w-36 h-36 -rotate-6 hidden group-hover:block bg-gray-500 absolute">
-                    <img className="h-full w-full" src={cartHover} alt="" />
-                  </div>
-                </li>
+                <li className="relative group">Cart</li>
                 <span className="sm:hidden">
                   <i className="fa-solid fa-cart-shopping "></i>
                 </span>
@@ -179,12 +162,7 @@ const Navbar = () => {
                 to="/library"
               >
                 {" "}
-                <li className="relative group">
-                  Library
-                  <div className="w-36 h-36 rotate-6 hidden group-hover:block bg-gray-500 absolute">
-                    <img className="h-full w-full" src={libHover} alt="" />
-                  </div>
-                </li>
+                <li className="relative group">Library</li>
                 {libraryItems.length > 0 && (
                   <span
                     id="LibraryBadge"
@@ -196,21 +174,11 @@ const Navbar = () => {
               </Link>
               <Link onClick={toggleNavbar} to="/contact">
                 {" "}
-                <li className="relative group">
-                  Contact
-                  <div className="w-36 h-36 -rotate-6 hidden group-hover:block bg-gray-500 absolute">
-                    <img className="h-full w-full" src={contactHover} alt="" />
-                  </div>
-                </li>
+                <li className="relative group">Contact</li>
               </Link>
               <Link onClick={toggleNavbar} to="/about">
                 {" "}
-                <li className="relative group">
-                  About
-                  <div className="w-36 h-36 rotate-6 hidden group-hover:block bg-gray-500 absolute">
-                    <img className="h-full w-full" src={aboutHover} alt="" />
-                  </div>
-                </li>
+                <li className="relative group">About</li>
               </Link>
             </ul>
           </div>

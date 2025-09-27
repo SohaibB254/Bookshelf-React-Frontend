@@ -60,7 +60,7 @@ const PopularCategories = () => {
         {[...FamousCatData, ...FamousCatData].map((elm, idx) => (
           <div
             key={idx}
-            className="cursor-pointer hover:animate-pulse transition-transformflex  items-center mx-4"
+            className="cursor-pointer hover:animate-pulse transition-transform flex  items-center mx-4"
           >
             <h1 className="sm:text-[50px] text-xl p-3  ">{elm.CatName}</h1>
           </div>
