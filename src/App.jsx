@@ -81,16 +81,14 @@ function App() {
 
         <Route
           path='/admindashboard'
-          element={<DashBoardHome />} />
+          element={<ManageBooks />} />
         <Route
           path='/userprofile'
           element={<Profile />} />
         <Route
           path='/userprofile/account'
           element={<Account />} />
-        <Route
-          path='/admindashboard/managebooks'
-          element={<ManageBooks />} />
+          
         <Route path='/auth/login'
           element={<Login />} />
         <Route path='/auth/signup'

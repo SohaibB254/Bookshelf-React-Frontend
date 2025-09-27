@@ -17,8 +17,9 @@ const ManageBooks = () => {
   return (
     <>
       <AdminDbNav />
-    <div className="flex w-screen justify-center">
-      <div className=" w-[70%] mx-8">
+    <div className="flex font-inter w-screen justify-center mt-8">
+      <div className=" sm:w-[70%] mx-8">
+      <h1 className="text-3xl my-3 text-center border-b">Welcome to Dashboard</h1>
         <h1 className="text-2xl font-semibold">All Books</h1>
         <ul className="border-b">
           {shownBooks.map((book) => {

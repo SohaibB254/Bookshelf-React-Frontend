@@ -3,13 +3,6 @@ import { Link, useLocation } from "react-router";
 import categoriesData from "../data/categories";
 import { useCart } from "../context/CartContext";
 import { useLibrary } from "../context/LibraryContext";
-import homeHover from "../assets/home-hover.png";
-import catHover from "../assets/cat-hover.png";
-import storeHover from "../assets/store-hover.png";
-import cartHover from "../assets/cart-hover.png";
-import libHover from "../assets/lib-hover.png";
-import contactHover from "../assets/contact-hover.png";
-import aboutHover from "../assets/about-hover.png";
 
 const Navbar = () => {
   const [accOpen, setAccOpen] = useState(false);
@@ -69,19 +62,17 @@ const Navbar = () => {
 
   return (
     <>
-      <div
+      <div id="NavFakeBg"
         className={`${
           path.startsWith("/auth") ? "hidden" : ""
         } bg-black w-screen h-[10vh] absolute top-0`}
       ></div>
-      <div
-        id="NavbarContainer"
+      <div id="NavbarContainer"
         className={`${
           path.startsWith("/auth") ? "hidden" : ""
         } sticky top-0  z-40`}
       >
-        <div
-          id="Navbar"
+        <div id="Navbar"
           className="flex sticky top-0 text-white backdrop-blur-md  bg-black/50 font-inter h-[10vh] text-[30px] items-center  sm:w-screen   justify-between   px-8 sm:px-12 "
         >
           <div id="Logo">
@@ -92,8 +83,7 @@ const Navbar = () => {
               </h1>
             </Link>
           </div>
-          <div
-            id="Menu"
+          <div id="Menu"
             ref={menuRef}
             className={`${isNavOpen ? "block" : "hidden"} md:block`}
           >

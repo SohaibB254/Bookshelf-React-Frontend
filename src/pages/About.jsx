@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import NewsLetter from '../components/NewsLetter'
 import Footer from '../components/Footer'
 import { motion } from 'motion/react'
+import ChatWidget from '../components/Chatwidget'
 
 const About = () => {
   const dark = 'text-white bg-gray-950';
@@ -73,6 +74,7 @@ const About = () => {
         </div>
       </div>
     </div>
+      <ChatWidget/>
     <NewsLetter/>
     <Footer/>
     </>

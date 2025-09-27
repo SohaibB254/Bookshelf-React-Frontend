@@ -5,6 +5,7 @@
 @tailwind utilities;
 :root{
     --baseColor: #24BF6C;
+    --lighter: #22c55e;
 }
 
 
@@ -94,7 +95,7 @@ body{
 }
 }
 .u-btn2 {
-   color: rgb(187, 8, 8);
+   color: rgb(214, 16, 16);
     padding: 5px 10px;
     font-family: 'Inter';
     font-weight: 500;
