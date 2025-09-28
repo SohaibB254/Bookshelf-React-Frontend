@@ -47,7 +47,7 @@ const Cart = () => {
                       <div className='flex sm:items-center w-full flex-col sm:flex-row  sm:justify-between '>
                         <div className='sm:w-[35%]'>
                           <div className='flex flex-col gap-1 justify-center'>
-                            <h1 className='sm:text-[2em] font-semibold text-[#24BF6C] tracking-tight'>{elm.title}</h1>
+                            <h1 className='sm:text-[2em] w-full truncate font-semibold text-[#24BF6C] tracking-tight'>{elm.title}</h1>
                             <p className='italic'>by: {elm.author}</p>
                             <p className={`${elm.sale_percent === 0 ? 'hidden' : ''}`}><span className='text-red-500 sm:text-base text-xs font-semibold'>{elm.sale_percent}% OFF</span></p>
                           </div>

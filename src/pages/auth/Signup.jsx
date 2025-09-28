@@ -28,9 +28,9 @@ const Signup = () => {
         </form>
         <p>Already  have an account? <Link to={'/auth/login'} className='text-blue-500 hover:underline '>Login now.</Link></p>
         <div className='mt-3 flex items-center gap-2'>
-       <button class=" rounded border my-1 px-2 tracking-tight  border-black/20 py-2 hover:bg-green-500   cursor-pointer transition" type="submit" >Continue with google</button>
+       <button class=" rounded border my-1 px-2 tracking-tight  flex items-center gap-1 border-black/20 py-2   cursor-pointer transition"  >Continue with google <img className='w-6 h-6' src="https://img.icons8.com/color/512/google-logo.png" alt="" /></button>
        or
-       <button class="  rounded border my-1 px-2 tracking-tight  border-black/20 py-2  hover:bg-green-500  cursor-pointer transition" type="submit" >Conitnue with facebook</button>
+       <button class="  rounded border my-1 px-2 tracking-tight flex items-center gap-1  border-black/20 py-2  cursor-pointer transition"  >Conitnue with facebook  <img className='w-6 h-6' src="https://www.freeiconspng.com/uploads/facebook-png-icon-follow-us-facebook-1.png" alt="" />  </button>
         </div>
         </div>
 

@@ -7,8 +7,6 @@
     --baseColor: #24BF6C;
     --lighter: #22c55e;
 }
-
-
 body{
     overflow-x: hidden;
 }
@@ -84,10 +82,11 @@ body{
 }
 
 
-@media (max-width: 620px) {
+@media (max-width: 1024px) {
     #Home{
     background-image: url('./assets/body-bg-phone.png');
     background-size: cover;
+    background-repeat: no-repeat;
 }
 .u-btn{
     padding: 10px 8px;
@@ -114,6 +113,52 @@ body{
 .pageMoveBtn{
 background-color: black;
 color: white;
+}
+/* Custom Carousel with only css*/
+#carousel{
+    overflow-x: auto;
+    display: flex;
+    gap: 1em;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    anchor-name: --carousel;
+}
+#carousel::scroll-button(right),#carousel::scroll-button(left){
+    content: '>';
+    border: none;
+    font-family: Consolas;
+    font-size: 3rem;
+    color: rgb(0, 0, 0);
+    height: 60px;
+    width: 60px;
+    padding-bottom: .1em;
+    background-color: transparent;
+    cursor: pointer;
+    position: fixed;
+    position-anchor: --carousel;
+    position-area: right center;
+    translate: -100%;
+
+}
+#carousel::scroll-button(right):disabled,#carousel::scroll-button(left):disabled{
+    color: rgb(104, 104, 104);
+}
+#carousel::-webkit-scrollbar{
+    display: none;
+}
+#carousel::scroll-button(left){
+    content: '<';
+    position-area: left center;
+    translate: 100%;
+}
+.carousel-item{
+    scroll-snap-align: start;
+    padding: .5em;
+    flex: 0 0 100%;
+}
+.carousel-item img{
+    width: 100%;
+    height: 100%;
 }
 
 /* Custom Styling the checkout seciton */

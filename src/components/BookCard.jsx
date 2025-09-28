@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router'
-import book from '../assets/book.jpg'
 import RelatedProducts from './RelatedProducts';
 import Review from './Review';
 import NewsLetter from './NewsLetter'
@@ -23,9 +22,17 @@ const BookCard = () => {
   return (
     <>
       <div className='border font-sans flex flex-col sm:flex-row
-       w-[100%] sm:gap-20 mt-10 text-[24px] sm:p-12 p-8'>
-        <div>
-          <img className='sm:w-[30vw] w-full cursor-pointer' src={checkoutItem.cover_photo} alt="" />
+       w-[100%] sm:gap-20 mt-10 text-[24px]  sm:p-12 p-8'>
+        <div id='carousel'>
+          <div className='carousel-item  h-[350px] w-full  sm:h-[500px] sm:w-[150px]'>
+            <img className=' cursor-pointer' src={checkoutItem.cover_photo} alt="" />
+          </div>
+          <div className=' carousel-item  h-[350px] w-full  sm:h-[500px] sm:w-[150px]'>
+            <img className='  cursor-pointer' src={checkoutItem.cover_photo} alt="" />
+          </div>
+          <div className='carousel-item h-[350px] w-full  sm:h-[500px] sm:w-[150px] '>
+            <img className=' cursor-pointer' src={checkoutItem.cover_photo} alt="" />
+          </div>
         </div>
         <div className='text-[0.8em] w-full '>
           <div className=''>
@@ -64,7 +71,7 @@ const BookCard = () => {
               <p className='hover:underline cursor-pointer'><i class="fa-solid fa-share"></i> Share</p>
             </div>
             <div className='text-[0.8em] flex gap-10 items-center '>
-              <Link to='/checkout'> <button className='bg-black my-1  w-44 text-base text-white px-3 py-3 hover:underline'>Checkout <i className="fa-solid fa-bag-shopping mx-4 text-[1.1em] "></i></button></Link>
+              <Link to={`/book/${encodeURIComponent(checkoutItem.id)}/checkout`}> <button className='bg-black my-1  w-44 text-base text-white px-3 py-3 hover:underline'>Checkout <i className="fa-solid fa-bag-shopping mx-4 text-[1.1em] "></i></button></Link>
               <Link onClick={() => addToCart(checkoutItem)} className='hover:underline cursor-pointer'><i class="fa-solid fa-cart-shopping"></i> Add to cart</Link>
             </div>
           </div>

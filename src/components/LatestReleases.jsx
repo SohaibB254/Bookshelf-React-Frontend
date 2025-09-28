@@ -4,10 +4,10 @@ import { Link } from 'react-router'
 import { motion } from 'motion/react'
 
 const LatestReleases = () => {
-    const top3Trending = booksData.slice(6, 9)
+    const top3Trending = booksData.slice(5, 9)
     return (
 
-        <div className='h-auto font-inter text-[30px]  px-8 sm:px-20 pt-10'>
+        <div className='h-auto font-inter text-[30px]  px-8 sm:px-12 pt-10'>
             <h1 className='font-semibold sm:text-[1.3em] mb-10'>Latest Releases</h1>
             <div className='flex gap-4 justify-center sm:flex-nowrap flex-wrap'>
                 {
@@ -20,8 +20,8 @@ const LatestReleases = () => {
                                 transition={{
                                     duration: 0.7
                                 }}
-                                key={elm.id} className='sm:h-[70vh] h-[40vh] border border-black/50 w-[250px]   sm:w-[30vw] cursor-pointer group relative overflow-hidden' >
-                                <img className='h-full w-full' src={elm.cover_photo} alt="" />
+                                key={elm.id} className=' border border-black/50 w-[250px]   sm:w-[22vw] cursor-pointer group relative overflow-hidden' >
+                                <img className='aspect-auto' src={elm.cover_photo} alt="" />
                                 <div className=' flex absolute items-center justify-center  w-full text-sm bg-black px-8 bottom-0  z-10 gap-4'>
                                     <button className='text-white    sm:px-3 py-1'>Read Online</button>
                                     <Link to={'/checkout'}><button className='underline  px-3 py-1 text-white'>Checkout</button></Link>
@@ -41,7 +41,7 @@ const LatestReleases = () => {
                 }
             </div>
 
-            <Link to={'/store/latestbooks'} className='text-base sm:mx-0 mx-8  text-center my-4 hover:underline'>See More</Link>
+            <Link to={'/store/latestbooks'} className='text-base sm:mx-0 mx-8    my-4 hover:underline'>See More</Link>
         </div>
     )
 }

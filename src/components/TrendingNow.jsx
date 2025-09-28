@@ -1,12 +1,15 @@
 import React from "react";
 import booksData from "../data/books";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 
 const TrendingNow = () => {
-  const top3Trending = booksData.slice(3, 6);
+  const location = useLocation()
+  const top3Trending = booksData.slice(2, 6);
 
   return (
-    <div className="h-auto font-inter text-[30px]  px-8 sm:px-20 pt-10">
+
+
+    <div className="h-auto font-inter text-[30px]  px-8 sm:px-12 pt-10">
       <h1 className="font-semibold sm:text-[1.3em] mb-10">Trending Now</h1>
 
       <div className="flex gap-4 justify-center sm:flex-nowrap flex-wrap ">
@@ -14,9 +17,9 @@ const TrendingNow = () => {
           return (
             <div
               key={elm.id}
-              className="sm:h-[70vh] h-[40vh] border border-black/50 w-[250px] sm:w-[30vw] group cursor-pointer  relative overflow-hidden"
+              className=" border border-black/50 w-[250px] sm:w-[22vw] group cursor-pointer  relative overflow-hidden"
             >
-              <img className="w-full h-full " src={elm.cover_photo} alt="" />
+              <img className="aspect-auto" src={elm.cover_photo} alt="" />
               <div className=" z-10 flex absolute items-center justify-center  w-full text-sm bg-black px-8 bottom-0 py-2  gap-4">
                 <button className="text-white hover:text-green-500   sm:px-3 py-1">
                   Read Online

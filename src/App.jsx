@@ -53,10 +53,10 @@ function App() {
                 path='/library'
                 element={<Library />} />
               <Route
-                path='/checkout'
+                path='/book/:id/checkout'
                 element={<Checkout />} />
               <Route
-                path='/bookcard'
+                path='/:source/book/:id'
                 element={<BookCard />} />
               <Route
                 path='/categories/:catName'

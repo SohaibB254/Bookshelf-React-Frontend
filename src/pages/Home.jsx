@@ -8,6 +8,7 @@ import LatestReleases from '../components/LatestReleases'
 import { Link } from 'react-router'
 import Ad from '../components/Ad'
 import ChatWidget from '../components/Chatwidget'
+import Plans from '../components/Plans'
 const Home = () => {
   return (
     <>
@@ -39,6 +40,7 @@ const Home = () => {
       <Ad />
       <OnSale />
       <LatestReleases />
+      <Plans/>
       <NewsLetter />
       <Footer />
     </>
