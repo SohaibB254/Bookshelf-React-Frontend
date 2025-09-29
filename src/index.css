@@ -115,7 +115,9 @@ color: white;
 /* Custom Carousel with only css*/
 #carousel{
     overflow-x: auto;
+    height: auto;
     display: flex;
+    align-items: center;
     gap: 1em;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
@@ -126,7 +128,7 @@ color: white;
     border: none;
     font-family: Consolas;
     font-size: 3rem;
-    color: rgb(0, 0, 0);
+    color: rgb(17, 248, 109);
     height: 60px;
     width: 60px;
     padding-bottom: .1em;
@@ -150,7 +152,7 @@ color: white;
     translate: 100%;
 }
 .carousel-item{
-    scroll-snap-align: start;
+    scroll-snap-align: center;
     padding: .5em;
     flex: 0 0 100%;
 }
@@ -214,12 +216,11 @@ input{
 textarea{
     resize: none;
 }
-#newsLetterEmailInput:focus,input[focus]{
-    outline: none;
-    border: 1px solid black;
-    border-right-width: 0;
-    box-shadow: none;
+/* Custom styling newsletter component */
+.bg-myGradient{
+    background: linear-gradient(103deg, var(--baseColor) 40%,rgb(219, 219, 219));
 }
+
 /* Custom Animations */
 
 @keyframes animate_scale {

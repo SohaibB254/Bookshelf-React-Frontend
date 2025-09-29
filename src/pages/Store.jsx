@@ -14,8 +14,8 @@ const Store = () => {
   const [itemsCount, setItemsCount] = useState(12);
   const [popView, setPopView] = useState("hidden");
   const [popType, setPopType] = useState("");
-  const [searchStr, setSearchStr] = useState("");
   const [popBg, setPopBg] = useState("");
+  const [searchStr, setSearchStr] = useState("");
   const saleBooks = booksData.filter((item) => item.sale_percent !== 0);
   const dislpayBooks = booksData.slice(0, itemsCount);
   const [filteredBooks, setFilteredBooks] = useState(dislpayBooks);
@@ -31,12 +31,10 @@ const Store = () => {
     }
   }, [itemsCount]);
 
-const scrollToTop = () => {
-
+  const scrollToTop = () => {
     window.scrollTo({
       top: 0, // smooth scroll animation
     });
-
   };
   //Search Function
   const handleSearch = (searchValue) => {
@@ -186,8 +184,8 @@ const scrollToTop = () => {
         </div>
       </div>
 
-      { location.pathname !== '/store/trendingbooks' && <TrendingNow />}
-      { location.pathname !== '/store/salebooks' && <OnSale />}
+      {location.pathname !== "/store/trendingbooks" && <TrendingNow />}
+      {location.pathname !== "/store/salebooks" && <OnSale />}
       <NewsLetter />
       <Footer />
     </>

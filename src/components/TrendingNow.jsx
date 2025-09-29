@@ -1,16 +1,13 @@
 import React from "react";
 import booksData from "../data/books";
-import { Link, useLocation } from "react-router";
+import { Link } from "react-router";
 
 const TrendingNow = () => {
-  const location = useLocation()
   const top3Trending = booksData.slice(2, 6);
 
   return (
-
-
     <div className="h-auto font-inter text-[30px]  px-8 sm:px-12 pt-10">
-      <h1 className="font-semibold sm:text-[1.3em] mb-10">Trending Now</h1>
+      <h1 className="font-semibold lg:text-[1.3em] text-2xl mb-10">Trending Now</h1>
 
       <div className="flex gap-4 justify-center sm:flex-nowrap flex-wrap ">
         {top3Trending.map((elm) => {

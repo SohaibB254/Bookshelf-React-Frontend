@@ -13,7 +13,7 @@ const Library = () => {
     <div>
       <div id='LibraryContainer' className=' font-inter'>
         <div id="LibraryContent" className='sm:pl-12 pl-8 py-8'>
-          <h1 className=' text-xl sm:text-3xl font-semibold my-3'>Your Library</h1>
+          <h1 className=' text-2xl lg:text-3xl font-semibold my-3'>Your Library</h1>
           <div id='LibraryBooks' className='flex gap-3 flex-wrap' >
 
             {libraryItems.length === 0 ? (

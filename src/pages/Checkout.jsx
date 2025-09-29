@@ -1,7 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router";
 import { useCheckout } from "../context/CheckoutContext";
-import { div } from "motion/react-client";
 
 const Checkout = () => {
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -30,7 +29,7 @@ const Checkout = () => {
           } w-[90vw] gap-1 mt-4`}
         >
           <div className="w-[90vw]">
-            <div id="OrderReview" className="border w-auto pl-4 h-[30vh] ">
+            <div id="OrderReview" className="border w-auto pt-2 pl-4 h-[30vh] ">
               <h1 className="text-base sm:text-[24px]"> Order Summary</h1>
               <div className="flex gap-3 mt-3">
                 <div id="OrderImg">
@@ -99,7 +98,7 @@ const Checkout = () => {
                   name="name"
                   placeholder="Address"
                 />
-                <div className="">
+                <div>
                   <input
                     className=" w-80 my-2 mr-2 p-2 rounded-sm"
                     type="text"
@@ -141,7 +140,7 @@ const Checkout = () => {
             id="OrderPaymentDetails"
             className="border  sm:text-[24px] px-4 w-[50%] "
           >
-            <div className="">
+            <div>
               <h1 className=" text-base">Got a Coupon Code?</h1>
               <div className="flex items-center  text-base border-b">
                 <input
@@ -163,68 +162,69 @@ const Checkout = () => {
                   <input
                     className="w-4 h-4 text-center"
                     name="paymentMethod"
+                    id="online"
                     type="radio"
                     checked={payMethod === "online"}
                     onChange={() => handlePaymentMethod("online")}
                   />
-                  <span className="text-xs sm:text-base  truncate">Online Payment</span>
+                  <label
+                    htmlFor="online"
+                    className="text-xs sm:text-base  truncate"
+                  >
+                    Online Payment
+                  </label>
                   <input
                     className="w-4 h-4 text-center"
                     name="paymentMethod"
+                    id="cod"
                     type="radio"
                     checked={payMethod === "cod"}
                     onChange={() => handlePaymentMethod("cod")}
                   />
-                  <span className="text-xs sm:text-base">COD</span>
+                  <label htmlFor="cod" className="text-xs sm:text-base">
+                    COD
+                  </label>
                 </div>
               </div>
               {payMethod === "online" && (
                 <div className={`flex  flex-col mt-4 gap-3`}>
                   <p className="font-semibold">Choose online payment option</p>
-                  <label
-                    className="flex items-center gap-2"
-                    htmlFor="onlinePaymentOption"
-                  >
+                  <span className="flex items-center gap-2">
+                    <input
+                      className="w-4 h-4 text-center"
+                      name="onlinePaymentOption"
+                      id="paypal"
+                      type="radio"
+                    />
+                    <label htmlFor="paypal">Paypal</label>
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <input
+                      className="w-4 h-4 text-center"
+                      name="onlinePaymentOption"
+                      id="apple"
+                      type="radio"
+                    />
+                    <label htmlFor="apple">Apple Pay</label>
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <input
+                      className="w-4 h-4 text-center"
+                      name="onlinePaymentOption"
+                      id="mobile"
+                      type="radio"
+                    />
+                    <label htmlFor="mobile">Mobile Account</label>
+                  </span>
+                  <span className="flex items-center gap-2">
                     <input
                       className="w-4 h-4 text-center"
                       name="onlinePaymentOption"
                       type="radio"
+                      id="card"
                     />
-                    <span>Paypal</span>
-                  </label>
-                  <label
-                    className="flex items-center gap-2"
-                    htmlFor="onlinePaymentOption"
-                  >
-                    <input
-                      className="w-4 h-4 text-center"
-                      name="onlinePaymentOption"
-                      type="radio"
-                    />
-                    <span>Apple Pay</span>
-                  </label>
-                  <label
-                    className="flex items-center gap-2"
-                    htmlFor="onlinePaymentOption"
-                  >
-                    <input
-                      className="w-4 h-4 text-center"
-                      name="onlinePaymentOption"
-                      type="radio"
-                    />
-                    <span>Mobile Account</span>
-                  </label>
-                  <label
-                    className="flex items-center gap-2"
-                    htmlFor="onlinePaymentOption"
-                  >
-                    <input
-                      className="w-4 h-4 text-center"
-                      name="onlinePaymentOption"
-                      type="radio"
-                    />
-                    <span>Debit/Credit Card</span>
-                  </label>
+                    <label htmlFor="card">Debit/Credit Card</label>
+                  </span>
                   <input
                     className="w-80 my-1 mr-4 p-2 rounded-sm"
                     type="number"
@@ -251,7 +251,7 @@ const Checkout = () => {
               )}
               <div>
                 <div className={`flex  flex-col gap-2 mt-3 pb-4`}>
-                  {payMethod === "cod" && <p className="">Cash on delievry selected</p>}
+                  {payMethod === "cod" && <p>Cash on delievry selected</p>}
                   <div className="flex flex-col gap-3">
                     <button
                       onClick={handleConfirmPayment}

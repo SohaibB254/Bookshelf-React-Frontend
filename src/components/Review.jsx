@@ -22,14 +22,14 @@ const Review = () => {
         id="ReviewContainer"
         className="text-[30px] px-8 sm:px-20 py-2"
       >
-        <h1 className="font-semibold sm:text-[1.3em] mb-10">Reviews</h1>
+        <h1 className="font-semibold text-2xl lg:text-[1.3em] mb-10">Reviews</h1>
         {reviews.map((elm, idx) => (
           <div
             key={idx}
             className="text-[0.5em] my-4 sm:my-10 border-b flex flex-col gap-3 border-b-black/70"
           >
             <div className='flex items-center gap-2 '> <div className='w-10 h-10 bg-gray-400 overflow-hidden rounded-full'><img className='object-cover' src={elm.image} alt="" /></div> <p className="font-semibold border-b">{elm.username}</p><p className='text-gray-500'> {elm.reviewDate}</p></div>
-            <p className="">{elm.message}</p>
+            <p>{elm.message}</p>
             <div className="flex gap-5 text-gray-500">
               <p>
                 Rating:{' '}

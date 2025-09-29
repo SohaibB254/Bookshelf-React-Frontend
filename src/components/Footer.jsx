@@ -21,7 +21,7 @@ const Footer = () => {
     show: { opacity: 1, y: 0 }
   }
   return (
-    <div id='footerContainer' className='font-inter'>
+    <footer id='footerContainer' className='font-inter'>
       <div id='Footer' className='w-full h-auto flex flex-col gap-4  sm:flex-row border-b border-t justify-evenly mt-8 px-20 py-20'>
         <div className='flex flex-col gap-8 sm:gap-20'>
           <motion.div
@@ -132,7 +132,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </div>
+    </footer>
 
   )
 }

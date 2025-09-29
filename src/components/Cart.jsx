@@ -28,7 +28,7 @@ const Cart = () => {
   return (
     <>
       <div id='cartContainer' className='text-[32px] px-4 lg:px-12 pt-16 font-inter'>
-        <h1 className='md:text-[1.2em] text-xl text-center mb-10' >Your Cart ({cartItemsCount} items) <i className="fa-solid fa-cart-shopping cursor-pointer transition hover:text-green-500"></i></h1>
+        <h1 className='lg:text-[1.2em] text-2xl text-center mb-10' >Your Cart ({cartItemsCount} items) <i className="fa-solid fa-cart-shopping cursor-pointer transition hover:text-green-500"></i></h1>
         <div id='cartItemContainer' className='w-full h-auto'>
           <div className={` ${itemsInCart.length === 0 ? "border-b-0" : ""} border-b`}>
             {

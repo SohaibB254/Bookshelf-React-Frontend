@@ -1,33 +1,88 @@
-import React from 'react'
-import Services from '../components/Services'
-import NewsLetter from '../components/NewsLetter'
-import Footer from '../components/Footer'
+import React from "react";
+import Services from "../components/Services";
+import NewsLetter from "../components/NewsLetter";
+import Footer from "../components/Footer";
 
 const Contact = () => {
   return (
     <>
-      <div className='flex flex-col font-inter items-center h-full w-full relative border pb-12'>
-        <div id='formContainer' className='flex flex-col items-center'>
-          <form className='flex flex-col gap-2  py-4 px-6 sm:p-12 w-screen border rounded-md shadow-md shadow-gray-500 border-gray-200'>
-            <h1 className='sm:text-3xl text-xl font-semibold'>Get in touch</h1>
-            <input className='border border-gray-400 outline-none rounded-sm  transition  p-2 ' type="text" name="username" id="username" placeholder='Your Name' />
-            <input className='border border-gray-400 outline-none rounded-sm  transition  p-2 ' type="email" name="email" id="email" placeholder='Your Email' />
-            <textarea className='w-full border-gray-400 outline-none rounded-sm  transition border p-2  h-[20vh] sm:h-[30vh]' name="message" id="message" placeholder='Write your message/suggestion/complain'></textarea>
-            <div className='text-red-500 sm:gap-4 flex sm:flex-row flex-col'>
-              <h1 className='italic cursor-pointer'>bookshelf@gmail.com</h1>
-              <h1 className='cursor-pointer'>+92 323 4353123</h1>
-            </div>
-            <input className='u-btn cursor-pointer w-fit rounded-sm' type="submit" value="Send Message" />
+      <div className=" flex lg:flex-row flex-col-reverse font-inter h-auto items-center px-6 lg:px-12 w-screen relative border py-6">
+        <div className=" sm:h-[500px] lg:gap-7 rounded-md bg-[var(--baseColor)] shadow-md shadow-gray-400  text-white  w-full p-4 lg:p-6  flex justify-around flex-col lg:w-auto">
+          <div className=" sm:p-3 p-1 border-b">
+            <h1 className="sm:text-xl  cursor-pointer lg:text-2xl font-semibold">
+              Phone <i className="fa-solid fa-phone"></i>
+            </h1>
+            <h1 className="cursor-pointer sm:text-base text-xs text-gray-300">
+              +92 323 4353123{" "}
+            </h1>
+          </div>
+          <div className=" sm:p-3 p-1 border-b">
+            <h1 className="sm:text-xl    cursor-pointer lg:text-2xl font-semibold">
+              Email <i className="fa-solid fa-envelope"></i>
+            </h1>
+            <h1 className="italic cursor-pointer sm:text-base text-xs text-gray-300">
+              bookshelf@gmail.com
+            </h1>
+          </div>
+          <div className=" sm:p-3 px-1 py-3 border-b">
+            <h1 className="sm:text-xl   cursor-pointer lg:text-2xl font-semibold">
+              Location <i className="fa-solid fa-location-dot"></i>
+            </h1>
+            <h1 className="cursor-pointer sm:text-base text-xs  text-gray-300">
+              H.N J232, Street 35 Block B Wapda Town, Lahore Pakistan
+            </h1>
+          </div>
+          <div className="sm:px-3 px-1 flex flex-col gap-1">
+            <h1>Follow us</h1>
+            <ul className="flex gap-4">
+              <i className=" cursor-pointer hover:scale-110 transition-all fa-brands fa-instagram"></i>
+              <i className=" cursor-pointer hover:scale-110 transition-all fa-brands fa-youtube"></i>
+              <i className=" cursor-pointer hover:scale-110 transition-all fa-brands fa-facebook-f"></i>
+              <i className=" cursor-pointer hover:scale-110 transition-all fa-brands fa-twitter"></i>
+              <i className=" cursor-pointer hover:scale-110 transition-all fa-brands fa-pinterest-p"></i>
+            </ul>
+          </div>
+        </div>
+        <div
+          id="formContainer"
+          className="flex h-[300px] sm:h-[500px] flex-col w-full  items-center"
+        >
+          <form className="flex flex-col gap-2 h-full py-4 px-6 lg:p-12 w-full border rounded-md shadow-md shadow-gray-400 border-gray-300">
+            <h1 className="sm:text-3xl text-xl font-semibold">Get in touch</h1>
+            <input
+              className="border border-gray-400 text-xs sm:text-base outline-none rounded-sm  transition  p-2 "
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Your Name"
+            />
+            <input
+              className="border border-gray-400 text-xs sm:text-base outline-none rounded-sm  transition  p-2 "
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Your Email"
+            />
+            <textarea
+              className="w-full border-gray-400 text-xs sm:text-base outline-none rounded-sm   border p-2 h-full "
+              name="message"
+              id="message"
+              placeholder="Write your message/suggestion/complain"
+            ></textarea>
+
+            <input
+              className="u-btn cursor-pointer w-fit rounded-sm"
+              type="submit"
+              value="Send Message"
+            />
           </form>
         </div>
-
-
       </div>
       <Services />
       <NewsLetter />
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;

@@ -173,14 +173,14 @@ const Navbar = () => {
             </ul>
           </div>
 
-          <div id="Account" className=" relative text-[0.8em] sm:text-[0.5em] ">
+          <div id="Account" className=" relative text-[0.5em] ">
             <div className="flex  gap-2 items-center">
               <div className="relative group">
                <p className="bg-gray-300 absolute top-5 right-2 hidden group-hover:block text-xs text-black border px-2 ">Wishlist</p>
               <i id="wishlistIcon" className="fa-solid fa-heart text-red-500 cursor-pointer relative "></i>
               </div>
               <div className="flex items-center" onClick={toggleAcc}>
-                <Link className="hover:underline  hidden sm:block">
+                <Link className="hover:underline  hidden lg:block">
                   Join now{" "}
                 </Link>
                 <i
