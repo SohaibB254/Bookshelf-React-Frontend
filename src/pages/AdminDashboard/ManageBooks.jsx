@@ -18,7 +18,7 @@ const ManageBooks = () => {
     <>
       <AdminDbNav />
     <div className="flex font-inter w-screen justify-center mt-8">
-      <div className=" sm:w-[70%] mx-8">
+      <div className=" sm:w-[80%] lg:w-[70%] mx-8">
       <h1 className="text-3xl my-3 text-center border-b">Welcome to Dashboard</h1>
         <h1 className="text-2xl font-semibold">All Books</h1>
         <ul className="border-b">

@@ -85,14 +85,14 @@ const Navbar = () => {
           </div>
           <div id="Menu"
             ref={menuRef}
-            className={`${isNavOpen ? "block" : "hidden"} md:block`}
+            className={`${isNavOpen ? "block" : "hidden"} lg:block`}
           >
-            <ul className="flex-col sm:flex-row sm:bg-transparent   bg-black  border-b sm:border-0  fixed sm:top-0 sm:relative  top-[9.9vh] px-8 left-0 h-auto w-screen flex sm:gap-8 gap-3 text-[0.5em] font-[400] sm:w-[40vw] sm:mr-[66px] sm:items-center py-10 sm:py-3 justify-center ">
+            <ul className="flex-col lg:flex-row lg:bg-transparent bg-black   border-b lg:border-0  fixed lg:top-0 lg:relative  top-[9.9vh] px-8 left-0 h-auto w-screen flex lg:gap-8 gap-3 text-[0.5em] font-[400] lg:w-[40vw] lg:mr-[66px] lg:items-center py-10 lg:py-3 justify-center ">
               <Link to="/" onClick={toggleNavbar}>
-                <li className="relative group">Home</li>
+                <li >Home</li>
               </Link>
               <li
-                className="relative group"
+
                 ref={liRef}
                 onClick={toggleDropMenu}
               >
@@ -100,7 +100,7 @@ const Navbar = () => {
                 <div
                   ref={categoryRef}
                   id="category"
-                  className={` sm:w-[10vw] absolute z-40   w-auto h-auto border-x rounded-sm   bg-white p-2 text-center ${
+                  className={` lg:w-[10vw] absolute z-40   w-auto h-auto border-x rounded-sm   bg-white p-2 text-center ${
                     isOpen ? "" : "hidden"
                   }`}
                 >
@@ -125,16 +125,16 @@ const Navbar = () => {
               </li>
               <Link onClick={toggleNavbar} to="/store/all">
                 {" "}
-                <li className="relative group">Store</li>
+                <li>Store</li>
               </Link>
               <Link
-                className="flex items-center gap-2 relative sm:py-8"
+                className="flex items-center gap-2 relative lg:py-8"
                 onClick={toggleNavbar}
                 to="/cart"
               >
                 {" "}
                 <li className="relative group">Cart</li>
-                <span className="sm:hidden">
+                <span className="lg:hidden">
                   <i className="fa-solid fa-cart-shopping "></i>
                 </span>
                 {itemsInCart.length > 0 && (
@@ -147,7 +147,7 @@ const Navbar = () => {
                 )}
               </Link>
               <Link
-                className="flex items-center gap-2 relative sm:py-8"
+                className="flex items-center gap-2 relative lg:py-8"
                 onClick={toggleNavbar}
                 to="/library"
               >
@@ -164,11 +164,11 @@ const Navbar = () => {
               </Link>
               <Link onClick={toggleNavbar} to="/contact">
                 {" "}
-                <li className="relative group">Contact</li>
+                <li>Contact</li>
               </Link>
               <Link onClick={toggleNavbar} to="/about">
                 {" "}
-                <li className="relative group">About</li>
+                <li>About</li>
               </Link>
             </ul>
           </div>
@@ -201,7 +201,7 @@ const Navbar = () => {
             <div
               className={`absolute   ${
                 accOpen ? "flex" : "hidden"
-              } transition-all border sm:text-[1em] text-[0.7em] border-white/40  rounded-sm flex-col pl-1   sm:right-[1.4vw] right-[8vw] sm:top-[20px]   w-[150px] h-[250px] bg-black`}
+              } transition-all border sm:text-[1em] text-[0.7em] border-white/40  rounded-sm flex-col pl-1 sm:right-[3vw]   lg:right-[1.4vw] right-[8vw] sm:top-[20px]   w-[150px] h-[250px] bg-black`}
             >
               <i
                 onClick={toggleAcc}

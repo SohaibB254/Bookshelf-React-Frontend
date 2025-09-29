@@ -76,7 +76,7 @@ const scrollToTop = () => {
   return (
     <>
       <Popup display={popView} popType={popType} popBg={popBg} />
-      <div id="storeContainer" className="sm:p-12 p-4 font-poppins">
+      <div id="storeContainer" className="lg:p-12 p-4 font-poppins">
         <div
           id="storeSearchBox"
           className="flex  items-center justify-center py-3 px-3  sm:pt-12"
@@ -101,13 +101,13 @@ const scrollToTop = () => {
               return (
                 <div
                   key={idx}
-                  className="sm:h-auto h-fit relative  md:w-[15vw] w-[160px] sm:px-4 py-2 flex flex-col  border shadow text-[16px]"
+                  className="sm:h-auto h-fit relative   md:w-[15vw] w-[160px] lg:px-4 py-2 flex flex-col  border shadow text-[16px]"
                 >
                   <Link
                     onClick={() => addToCheckout(elm)}
                     to={`/store/book/${encodeURIComponent(elm.id)}`}
                   >
-                    <div className="justify-self-center">
+                    <div className="justify-self-center flex-shrink-0 ">
                       <img
                         className="sm:w-[150px] w-[70px] h-[100px] sm:h-[200px] cursor-pointer"
                         src={elm.cover_photo}
@@ -118,7 +118,7 @@ const scrollToTop = () => {
                   <h1 className=" text-[14px] sm:text-[18px] font-semibold w-full truncate tracking-tighter bg-gray-200 ">
                     {elm.title}
                   </h1>
-                  <h1 className="italic text-gray-500 hidden sm:inline-block truncate ">
+                  <h1 className="italic text-gray-500 hidden lg:inline-block truncate ">
                     by: {elm.author}
                   </h1>
                   <div className="flex sm:justify-between">
@@ -138,7 +138,7 @@ const scrollToTop = () => {
                       </span>
                     </p>
                   </div>
-                  <div className=" hidden sm:flex flex-wrap items-center  justify-between ]">
+                  <div className=" hidden lg:flex flex-wrap items-center  justify-between ]">
                     <button
                       onClick={() => {
                         addToCart(elm), handlePopupCart();
@@ -147,7 +147,7 @@ const scrollToTop = () => {
                     >
                       Add to cart
                     </button>
-                    <i className="fa-solid text-xl fa-bag-shopping"></i>
+                    <i className="fa-solid lg:text-xl fa-bag-shopping"></i>
                   </div>
                   <div className="w-full text-center self-end">
                     <button
@@ -164,7 +164,7 @@ const scrollToTop = () => {
             })
           ) : (
             <p className="text-gray-500 text-lg font-semibold text-center w-full">
-              No books found
+              No books found for "{searchStr}"
             </p>
           )}
         </div>

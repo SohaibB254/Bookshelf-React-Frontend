@@ -21,10 +21,10 @@ const Login = () => {
             <input class="px-4 rounded border block  border-black/20 py-2  cursor-pointer hover:bg-green-500 hover:text-white transition" type="submit"  value="Login" id=""/>
         </form>
         <p>Don't have an account? <Link to={'/auth/signup'} className='text-blue-500 hover:underline cursor-pointer'>Signup now.</Link></p>
-        <div className='mt-3 flex items-center gap-2'>
-       <button class=" rounded border my-1 px-2 tracking-tight  flex items-center gap-1 border-black/20 py-2   cursor-pointer transition"  >Continue with google <img className='w-6 h-6' src="https://img.icons8.com/color/512/google-logo.png" alt="" /></button>
+        <div className='mt-3 flex items-center sm:text-base text-[15px] gap-2'>
+       <button class=" rounded border my-1 px-2 tracking-tight   flex items-center gap-1 border-black/20 py-2   cursor-pointer transition"  >Continue with google <img className='w-6 h-6' src="https://img.icons8.com/color/512/google-logo.png" alt="" /></button>
        or
-       <button class="  rounded border my-1 px-2 tracking-tight flex items-center gap-1  border-black/20 py-2  cursor-pointer transition"  >Conitnue with facebook  <img className='w-6 h-6' src="https://www.freeiconspng.com/uploads/facebook-png-icon-follow-us-facebook-1.png" alt="" />  </button>
+       <button class="  rounded border my-1 px-2 tracking-tight   flex items-center gap-1  border-black/20 py-2  cursor-pointer transition"  >Conitnue with facebook  <img className='w-6 h-6' src="https://www.freeiconspng.com/uploads/facebook-png-icon-follow-us-facebook-1.png" alt="" />  </button>
         </div>
         </div>
 

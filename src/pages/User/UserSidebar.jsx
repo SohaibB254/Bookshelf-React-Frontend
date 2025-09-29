@@ -16,7 +16,7 @@ const UserSidebar = () => {
         useEffect((() => {
           const checkScreen = () => {
             const width = window.innerWidth;
-            const isPhone = width <= 640;
+            const isPhone = width <= 1024;
             setIsMobile(isPhone);
           };
           checkScreen();
@@ -25,7 +25,7 @@ const UserSidebar = () => {
         }), [])
   return (
     <>
-    <div id="DashBoardNav" className={`bg-white  z-40 fixed border border-b-0 ${isShown?'flex':'hidden'} flex-col py-3  h-[90vh]`}>
+    <div id="DashBoardNav" className={`bg-white  z-40 fixed border lg:shadow-none shadow-sm shadow-black border-b-0 ${isShown?'flex':'hidden'} flex-col py-3  h-[90vh]`}>
         <div className={`${isMobile?'':'hidden'}`}>
           <i onClick={toggleSidebar} className="fa-solid fa-xmark text-xl  text-right w-full  px-2"></i>
         </div>

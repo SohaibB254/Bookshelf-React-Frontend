@@ -51,7 +51,7 @@ const Footer = () => {
             transition={{
               ease: 'easeIn'
             }}
-            id='FooterLinks' className='flex sm:flex-nowrap flex-wrap gap-12 sm:gap-20'>
+            id='FooterLinks' className='flex md:flex-nowrap flex-wrap gap-12 sm:gap-20'>
             <motion.ul
             variants={item}
             >

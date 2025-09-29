@@ -12,7 +12,7 @@ const AdminDbNav = () => {
   useEffect((() => {
     const checkScreen = () => {
       const width = window.innerWidth;
-      const isPhone = width <= 640;
+      const isPhone = width <= 1024;
       setIsMobile(isPhone);
     };
     checkScreen();
@@ -22,7 +22,7 @@ const AdminDbNav = () => {
   return (
     < >
       <div>
-        <div id="DashBoardNav" className={`border bg-white flex-col px-3 z-10  ${isShown? 'flex' : 'hidden'} fixed  py-3 h-[90vh]`}>
+        <div id="DashBoardNav" className={`border bg-white flex-col px-3 z-10 lg:shadow-none shadow-sm shadow-black  ${isShown? 'flex' : 'hidden'} fixed  py-3 h-[90vh]`}>
 
           <div className={`${isMobile? 'flex' : 'hidden'} `}>
             <i onClick={toggleSidebar} className={`fa-solid fa-xmark text-xl block   text-right w-full  px-2`}></i>

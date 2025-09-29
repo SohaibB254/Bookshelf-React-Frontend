@@ -51,14 +51,14 @@ const Categories = () => {
         </h1>
         <div
           id="bookCardContainer"
-          className=" sm:mt-12 mt-4  font-poppins flex gap-2 sm:gap-5  flex-wrap  justify-normal sm:ml-12 sm:px-0 px-6 items-center    h-auto"
+          className=" sm:mt-12 mt-4  font-poppins flex gap-2 md:gap-5  flex-wrap  justify-center  lg:justify-normal lg:ml-12 md:px-0 px-6 items-center    h-auto"
         >
           { currentPosts.length !== 0? (currentPosts.map((elm, idx) => {
             return (
               <div
                 id="bookCard"
                 key={idx}
-                className="flex    sm:h-auto h-auto   flex-col w-[30%] sm:w-[210px] p-1 border border-black/30 sm:text-[25px]"
+                className="flex     h-auto flex-shrink-0   flex-col w-[30%] sm:w-[210px] p-1 border border-black/30 sm:text-[25px]"
               >
                 <Link
                 onClick={()=>addToCheckout(elm)}
@@ -80,7 +80,7 @@ const Categories = () => {
                 </p>
                 <div
                   id="bookCardBtns"
-                  className="hidden  justify-between w-full rounded-sm gap-2 mt-1 sm:flex"
+                  className="hidden  justify-between w-full rounded-sm gap-2 mt-1 lg:flex"
                 >
                   <Link
                     onClick={() => {
