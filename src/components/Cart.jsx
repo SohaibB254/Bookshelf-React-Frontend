@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router'
 import Footer from './Footer'
 import { useCart } from '../context/CartContext'
+import { useCheckout } from '../context/CheckoutContext'
+
 const Cart = () => {
+  const { handleTotalCheckout } = useCheckout()
   const { itemsInCart, setItemsInCart } = useCart()
   const cartItemsCount = itemsInCart.length;
   // Cart Functions
@@ -84,13 +87,13 @@ const Cart = () => {
         </div>
         {/* Order Overview */}
         <div className='flex justify-center'>
-          <div id='totalCheckout' className={`${itemsInCart.length === 0 ? "hidden" : ""} bg-white py-8 px-4 text-[0.5em]  flex flex-col gap-4 border border-black/60 rounded-md lg:w-[40vw] my-4 sm:my-10 `}>
+          <div id='totalCheckout' className={`${itemsInCart.length === 0 ? "hidden" : ""} bg-white py-8 px-4 text-[0.5em]  flex flex-col gap-4 border  border-black/60 rounded-md lg:w-[40vw] my-4 sm:my-10 `}>
             <h1 className='sm:text-[1.5em] text-xl font-semibold'>Order Overview</h1>
             <h1 className='border-b sm:py-2 flex justify-between'>Total: {getTotalPrice()}<span>Items: {getTotalItems()}</span></h1>
             <h1 className='border-b sm:py-2 flex justify-between'>Total Delivery: {getTotalDelivery()}</h1>
             <h1 className='border-b sm:py-2 flex justify-between'>Address: House 34, street 12, Garden Town <Link className='text-blue-500'>Change</Link></h1>
             <h1 className='flex justify-between'>Payment Method: Credit Card <Link className='text-blue-500'>Change</Link></h1>
-            <button className='u-btn rounded-sm'>Checkout: Rs {totalCheckout()}</button>
+            <Link to={'/total/3/checkout'} onClick={()=>handleTotalCheckout(getTotalItems(),getTotalPrice(),getTotalDelivery(),totalCheckout())}><button  className='u-btn rounded-sm'>Checkout: Rs {totalCheckout()}</button></Link>
           </div>
         </div>
       </div>

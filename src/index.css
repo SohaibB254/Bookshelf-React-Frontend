@@ -105,6 +105,12 @@ body{
     color: rgb(87, 84, 84);
 }
 
+#catContainer{
+    overflow-x: auto;
+}
+#catContainer::-webkit-scrollbar{
+    display: none;
+}
 /* Custom styling the book card */
 
 

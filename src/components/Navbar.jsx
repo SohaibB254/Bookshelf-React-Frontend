@@ -6,7 +6,6 @@ import { useLibrary } from "../context/LibraryContext";
 
 const Navbar = () => {
   const [accOpen, setAccOpen] = useState(false);
-  const [isOpen, SetIsOpen] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const { itemsInCart } = useCart();
   const { libraryItems } = useLibrary();
@@ -18,12 +17,6 @@ const Navbar = () => {
   const toggleNavbar = () => {
     setIsNavOpen((prev) => !prev);
   };
-  const toggleDropMenu = () => {
-    SetIsOpen((prev) => !prev);
-  };
-  const categoryRef = useRef(null);
-  const liRef = useRef(null);
-
   const navIconRef = useRef(null);
   const menuRef = useRef(null);
 
@@ -41,38 +34,23 @@ const Navbar = () => {
     document.addEventListener("mousedown", handleNavbar);
     return () => document.removeEventListener("mousedown", handleNavbar);
   }, []);
-  //Logic for closing the category menu by clicking outside the menu
-  useEffect(() => {
-    const handleClickedOutside = (e) => {
-      if (
-        categoryRef.current &&
-        !categoryRef.current.contains(e.target) &&
-        liRef.current &&
-        !liRef.current.contains(e.target)
-      ) {
-        SetIsOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickedOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickedOutside);
-    };
-  }, []);
 
   return (
     <>
-      <div id="NavFakeBg"
+      <div
+        id="NavFakeBg"
         className={`${
           path.startsWith("/auth") ? "hidden" : ""
         } bg-black w-screen h-[10vh] absolute top-0`}
       ></div>
-      <div id="NavbarContainer"
+      <div
+        id="NavbarContainer"
         className={`${
           path.startsWith("/auth") ? "hidden" : ""
         } sticky top-0  z-40`}
       >
-        <div id="Navbar"
+        <div
+          id="Navbar"
           className="flex sticky top-0 text-white backdrop-blur-md  bg-black/50 font-inter h-[10vh] text-[30px] items-center  sm:w-screen   justify-between   px-8 sm:px-12 "
         >
           <div id="Logo">
@@ -83,46 +61,18 @@ const Navbar = () => {
               </h1>
             </Link>
           </div>
-          <div id="Menu"
+          <div
+            id="Menu"
             ref={menuRef}
             className={`${isNavOpen ? "block" : "hidden"} lg:block`}
           >
             <ul className="flex-col lg:flex-row lg:bg-transparent bg-black   border-b lg:border-0  fixed lg:top-0 lg:relative  top-[9.9vh] px-8 left-0 h-auto w-screen flex lg:gap-8 gap-3 text-[0.5em] font-[400] lg:w-[40vw] lg:mr-[66px] lg:items-center py-10 lg:py-3 justify-center ">
               <Link to="/" onClick={toggleNavbar}>
-                <li >Home</li>
+                <li>Home</li>
               </Link>
-              <li
-
-                ref={liRef}
-                onClick={toggleDropMenu}
-              >
-                Categories
-                <div
-                  ref={categoryRef}
-                  id="category"
-                  className={` lg:w-[10vw] absolute z-40   w-auto h-auto border-x rounded-sm   bg-white p-2 text-center ${
-                    isOpen ? "" : "hidden"
-                  }`}
-                >
-                  {categoriesData.map((elm) => {
-                    return (
-                      <Link
-                        key={elm.id}
-                        to={`/categories/${encodeURIComponent(elm.name)}`}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          toggleDropMenu();
-                          if (window.innerWidth < 640) toggleNavbar();
-                        }}
-                      >
-                        <h2 className="border-b-2 my-1 text-black hover:underline">
-                          {elm.name}
-                        </h2>
-                      </Link>
-                    );
-                  })}
-                </div>
-              </li>
+              <Link to={"/categories/all"}>
+                <li>Categories</li>
+              </Link>
               <Link onClick={toggleNavbar} to="/store/all">
                 {" "}
                 <li>Store</li>
@@ -176,8 +126,13 @@ const Navbar = () => {
           <div id="Account" className=" relative text-[0.5em] ">
             <div className="flex  gap-2 items-center">
               <div className="relative group">
-               <p className="bg-gray-300 absolute top-5 right-2 hidden group-hover:block text-xs text-black border px-2 ">Wishlist</p>
-              <i id="wishlistIcon" className="fa-solid fa-heart text-red-500 cursor-pointer relative "></i>
+                <p className="bg-gray-300 absolute top-5 right-2 hidden group-hover:block text-xs text-black border px-2 ">
+                  Wishlist
+                </p>
+                <i
+                  id="wishlistIcon"
+                  className="fa-regular fa-heart text-red-400 cursor-pointer relative "
+                ></i>
               </div>
               <div className="flex items-center" onClick={toggleAcc}>
                 <Link className="hover:underline  hidden lg:block">

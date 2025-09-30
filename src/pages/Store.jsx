@@ -102,16 +102,16 @@ const Store = () => {
             placeholder="Search by Name/Category/language/price/author"
           />
         </div>
-           <div className="sm:text-base text-xs">
+        {searchStr && (!isNaN(searchStr)?( <h1>Books of price Rs: {searchStr} and under</h1> ):(<h1>Showing results for "{searchStr}"</h1>))}
+           <div className="sm:text-base text-xs my-2">
             <label htmlFor="sortBooks">Sort by  </label>
             <select className="border px-1 rounded-sm sm:text-base text-xs border-gray-400" name="sortBooks" id="sortBooks">
-              <option value="price">Low to high</option>
+              <option value="price">Price low to high</option>
               <option value="price">Published Date</option>
               <option value="price">Language</option>
               <option value="price">Category</option>
             </select>
           </div>
-        {searchStr && (!isNaN(searchStr)?( <h1>Books of price Rs: {searchStr} and under</h1> ):(<h1>Showing results for "{searchStr}"</h1>))}
         <div
           id="storeItemsContainer"
           className="flex gap-[0.5rem]  py-8 justify-center md:justify-normal  flex-wrap"

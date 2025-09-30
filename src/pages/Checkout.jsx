@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { useCheckout } from "../context/CheckoutContext";
 
 const Checkout = () => {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [showAddress, setShowAddress] = useState(true);
-  const { checkoutItem } = useCheckout();
+  const { checkoutItem,totals } = useCheckout();
   const [payMethod, setPayMethod] = useState("online");
+  const path = useLocation().pathname
+
 
   const handleDeliveryInfo = () => {
     setShowAddress((prev) => !prev);
@@ -31,7 +33,23 @@ const Checkout = () => {
           <div className="w-[90vw]">
             <div id="OrderReview" className="border w-auto pt-2 pl-4 h-[30vh] ">
               <h1 className="text-base sm:text-[24px]"> Order Summary</h1>
-              <div className="flex gap-3 mt-3">
+            { path.startsWith('/total') ? (
+                <div className=" flex flex-col mt-3">
+                    <span>
+                      Total Price:{" "}
+                      <span className="text-green-500">
+                        {" "}
+                        {totals.totalPrice}
+                      </span>
+                    </span>
+                    <span>Delivery: {totals.totalDelivery}</span>
+                    <span>
+                      SubTotal: {totals.totalPrice + totals.totalDelivery}
+                                        </span>
+                    <span>Total items: {totals.totalItems}</span>
+                  </div>
+            ):(
+                 <div className="flex gap-3 mt-3">
                 <div id="OrderImg">
                   <img
                     className="w-[100px]"
@@ -67,6 +85,9 @@ const Checkout = () => {
                   </div>
                 </div>
               </div>
+            )
+            }
+
             </div>
             <div id="OrderDelievryDetails" className="border  px-4 py-3">
               <div className="flex w-full justify-between pr-4">
@@ -251,7 +272,7 @@ const Checkout = () => {
               )}
               <div>
                 <div className={`flex  flex-col gap-2 mt-3 pb-4`}>
-                  {payMethod === "cod" && <p>Cash on delievry selected</p>}
+                  {payMethod === "cod" && <p>Cash on delivery selected</p>}
                   <div className="flex flex-col gap-3">
                     <button
                       onClick={handleConfirmPayment}

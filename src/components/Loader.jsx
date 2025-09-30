@@ -39,7 +39,7 @@ const Loader = ({ duration }) => {
           <div className="absolute text-center font-mono bottom-4 right-6 text-white text-xl sm:text-3xl font-semibold">
             {loading} %
           </div>
-          <h1 className="absolute left-6 bottom-4 font-mono text-white text-base sm:text-2xl">Use desktop for better experience</h1>
+          <h1 className="absolute left-6 bottom-4 font-mono text-white text-sm sm:text-2xl">Use desktop for better experience</h1>
           <style>
             {`
           .book{

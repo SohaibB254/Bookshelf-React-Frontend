@@ -20,7 +20,7 @@ const Review = () => {
     <div>
       <div
         id="ReviewContainer"
-        className="text-[30px] px-8 sm:px-20 py-2"
+        className="text-[30px] px-8 sm:px-12 py-2"
       >
         <h1 className="font-semibold text-2xl lg:text-[1.3em] mb-10">Reviews</h1>
         {reviews.map((elm, idx) => (
@@ -47,7 +47,7 @@ const Review = () => {
 
       <button
         onClick={showMoreReviews}
-        className="text-center hover:underline px-8 sm:px-20"
+        className="text-center hover:underline px-8 sm:px-12"
       >
         {reviewCount < bookReviews.length ? 'Show More' : 'Show Less'}
       </button>

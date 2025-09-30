@@ -25,29 +25,33 @@ const UserSidebar = () => {
         }), [])
   return (
     <>
-    <div id="DashBoardNav" className={`bg-white  z-40 fixed border lg:shadow-none shadow-sm shadow-black border-b-0 ${isShown?'flex':'hidden'} flex-col py-3  h-[90vh]`}>
+    <div id="DashBoardNav" className={`bg-white fixed lg:static sm:w-[300px] w-full  border lg:shadow-none shadow-sm shadow-black border-b-0 ${isShown?'flex':'hidden'} flex-col py-3 sm:h-auto  h-[90vh]`}>
         <div className={`${isMobile?'':'hidden'}`}>
           <i onClick={toggleSidebar} className="fa-solid fa-xmark text-xl  text-right w-full  px-2"></i>
         </div>
-            <Link to={'/userprofile'} className='text-[24px] cursor-pointer font-semibold flex flex-col items-center gap-2'>
-                <div className=' h-14 w-14 cursor-pointer rounded-full'>
-                    <img src={userProfile} alt="" />
-                </div>Profile
+            <Link to={'/userprofile'} className='sm:text-xl text-base cursor-pointer font-semibold flex flex-col items-center gap-2'>
+                <div className='sm:h-20 sm:w-20 h-14 w-14 cursor-pointer overflow-hidden rounded-full'>
+                    <img className='object-cover h-full w-full' src='https://img.freepik.com/free-photo/serious-young-african-man-standing-isolated_171337-9633.jpg?semt=ais_hybrid&w=740&q=80' alt="" />
+                </div>Sam Williams
             </Link>
-            <div className='flex flex-col  justify-between h-screen '>
-              <ul className='flex flex-col text-center gap-4 mt-4'>
-                <Link onClick={toggleSidebar} to={'/userprofile/account'}><li className='cursor-pointer px-12 border-b py-2 hover:text-green-500'>Account</li></Link>
-                <li className='cursor-pointer px-12 border-b py-2 hover:text-green-500'>Payments</li>
-                <li className='cursor-pointer px-12 border-b py-2 hover:text-green-500'>Wallet</li>
+            <div className='h-screen '>
+              <ul className='flex flex-col px-12 gap-2 mt-4'>
+                <Link onClick={toggleSidebar} to={'/userprofile'} className='cursor-pointer border-b px-1 py-2 flex gap-1 items-center hover:bg-green-200'><i class="fa-solid fa-user"></i>Profile</Link>
+                <li className='cursor-pointer border-b py-2 px-1 flex gap-1 items-center hover:bg-green-200'><i className="fa-solid fa-cart-shopping"></i>My cart</li>
+                <li className='cursor-pointer border-b py-2 px-1 flex gap-1 items-center hover:bg-green-200'><i class="fa-regular fa-heart"></i>Wishlist</li>
+                <li className='cursor-pointer border-b py-2 px-1 flex gap-1 items-center hover:bg-green-200'><i class="fa-solid fa-shop"></i>Store</li>
+                <li className='cursor-pointer border-b py-2 px-1 flex gap-1 items-center hover:bg-green-200'><i class="fa-solid fa-circle-info"></i>Help center</li>
+                <li className='cursor-pointer border-b py-2 px-1 flex gap-1 items-center hover:bg-green-200'><i class="fa-solid fa-key"></i>Terms & Policy</li>
+             <Link className='cursor-pointer  border-b py-2 px-1 flex gap-1 items-center text-red-600 font-[500] '><i class="fa-solid fa-right-from-bracket"></i>Logout</Link>
 
             </ul>
-             <Link className='cursor-pointer px-12 border-b   py-2 text-red-600 font-[500] text-center'>Logout</Link>
             </div>
 
         </div>
         <div className={`${isMobile?'':'hidden'}`}>
           <i onClick={toggleSidebar} className="fa-solid fa-ellipsis-vertical text-2xl py-3  px-4"></i>
         </div>
+
         </>
   )
 }

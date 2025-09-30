@@ -9,8 +9,7 @@ import Navbar from './components/Navbar'
 import Categories from './pages/Categories'
 import Checkout from './pages/Checkout'
 import BookCard from './components/BookCard'
-import Profile from './pages/User/Profile'
-import Account from './pages/User/Account'
+import Profile from './pages/User/Profile.jsx'
 import ManageBooks from './pages/AdminDashboard/ManageBooks'
 import Login from './pages/auth/Login'
 import Signup from './pages/auth/Signup'
@@ -36,7 +35,7 @@ function App() {
     <>
 
       <ScrollToTop/>
-      {loading && <Loader duration={3000} />} {/*Loader on top*/}
+      {/* {loading && <Loader duration={3000} />} Loader on top */}
 
       <CheckoutProvider>
         <LibraryProvider>
@@ -53,7 +52,7 @@ function App() {
                 path='/library'
                 element={<Library />} />
               <Route
-                path='/book/:id/checkout'
+                path='/:source/:id/checkout'
                 element={<Checkout />} />
               <Route
                 path='/:source/book/:id'
@@ -86,10 +85,8 @@ function App() {
           element={<ManageBooks />} />
         <Route
           path='/userprofile'
-          element={<Profile />} />
-        <Route
-          path='/userprofile/account'
-          element={<Account />} />
+          element={<Profile/>} />
+
 
         <Route path='/auth/login'
           element={<Login />} />

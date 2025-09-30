@@ -1,49 +1,73 @@
-import React from 'react'
-import { Link } from 'react-router'
-import UserSidebar from './UserSidebar'
-
+import React from "react";
+import UserSidebar from "./UserSidebar";
+import Footer from "../../components/Footer";
 const Profile = () => {
   return (
     <>
-     <div id='ProfileContainer' className='flex'>
-        <UserSidebar/>
-        <div id="ProfileContent" className=' lg:w-[90vw] lg:ml-[10vw] font-inter'>
-                <h1 className='md:text-[36px] text-[22px] py-3 px-12 font-bold flex lg:flex-row flex-col justify-between'>Welcome to Profile!
-                    <span className='sm:text-[0.4em] text-base cursor-pointer  font-normal'>Balance: <span className='text-green-500 hover:underline'>$324</span></span>
-                </h1>
-                <div className=' lg:px-12 px-2 flex flex-col gap-4 mt-12'>
-                <div className='flex gap-4 w-full md:flex-row flex-col'>
-                    <div className=' lg:text-[24px] py-3 lg:w-[35%]  px-4 rounded-md  shadow-sm shadow-black'>
-                        <h1 className='font-semibold py-2 border-b'>All Orders📝</h1>
-                        <ul className='py-2'>
-                            <li className='flex items-center justify-between gap-1 text-[16px] border-b py-3 px-2 mt-2'>✅Completed: <span className='lg:text-[24px] font-semibold'>32</span> <Link className='text-blue-500'>View all</Link></li>
-                            <li className='flex items-center justify-between gap-1 text-[16px] border-b py-3 px-2 mt-2'>❌Cancelled: <span className='lg:text-[24px] font-semibold'>12</span> <Link className='text-blue-500'>View all</Link></li>
-                            <li className='flex items-center justify-between gap-1 text-[16px] border-b py-3 px-2 mt-2'>🚛Shipped: <span className='lg:text-[24px] font-semibold'>3</span> <Link className='text-blue-500'>View all</Link></li>
-                            <li className='flex items-center justify-between gap-1 text-[16px] border-b py-3 px-2 mt-2'>🖥️Processed: <span className='lg:text-[24px] font-semibold'>1</span> <Link className='text-blue-500'>View all</Link></li>
-                        </ul>
-                    </div>
-                    <div className=' lg:text-[24px] lg:w-[35%] py-3 px-4 rounded-md  shadow-sm shadow-black'>
-                        <h1 className='font-semibold py-2 border-b'>Books Read</h1>
-                        <ul className='py-2 text-[18px]'>
-                            <li className='border-b py-1'>1. The Great Jungle <br/><p className='text-[16px] flex justify-between text-gray-500 mx-4'> Pages: 432 <Link className='text-blue-500'>View book details</Link></p></li>
-                            <li className='border-b py-1'>2. The Great Forest of Rain<p className='text-[16px] flex justify-between text-gray-500 mx-4'> Pages: 432 <Link className='text-blue-500'>View book details</Link></p></li>
-                            <li className='border-b py-1'>3. The Rise of white walkers<p className='text-[16px] flex justify-between text-gray-500 mx-4'> Pages: 432 <Link className='text-blue-500'>View book details</Link></p></li>
-                            <li className='border-b py-1'>4. Global Warming in the Heat<p className='text-[16px] flex justify-between text-gray-500 mx-4'> Pages: 432 <Link className='text-blue-500'>View book details</Link></p></li>
-                            <li className='border-b py-1'>5. Great Acient Animals<p className='text-[16px] flex justify-between text-gray-500 mx-4'> Pages: 432 <Link className='text-blue-500'>View book details</Link></p></li>
+      <div className="flex">
+        <UserSidebar />
+        <div id="accountInfo" className=" lg:w-[90vw] md:px-12 font-inter py-10">
+          <div id="basicInfo" className="rounded-md px-4  w-full" >
+            <div className="flex justify-between border-b border-gray-500">
+              <h1 className="text-xl text-[var(--baseColor)]  py-4" >Personal Info</h1>
+              <button className="text-blue-500">Edit</button>
+              </div>
+            <div className="py-8 px-4 flex flex-col gap-3">
+                <div id="username" >
+               <h1>Name</h1>
+               <p className="text-zinc-400" >Sam Williams</p>
+            </div>
+            <div id="userage" >
+              <h1>Age</h1>
+              <p className="text-zinc-400">21 Years</p>
+            </div>
+            <div id="usergender" >
+              <h1>Gender</h1>
+              <p className="text-zinc-400">Male</p>
+            </div>
+            </div>
 
-                        </ul>
-                        </div>
-                    <div className=' lg:text-[24px] lg:w-[35%] py-3 px-4 rounded-md  shadow-sm shadow-black'>
-                        <h1 className='font-semibold py-2 border-b'>Spent this month</h1>
-                            <h1 className='flex items-center gap-3 mt-4'>Total Spent: <span className='text-red-700 font-semibold'>$765</span></h1>
-                        </div>
+          </div>
+          <div className=" rounded-md h-auto px-4">
+            <div className="flex justify-between border-b border-gray-500" >
+               <h1 className="text-xl text-[var(--baseColor)] py-4"> Account Information</h1>
+                 <button className="text-blue-500">Edit</button>
+            </div>
+            <ul className="flex flex-col py-8 px-4 gap-3">
+              <li className="py-2  cursor-pointer border-black">
+                <h1>Contact Info</h1>
+                <div className="text-zinc-400">
+
+                  <p className="cursor-default">Phone: +92 325 3242123</p>
+                  <p className="cursor-default">Email: bookshelfer@gmail.com</p>
+
                 </div>
+              </li>
+              <li>
+                Address Book
+                <div className="text-zinc-400">
+                  <p className="cursor-default">
+                    House 43, Street 12, Garden Town, Lahore Punjab, Pakistan
+                  </p>
                 </div>
+              </li>
+              <li>
+                Country
+                <div className="text-zinc-400">
+                  <p className="cursor-default">Pakistan </p>
+                </div>
+              </li>
+              <li className="cursor-pointer">
+                Help <i className="fa-solid fa-circle-question"></i>{" "}
+              </li>
+              <li className="cursor-pointer">Feedback</li>
+            </ul>
+          </div>
         </div>
-
-    </div>
+      </div>
+      <Footer />
     </>
-  )
-}
+  );
+};
 
-export default Profile
+export default Profile;

@@ -37,7 +37,7 @@ const BookCard = () => {
     <>
       <Popup display={popView} popType={popType} popBg={popBg} />
       <div
-        className="border font-sans flex flex-col md:flex-row
+        className=" font-sans flex flex-col md:flex-row
        w-[100%] sm:gap-20 mt-10 text-[24px]  sm:p-12 p-8"
       >
         <div id="carousel">
@@ -156,6 +156,16 @@ const BookCard = () => {
             </p>
           </div>
         </div>
+      </div>
+      <div id="bookDescription" className="max-w-screen py-3 px-12 font-inter">
+                <div className="flex  text-base border-b border-gray-300  font-normal ">
+                  <Link className="sm:p-4 p-1 hover:bg-gray-100 border-r border-gray-300 ">Description</Link>
+                  <Link className="sm:p-4 p-1 hover:bg-gray-100 border-r border-gray-300 ">Languages</Link>
+                  <Link className="sm:p-4 p-1 hover:bg-gray-100 ">author</Link>
+                </div>
+                <div className="sm:text-base text-sm py-2">
+                  <p className="sm:columns-2 sm:w-1/2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi nemo aliquid aperiam cum ea temporibus, accusantium impedit, dolores pariatur iste exercitationem, suscipit amet aspernatur asperiores. Dolor, perferendis. Delectus tempore culpa, illo laboriosam vel minus dolor recusandae architecto illum quasi, dolorum cupiditate minima libero voluptate, quae iste aliquid in est vero aperiam quos quaerat accusantium corrupti sed? Illo quod sapiente culpa cumque doloremque ipsa sit corrupti, perspiciatis ea veritatis assumenda nam, necessitatibus cupiditate porro voluptatum? Quae dolores perspiciatis illum quidem numquam nulla repudiandae quas eaque ullam eos soluta hic dolor omnis corrupti velit, voluptatibus itaque cupiditate nam repellendus iste quis beatae.</p>
+                </div>
       </div>
       <Review />
       <RelatedProducts />
