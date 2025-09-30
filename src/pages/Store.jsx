@@ -40,14 +40,28 @@ const Store = () => {
   const handleSearch = (searchValue) => {
     const value = searchValue.toLowerCase().trim();
     if (value) {
-      const filteredItems = booksData.filter(
-        (item) =>
-          item.category.toLowerCase().includes(value) ||
-          item.title.toLowerCase().includes(value)
-      );
+      let filteredItems;
+
+      //If search value is a number
+      if (!isNaN(value)) {
+        const priceValue = parseFloat(value);
+        filteredItems = booksData.filter((item) => {
+          const itemPrice = parseFloat(item.price);
+          return itemPrice <= priceValue;
+        });
+      } else {
+        //If search is a string
+        filteredItems = booksData.filter(
+          (item) =>
+            item.category.toLowerCase().includes(value) ||
+            item.title.toLowerCase().includes(value) ||
+            item.languages.join(" ").toLowerCase().includes(value) ||
+            item.author.toLowerCase().includes(value)
+        );
+      }
+
       setFilteredBooks(filteredItems);
       setSearchStr(value);
-      console.log(searchStr);
     } else {
       setFilteredBooks(dislpayBooks);
       setSearchStr("");
@@ -77,19 +91,27 @@ const Store = () => {
       <div id="storeContainer" className="lg:p-12 p-4 font-poppins">
         <div
           id="storeSearchBox"
-          className="flex  items-center justify-center py-3 px-3  sm:pt-12"
+          className="flex sm:text-base text-xs items-center justify-center py-3 px-3  sm:pt-12"
         >
           <input
-            className="sm:w-[40vw] w-full border rounded-sm border-black sm:p-3 py-1 px-2"
+            className="sm:w-[40vw] w-full border border-gray-300 outline-none rounded-sm sm:p-3 py-1 px-2"
             onChange={(e) => handleSearch(e.target.value)}
             type="search"
             name="search"
             id="storeSearch"
-            placeholder="Search by Name or Category"
+            placeholder="Search by Name/Category/language/price/author"
           />
         </div>
-
-        {searchStr && <h1>Showing results for "{searchStr}"</h1>}
+           <div className="sm:text-base text-xs">
+            <label htmlFor="sortBooks">Sort by  </label>
+            <select className="border px-1 rounded-sm sm:text-base text-xs border-gray-400" name="sortBooks" id="sortBooks">
+              <option value="price">Low to high</option>
+              <option value="price">Published Date</option>
+              <option value="price">Language</option>
+              <option value="price">Category</option>
+            </select>
+          </div>
+        {searchStr && (!isNaN(searchStr)?( <h1>Books of price Rs: {searchStr} and under</h1> ):(<h1>Showing results for "{searchStr}"</h1>))}
         <div
           id="storeItemsContainer"
           className="flex gap-[0.5rem]  py-8 justify-center md:justify-normal  flex-wrap"
@@ -121,7 +143,7 @@ const Store = () => {
                   </h1>
                   <div className="flex sm:justify-between">
                     <p>
-                      Rs: {elm.price - (elm.price * elm.sale_percent) / 100}{" "}
+                      Rs: {Math.round(elm.price - (elm.price * elm.sale_percent) / 100)}{" "}
                       <span
                         className={`${
                           elm.sale_percent === 0 ? "hidden" : ""
@@ -162,7 +184,7 @@ const Store = () => {
             })
           ) : (
             <p className="text-gray-500 text-lg font-semibold text-center w-full">
-              No books found for "{searchStr}"
+             {!isNaN(searchStr)?( <h1>No books of price Rs:{searchStr}</h1> ):(<h1>No books found for "{searchStr}"</h1>)}
             </p>
           )}
         </div>

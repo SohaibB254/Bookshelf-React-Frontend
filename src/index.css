@@ -202,12 +202,6 @@ button[disabled] {
  display: none;
 }
 
-/*Custom styling the search bar input*/
-#storeSearch:focus{
-    outline: 1.5px solid gray;
-    box-shadow: none;
-
-}
 /* Custom Styling all the inputs in the site */
 input{
     transition: all 0.3s ease;

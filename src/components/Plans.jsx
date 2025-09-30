@@ -8,8 +8,8 @@ const Plans = () => {
       </h1>
 
       <div className="w-screen gap-3  h-auto lg:p-12 flex px-3 mt-8  justify-center md:flex-nowrap flex-wrap">
-        <div className=" py-2 pt-0 shadow-md shadow-black/60  sm:flex-1 lg:flex-initial  flex flex-col gap-4 w-[88%] md:w-1/3  rounded-md">
-          <div className="bg-green-300 px-2">
+        <div className=" py-2 pt-0 shadow-md overflow-hidden shadow-black/60  sm:flex-1 lg:flex-initial  flex flex-col gap-4 w-[88%] md:w-1/3  rounded-md">
+          <div className="bg-red-400 px-2">
             <h1 className="text-3xl mt-2 font-bold text-center text-white uppercase">
               Basic
             </h1>
@@ -40,16 +40,29 @@ const Plans = () => {
               Download your pdf books
             </li>
             <li className="flex gap-1 items-center">
+              <i className="fa-solid text-red-500 text-xl fa-xmark"></i>
+              Personalised recommendations
+            </li>
+            <li className="flex gap-1 items-center">
               <i className="fa-solid text-red-500 text-xl fa-xmark"></i>Premium
               membership of bookshelf local library
             </li>
+
+            <li className="flex gap-1 items-center">
+              <i className="fa-solid text-red-500 text-xl fa-xmark"></i>
+              Early access to new releases
+            </li>
+            <li className="flex gap-1 items-center">
+              <i className="fa-solid text-red-500 text-xl fa-xmark"></i>
+              Exclusive author Q&A/Events
+            </li>
           </ul>
-          <button className="rounded-full my-4 hover:shadow-sm hover:shadow-black hover:text-white transition bg-red-400 w-fit self-center py-2 px-4">
+          <button className="rounded-full my-4 hover:shadow-sm hover:shadow-black hover:text-gray-100  transition bg-red-400 w-fit self-center py-2 px-4">
             Subscribe now
           </button>
         </div>
-        <div className=" py-2 pt-0 shadow-md shadow-black/60  sm:flex-1 lg:flex-initial flex flex-col gap-4 w-[88%] md:w-1/3 rounded-md">
-          <div className="bg-green-400 px-2 ">
+        <div className=" py-2 pt-0 shadow-md overflow-hidden shadow-black/60  sm:flex-1 lg:flex-initial flex flex-col gap-4 w-[88%] md:w-1/3 rounded-md">
+          <div className="bg-blue-400 px-2 ">
             <h1 className="text-3xl mt-2 font-bold text-center text-white uppercase">
               Standard
             </h1>
@@ -80,17 +93,30 @@ const Plans = () => {
               Download your pdf books
             </li>
             <li className="flex gap-1 items-center">
+              <i className="fa-solid text-green-500 text-xl fa-check"></i>
+              Personalised recommendations
+            </li>
+            <li className="flex gap-1 items-center">
               <i className="fa-solid text-red-500 text-xl fa-xmark"></i>Premium
               membership of bookshelf local library
             </li>
+
+            <li className="flex gap-1 items-center">
+              <i className="fa-solid text-red-500 text-xl fa-xmark"></i>
+              Early access to new releases
+            </li>
+            <li className="flex gap-1 items-center">
+              <i className="fa-solid text-red-500 text-xl fa-xmark"></i>
+              Exclusive author Q&A/Events
+            </li>
           </ul>
-          <button className="rounded-full my-4 justify-self-end hover:shadow-sm hover:shadow-black hover:text-white transition bg-blue-400 w-fit self-center py-2 px-4">
+          <button className="rounded-full my-4 justify-self-end hover:shadow-sm hover:shadow-black hover:text-gray-100  transition bg-blue-400 w-fit self-center py-2 px-4">
             Subscribe now
           </button>
         </div>
-        <div className=" py-2 pt-0 shadow-md relative shadow-black/60 sm:flex-1 lg:flex-initial flex flex-col gap-4 w-[88%] md:w-1/3 rounded-md">
+        <div className=" py-2 pt-0 shadow-md overflow-hidden relative shadow-black/60 sm:flex-1 lg:flex-initial flex flex-col gap-4 w-[88%] md:w-1/3 rounded-md">
           <div className="bg-green-500 px-2 ">
-            <h1 className="absolute top-40 right-0  bg-red-400 font-semibold px-2  text-xl ">
+            <h1 className="absolute top-40 right-0 text-white  bg-red-400 font-semibold px-2  text-xl ">
               Most Popular 🔥
             </h1>
             <h1 className="text-3xl mt-2 font-bold text-center text-white uppercase">
@@ -124,10 +150,23 @@ const Plans = () => {
             </li>
             <li className="flex gap-1 items-center">
               <i className="fa-solid text-green-500 text-xl fa-check"></i>
+              Personalised recommendations
+            </li>
+            <li className="flex gap-1 items-center">
+              <i className="fa-solid text-green-500 text-xl fa-check"></i>
               Premium membership of bookshelf local library
             </li>
+            <li className="flex gap-1 items-center">
+              <i className="fa-solid text-green-500 text-xl fa-check"></i>
+              Early access to new releases
+            </li>
+
+            <li className="flex gap-1 items-center">
+              <i className="fa-solid text-green-500 text-xl fa-check"></i>
+              Exclusive author Q&A/Events
+            </li>
           </ul>
-          <button className="rounded-full my-4 hover:shadow-sm hover:shadow-black hover:text-white transition bg-green-400 w-fit self-center py-2 px-4">
+          <button className="rounded-full my-4 hover:shadow-sm hover:shadow-black hover:text-gray-100 transition bg-green-400 w-fit self-center py-2 px-4">
             Subscribe now
           </button>
         </div>

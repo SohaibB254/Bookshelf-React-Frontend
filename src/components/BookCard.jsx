@@ -15,6 +15,9 @@ const BookCard = () => {
   const [popBg, setPopBg] = useState("");
   const { checkoutItem } = useCheckout();
   const { addToCart } = useCart();
+  const bookRating = Array.from({length: Math.round(checkoutItem.rating)})
+
+
   const handleQtyIncrease = () => {
     setQtyCount((prev) => prev + 1);
   };
@@ -45,19 +48,14 @@ const BookCard = () => {
               alt=""
             />
           </div>
-          <div className=" carousel-item    w-full  h-[500px] sm:w-[100px]">
-            <img
-              className="  cursor-pointer"
-              src={checkoutItem.cover_photo}
-              alt=""
-            />
+          <div className=" carousel-item bg-gray-100 relative  w-full flex flex-col gap-2 justify-center items-center h-[500px] sm:w-[100px]">
+              <h1 className="lg:text-3xl 2xl font-semibold">{checkoutItem.title}</h1>
+              <h1 className="lg:text-xl text-base font-normal italic text-gray-500">by {checkoutItem.author}</h1>
+              <p className="text-base absolute bottom-2">published on: {checkoutItem.date_published}</p>
           </div>
-          <div className="carousel-item   w-full    h-[500px] sm:w-[100px] ">
-            <img
-              className=" cursor-pointer"
-              src={checkoutItem.cover_photo}
-              alt=""
-            />
+          <div className="carousel-item bg-gray-100  w-full    h-[500px] sm:w-[100px] ">
+               <h1 className="lg:text-3xl 2xl font-semibold text-center py-3">{checkoutItem.title}</h1>
+               <p className="text-base py-3 px-4 ">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis voluptatibus tempora vel earum minus quibusdam voluptates eos pariatur, tempore alias nulla molestias minima nemo soluta aspernatur. Commodi quo illum soluta dicta voluptate, sequi tempora dolorum mollitia animi iusto, molestias vitae.</p>
           </div>
         </div>
         <div className="text-[0.8em] w-auto ">
@@ -90,12 +88,13 @@ const BookCard = () => {
           </div>
           <div className="flex flex-col text-[0.8em]">
             <span id="reviewStars">
-              <i className="fa-solid fa-star text-yellow-500"></i>
-              <i className="fa-solid fa-star text-yellow-500"></i>
-              <i className="fa-solid fa-star text-yellow-500"></i>
-              <i className="fa-solid fa-star text-yellow-500"></i>
-              <i className="fa-solid fa-star text-yellow-500"></i>
-              5/5
+              {
+                bookRating.map((_,idx)=>{
+                  return  <i key={idx} className="fa-solid fa-star text-yellow-500"></i>
+                })
+              }
+
+                {checkoutItem.rating}
             </span>
             <p className="text-gray-500 italic">
               Author: {checkoutItem.author}
@@ -107,7 +106,7 @@ const BookCard = () => {
               Date Published: {checkoutItem.date_published}
             </p>
             <p className="text-gray-700">Category: {checkoutItem.category}</p>
-            <p className="text-gray-700">Languages: English, French, Korean</p>
+            <p className="text-gray-700">Languages: {checkoutItem.languages.join(', ')}</p>
             <p className="text-gray-700">Book Length: {checkoutItem.length}</p>
           </div>
           <div className="Book-card-btn flex flex-col  mt-3 sm:mt-10 w-full">
@@ -127,7 +126,7 @@ const BookCard = () => {
                 </button>
               </span>
               <p className="hover:underline cursor-pointer">
-                <i class="fa-solid fa-share"></i> Share
+                <i className="fa-solid fa-share"></i> Share
               </p>
             </div>
             <div className="text-[0.8em] flex gap-10 items-center ">
@@ -146,7 +145,7 @@ const BookCard = () => {
                 }}
                 className="hover:underline cursor-pointer"
               >
-                <i class="fa-solid fa-cart-shopping"></i> Add to cart
+                <i className="fa-solid fa-cart-shopping"></i> Add to cart
               </Link>
             </div>
           </div>
