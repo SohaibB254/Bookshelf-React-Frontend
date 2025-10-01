@@ -8,6 +8,8 @@ import { Link } from "react-router";
 import Ad from "../components/Ad";
 import ChatWidget from "../components/Chatwidget";
 import Plans from "../components/Plans";
+import Stats from "../components/Stats";
+import Testimonials from "../components/Testimonials";
 const Home = () => {
   return (
     <>
@@ -64,7 +66,9 @@ const Home = () => {
       <Ad />
       <OnSale />
       <LatestReleases />
+      <Testimonials/>
       <Plans />
+      <Stats/>
       <NewsLetter />
       <Footer />
     </>

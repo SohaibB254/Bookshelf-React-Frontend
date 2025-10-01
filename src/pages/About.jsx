@@ -3,6 +3,7 @@ import NewsLetter from "../components/NewsLetter";
 import Footer from "../components/Footer";
 import { motion } from "motion/react";
 import ChatWidget from "../components/Chatwidget";
+import Stats from "../components/Stats";
 
 const About = () => {
   const dark = "text-white bg-gray-950";
@@ -130,6 +131,7 @@ const About = () => {
         </div>
       </div>
       <ChatWidget />
+      <Stats/>
       <NewsLetter />
       <Footer />
     </>

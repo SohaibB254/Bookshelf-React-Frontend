@@ -2,6 +2,7 @@ import React from "react";
 import Services from "../components/Services";
 import NewsLetter from "../components/NewsLetter";
 import Footer from "../components/Footer";
+import Stats from "../components/Stats";
 
 const Contact = () => {
   return (
@@ -79,6 +80,7 @@ const Contact = () => {
         </div>
       </div>
       <Services />
+      <Stats/>
       <NewsLetter />
       <Footer />
     </>

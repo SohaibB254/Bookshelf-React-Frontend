@@ -1,6 +1,6 @@
 import "./App.css";
 import Home from "./pages/Home";
-import { Route, Routes, Router } from "react-router";
+import { Route, Routes} from "react-router";
 import Store from "./pages/Store";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
@@ -10,7 +10,6 @@ import Categories from "./pages/Categories";
 import Checkout from "./pages/Checkout";
 import BookCard from "./components/BookCard";
 import Profile from "./pages/User/Profile.jsx";
-import ManageBooks from "./pages/AdminDashboard/pages/ManageBooks.jsx";
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
 import Library from "./components/Library";
@@ -22,9 +21,11 @@ import Loader from "./components/Loader.jsx";
 import { useEffect, useState } from "react";
 import ScrollToTop from "./components/ScrollToTop.jsx";
 import AdminPanel from "./pages/AdminDashboard/AdminPanel.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const [showNavbar, setShowNavbar] = useState(true);
 
   useEffect(() => {
     // Loader runs for a few seconds, then disappears
@@ -39,7 +40,7 @@ function App() {
       <CheckoutProvider>
         <LibraryProvider>
           <CartProvider>
-            <Navbar />
+            {showNavbar && <Navbar />}
             <Routes>
               <Route path="/store/:booktype" element={<Store />} />
               <Route path="/cart" element={<Cart />} />
@@ -52,6 +53,7 @@ function App() {
         </LibraryProvider>
       </CheckoutProvider>
       <Routes>
+        <Route path="/*" element={<NotFound setShowNavbar={setShowNavbar} />} />
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
