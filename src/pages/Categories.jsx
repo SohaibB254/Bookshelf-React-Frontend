@@ -58,6 +58,7 @@ const Categories = () => {
           {categoriesData.map((cat, idx) => {
             return (
               <Link
+              key={idx}
                 to={`/categories/${encodeURIComponent(cat.name)}`}
                 className="border sm:text-base text-xs  text-gray-500 rounded-sm px-2 py-1"
               >
