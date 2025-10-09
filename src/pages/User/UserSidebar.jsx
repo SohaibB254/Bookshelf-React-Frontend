@@ -25,7 +25,7 @@ const UserSidebar = () => {
         }), [])
   return (
     <>
-    <div id="DashBoardNav" className={`bg-white fixed lg:static sm:w-[300px] w-full  border lg:shadow-none shadow-sm shadow-black border-b-0 ${isShown?'flex':'hidden'} flex-col py-3 sm:h-auto  h-[90vh]`}>
+    <div id="DashBoardNav" className={`bg-white dark:bg-gray-900 dark:text-gray-300 fixed dark:border-gray-800 lg:static sm:w-[300px] w-full  border lg:shadow-none shadow-sm shadow-black border-b-0 border-t-0 ${isShown?'flex':'hidden'} flex-col py-3 sm:h-auto  h-[90vh]`}>
         <div className={`${isMobile?'':'hidden'}`}>
           <i onClick={toggleSidebar} className="fa-solid fa-xmark text-xl  text-right w-full  px-2"></i>
         </div>
@@ -36,13 +36,13 @@ const UserSidebar = () => {
             </Link>
             <div className='h-screen '>
               <ul className='flex flex-col px-12 gap-2 mt-4'>
-                <Link onClick={toggleSidebar} to={'/userprofile'} className='cursor-pointer border-b px-1 py-2 flex gap-1 items-center hover:bg-green-200'><i class="fa-solid fa-user"></i>Profile</Link>
-                <li className='cursor-pointer border-b py-2 px-1 flex gap-1 items-center hover:bg-green-200'><i className="fa-solid fa-cart-shopping"></i>My cart</li>
-                <li className='cursor-pointer border-b py-2 px-1 flex gap-1 items-center hover:bg-green-200'><i class="fa-regular fa-heart"></i>Wishlist</li>
-                <li className='cursor-pointer border-b py-2 px-1 flex gap-1 items-center hover:bg-green-200'><i class="fa-solid fa-shop"></i>Store</li>
-                <li className='cursor-pointer border-b py-2 px-1 flex gap-1 items-center hover:bg-green-200'><i class="fa-solid fa-circle-info"></i>Help center</li>
-                <li className='cursor-pointer border-b py-2 px-1 flex gap-1 items-center hover:bg-green-200'><i class="fa-solid fa-key"></i>Terms & Policy</li>
-             <Link className='cursor-pointer  border-b py-2 px-1 flex gap-1 items-center text-red-600 font-[500] '><i class="fa-solid fa-right-from-bracket"></i>Logout</Link>
+                <Link onClick={toggleSidebar} to={'/userprofile'} className='cursor-pointer border-b dark:border-gray-800 dark:hover:bg-[var(--baseColor)] px-1 py-2 flex gap-1 items-center hover:bg-green-200'><i class="fa-solid fa-user"></i>Profile</Link>
+                <li className='cursor-pointer border-b dark:border-gray-800 dark:hover:bg-[var(--baseColor)] py-2 px-1 flex gap-1 items-center hover:bg-green-200'><i className="fa-solid fa-cart-shopping"></i>My cart</li>
+                <li className='cursor-pointer border-b dark:border-gray-800 dark:hover:bg-[var(--baseColor)] py-2 px-1 flex gap-1 items-center hover:bg-green-200'><i class="fa-regular fa-heart"></i>Wishlist</li>
+                <li className='cursor-pointer border-b dark:border-gray-800 dark:hover:bg-[var(--baseColor)] py-2 px-1 flex gap-1 items-center hover:bg-green-200'><i class="fa-solid fa-shop"></i>Store</li>
+                <li className='cursor-pointer border-b dark:border-gray-800 dark:hover:bg-[var(--baseColor)] py-2 px-1 flex gap-1 items-center hover:bg-green-200'><i class="fa-solid fa-circle-info"></i>Help center</li>
+                <li className='cursor-pointer border-b dark:border-gray-800 dark:hover:bg-[var(--baseColor)] py-2 px-1 flex gap-1 items-center hover:bg-green-200'><i class="fa-solid fa-key"></i>Terms & Policy</li>
+             <Link className='cursor-pointer  border-b dark:border-gray-800  py-2 px-1 flex gap-1 items-center text-red-600 font-[500] '><i class="fa-solid fa-right-from-bracket"></i>Logout</Link>
 
             </ul>
             </div>

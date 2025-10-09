@@ -17,8 +17,8 @@ const OrdersTable = () => {
   return (
     <div className="overflow-x-auto sm:w-auto w-screen mt-10">
       <h1 className="sm:text-2xl font-semibold my-3">Recent Orders</h1>
-      <table className="min-w-full border border-gray-200 rounded-lg text-sm">
-        <thead className="bg-gray-100 text-left">
+      <table className="min-w-full border dark:border-gray-800 border-gray-200 rounded-lg text-sm">
+        <thead className="bg-gray-100 dark:bg-gray-800 text-left">
           <tr>
             <th className="px-4 py-2 border-b">Username</th>
             <th className="px-4 py-2 border-b">Email</th>
@@ -29,12 +29,12 @@ const OrdersTable = () => {
         </thead>
         <tbody>
           {orders.map((order, index) => (
-            <tr key={index} className="hover:bg-gray-50">
-              <td className="px-4 py-2 border-b whitespace-nowrap">{order.username}</td>
-              <td className="px-4 py-2 border-b whitespace-nowrap">{order.email}</td>
-              <td className="px-4 py-2 border-b whitespace-nowrap">{order.orderDate}</td>
+            <tr key={index} className="hover:bg-gray-50 dark:hover:bg-gray-700">
+              <td className="px-4 py-2 border-b dark:border-gray-800  whitespace-nowrap">{order.username}</td>
+              <td className="px-4 py-2 border-b dark:border-gray-800  whitespace-nowrap">{order.email}</td>
+              <td className="px-4 py-2 border-b dark:border-gray-800  whitespace-nowrap">{order.orderDate}</td>
               <td
-                className={`px-4 py-2 border-b font-medium ${
+                className={`px-4 py-2 border-b dark:border-gray-800 font-medium ${
                   order.status === "Completed"
                     ? "text-green-600"
                     : order.status === "Pending"
@@ -44,7 +44,7 @@ const OrdersTable = () => {
               >
                 {order.status}
               </td>
-              <td className="px-4 py-2 border-b">{order.amount}</td>
+              <td className="px-4 py-2 border-b dark:border-gray-800">{order.amount}</td>
             </tr>
           ))}
         </tbody>

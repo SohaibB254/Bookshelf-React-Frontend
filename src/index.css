@@ -4,8 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 :root{
-    --baseColor: #24BF6C;
-    --lighter: #22c55e;
+  --baseColor: #2fc54b;
+  --lighter: oklch(from var(--baseColor) clamp(0, l + 0.02, 1) calc(c * 0.9) h);
+  --darker: oklch(from var(--baseColor) clamp(0, l - 0.4, 1) calc(c * 0.92) h);
+  --comp: hsl(from var(--baseColor) calc(h + 100) s l);
 }
 body{
     overflow-x: hidden;
@@ -38,11 +40,6 @@ body{
 }
 
 /* Home Page Custom Styling */
-#Home{
-    background-image: url('./assets/body-bg.png');
-    background-size: cover;
-
-}
 #TitleText {
     line-height: 1.1;
 }
@@ -81,14 +78,12 @@ body{
 
 
 @media (max-width: 1024px) {
-    #Home{
-    background-image: url('./assets/body-bg-phone.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-}
 .u-btn{
     padding: 10px 8px;
     font-size: 14px;
+}
+#carousel2::scroll-button(right),#carousel2::scroll-button(left){
+    display: none;
 }
 }
 .u-btn2 {
@@ -113,7 +108,6 @@ body{
 }
 /* Custom styling the book card */
 
-
 .pageMoveBtn{
 background-color: black;
 color: white;
@@ -133,12 +127,14 @@ color: white;
     content: '>';
     border: none;
     font-family: Consolas;
-    font-size: 3rem;
-    color: rgb(17, 248, 109);
-    height: 60px;
-    width: 60px;
+    font-size: 2rem;
+    color: rgb(255, 255, 255);
+    height: 30px;
+    width: 30px;
+    font-weight: bold;
     padding-bottom: .1em;
-    background-color: transparent;
+    border-radius: 50%;
+    background-color: var(--baseColor);
     cursor: pointer;
     position: fixed;
     position-anchor: --carousel;
@@ -146,17 +142,18 @@ color: white;
     translate: -100%;
 
 }
-#carousel::scroll-button(right):disabled,#carousel::scroll-button(left):disabled{
-    color: rgb(104, 104, 104);
-}
-#carousel::-webkit-scrollbar{
-    display: none;
-}
 #carousel::scroll-button(left){
     content: '<';
     position-area: left center;
     translate: 100%;
 }
+#carousel::scroll-button(right):disabled,#carousel::scroll-button(left):disabled{
+    color: rgb(193, 193, 193);
+}
+#carousel::-webkit-scrollbar{
+    display: none;
+}
+
 .carousel-item{
     scroll-snap-align: center;
     padding: .5em;
@@ -166,7 +163,123 @@ color: white;
     width: 100%;
     height: 100%;
 }
+/* Carousel 2 for latest books componnet */
+#carousel2{
+     scroll-behavior: smooth;
+     scroll-snap-type: x mandatory;
+     anchor-name: --carousel2;
+     scroll-marker-group: after;
+}
+#carousel2::-webkit-scrollbar{
+    display: none;
+}
+#carousel2::scroll-marker-group{
+    display: flex;
+    gap: .3em;
+    justify-content: center;
+}
+#carousel2::scroll-button(right),#carousel2::scroll-button(left){
+    content: '>';
+    border: none;
+    font-family: Consolas;
+    font-size: 1.5rem;
+    color: rgb(17, 248, 109);
+    font-weight: bold;
+    height: 30px;
+    width: 30px;
+    padding-bottom: .1em;
+    border-radius: 50%;
+    cursor: pointer;
+    position: fixed;
+    position-anchor: --carousel2;
+    position-area: right bottom;
+    translate: -200%;
+}
+#carousel2::scroll-button(left){
+    content: '<';
+    translate: -500%;
+    position-area: right bottom;
+}
+#carousel2::scroll-button(right):disabled,#carousel2::scroll-button(left):disabled{
+    color: rgb(104, 104, 104);
+}
+.latest-book{
+    flex: 0 0 100%;
+    scroll-snap-align:center ;
+}
+.latest-book::scroll-marker{
+    content: "";
+    height: 10px ;
+    width: 10px;
+    border-radius: 50%;
+    background-color: rgb(134, 134, 134);
+}
+.latest-book::scroll-marker:target-current{
+    background-color: var(--baseColor);
+}
+/* Home V2 Carousel */
+#headerV2{
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    anchor-name: --headerV2;
+    scroll-marker-group: after;
+}
+#headerV2::-webkit-scrollbar{
+    display: none;
+}
+#headerV2::scroll-button(right),#headerV2::scroll-button(left){
+    content: '>';
+    border: none;
+    font-family: Consolas;
+    font-size: 2rem;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    height: 40px;
+    width: 40px;
+    z-index: 20;
+    background-color:var(--baseColor);
+    padding-bottom: .1em;
+    border-radius: 10%;
+    cursor: pointer;
+    position: fixed;
+    position-anchor: --headerV2;
+    position-area: right center;
+    translate: -110%;
+    transition: all 0.3s ease;
 
+}
+#headerV2::scroll-button(left){
+    content: '<';
+    translate: 110%;
+    position-area: left center;
+}
+#headerV2::scroll-button(right):disabled,#headerV2::scroll-button(left):disabled{
+    color: rgb(179, 177, 177);
+}
+#headerV2::scroll-button(right):hover,#headerV2::scroll-button(left):hover{
+    background-color: var(--comp);
+}
+#headerV2::scroll-marker-group{
+    display: flex;
+    justify-content: center;
+    gap: .5em;
+   margin-bottom: 30px;
+}
+.header-books::scroll-marker{
+    content: " ";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #000;
+
+}
+.header-books::scroll-marker:target-current{
+    background-color: var(--baseColor);
+}
+.header-books{
+    flex:0 0 100%;
+    scroll-snap-align:center ;
+}
 /* Custom Styling the checkout seciton */
 #Checkout input{
     border: 1px solid rgba(128, 128, 128, 0.412);
@@ -192,6 +305,7 @@ color: white;
 
 #orderComplete {
     backdrop-filter: blur(4px);
+
 }
 
 .animate_scale {

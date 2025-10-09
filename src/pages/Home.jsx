@@ -10,65 +10,154 @@ import ChatWidget from "../components/Chatwidget";
 import Plans from "../components/Plans";
 import Stats from "../components/Stats";
 import Testimonials from "../components/Testimonials";
+import OurMission from "../components/OurMission";
+import Features from "../components/Features";
+import { useHomeV } from "../context/HomeVContext";
+import booksData from "../data/books";
+import { useCheckout } from "../context/CheckoutContext";
+import TextType from '../components/TextType'
 const Home = () => {
+  const { homeV } = useHomeV();
+  const { addToCheckout } = useCheckout()
+  const headerBooks = booksData.slice(3, 6);
   return (
     <>
-      <div
-        id="Home"
-        className=" w-screen flex-col lg:flex-row flex font-sans justify-center  items-center text-white h-[90vh] sm:h-[min(90vh,90vw)]"
-      >
+      {/* Home V2 Design */}
+      {homeV === "v2" ? (
         <div
-          className="h-auto w-screen pt-10 lg:pt-0 lg:w-[60vw]  flex
-       flex-col items-center"
+          id="hv2"
+          className="h-[100vh] sm:h-[min(90vh,50vw)] bg-gray-100 dark:bg-gray-800 py-8"
         >
-          {/* Home left */}
-          <div className="w-[100%] px-10 lg:pl-20 h-[70%] ">
-            <h1
-              id="TitleText"
-              className="sm:text-[46px] md:text-[76px] text-[36px] text-center lg:text-left mt-10 lg:mt-0 font-merri  font-bold fade-elm"
-            >
-              An Online Library <br />
-              And<span className="text-[#24BF6C]"> Book Store</span>{" "}
-            </h1>
-            <p className="font-inter mt-6 text-center lg:text-left fade-elm">
-              Explore worlds from <strong>millions</strong> of authors across
-              every genre imaginable <br />
-              <span className="italic font-inter hidden sm:block">
-                Epic tales, self-help gems, and timeless classics
-              </span>{" "}
-            </p>
-            <div className="flex sm:flex-row flex-col justify-center lg:justify-normal gap-2 mt-12 sm:mt-8 ">
-              <Link to={"/library"}>
-                <button className="u-btn border border-[#24BF6C]  sm:rounded-sm rounded-md w-full">
-                  Start Reading
-                </button>
-              </Link>
-              <Link to="/store/all">
-                <button className="u-btn3 sm:rounded-sm rounded-md w-full">
-                  Browse Books
-                </button>
-              </Link>
+          <header id="headerV2" className="lg:px-10  flex overflow-auto  py-4">
+
+            {headerBooks.map((book) => {
+              return (
+                <div
+                  key={book.id}
+                  className="header-books  flex py-4 md:flex-row flex-col  justify-center items-center gap-8 lg:gap-8"
+                >
+                  <div
+                    id="text"
+                    className=" flex flex-col gap-1 sm:items-start items-center sm:gap-4"
+                  >
+                    <h1 className="lg:text-6xl text-3xl font-bold uppercase sm:max-w-xl max-w-52 text-center sm:text-start  text-[var(--comp)]">
+                      {book.title}
+                    </h1>
+                    <p className=" bg-gray-200 dark:bg-gray-700 text-[var(--baseColor)] dark:text-[var(--lighter)] px-2 rounded-md border-gray-600 border w-fit text-base">
+                      {book.category}
+                    </p>
+
+                    <h1 className="lg:text-5xl text-2xl font-bold text-[var(--baseColor)]">
+                       Rs: {Math.round(book.price - (book.price * book.sale_percent) / 100)}{" "}
+                      <span
+                        className={`${
+                          book.sale_percent === 0 ? "hidden" : ""
+                        } italic text-gray-500 sm:text-xl text-xs line-through`}
+                      >
+                        {book.price}
+                      </span>
+                    </h1>
+                    <h1 className=" font-bold">
+                     <i className="fa-solid fa-star text-yellow-500"></i>{" "}
+                     <i className="fa-solid fa-star text-yellow-500"></i>{" "}
+                     <i className="fa-solid fa-star text-yellow-500"></i>{" "}
+                     <i className="fa-solid fa-star text-yellow-500"></i>{" "}
+                     <i className="fa-solid fa-star text-yellow-500"></i>{" "}
+                      <span className="text-zinc-500">8 Reviews(s)</span>{" "}
+                    </h1>
+                    <Link to={`/home/book/${encodeURIComponent(book.id)}`} onClick={()=>addToCheckout(book)} className="w-fit bg-[var(--baseColor)] hover:text-black transition sm:p-2 p-1 sm:px-4 text-white font-semibold my-2 rounded-md">
+                      See Details
+                    </Link>
+                  </div>
+                  <div
+                    style={{
+                      backgroundImage: `url(${book.cover_photo})`,
+                    }}
+                    className={` bg-cover  relative overflow-hidden b lg:w-[500px] lg:h-[500px] h-[200px] w-[200px] sm:h-[300px] sm:w-[300px] rounded-full flex items-center justify-center p-10`}
+                  >
+                    <div className="absolute inset-0 backdrop-blur-sm bg-black/50"></div>
+                    <div
+                      id="img"
+                      className="lg:h-[300px] z-20 h-[150px] sm:h-[200px]"
+                    >
+                      <img className=" h-full" src={book.cover_photo} alt="" />
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </header>
+        </div>
+      ) : (
+        // Home V1 Design
+        <div
+          id="Home"
+          className="  flex-col py-10 flex font-sans text-black  bg-gray-100 justify-between dark:bg-gray-800  items-center dark:text-white h-[90vh] sm:h-[min(90vh,90vw)]"
+        >
+          <div
+            className="h-auto  flex justify-center items-center"
+          >
+            {/* Home left */}
+            <div className="w-[100%] flex flex-col px-4 sm:px-10 ">
+              <TextType
+              className="sm:text-[46px] md:text-[76px] text-[36px] text-center    lg:mt-0 font-merri  font-bold "
+              text={["An Online Library"]}
+              typingSpeed={70}
+              cursorCharacter=""
+
+              textColors={['var(--baseColor)']}
+               />
+              <TextType
+              className="sm:text-[46px] md:text-[76px] text-[36px] text-center    lg:mt-0 font-merri  font-bold "
+              text={["And Book Store"]}
+              typingSpeed={60}
+              initialDelay={1000}
+               cursorCharacter=""
+              textColors={[`#E0E0E0`]}
+               />
+              <p className="font-inter mt-6 text-center text-gray-500 dark:text-gray-300 fade-elm">
+                Explore worlds from <strong>millions</strong> of authors across
+                every genre imaginable <br />
+                <span className="italic font-inter hidden sm:block">
+                  Epic tales, self-help gems, and timeless classics
+                </span>{" "}
+              </p>
+              <div className="flex sm:flex-row  sm:items-center flex-col justify-center gap-2 mt-12 sm:mt-8 ">
+                <Link to={"/library"}>
+                  <button className="u-btn border border-[var(--baseColor )]   rounded-md w-full">
+                    Start Reading
+                  </button>
+                </Link>
+                <Link to="/store/all">
+                  <button className="u-btn   rounded-md w-full">
+                    Browse Books
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
+          <div>
+            <ul className="flex w-full justify-center  gap-8 sm:gap-5">
+              <i className=" cursor-pointer hover:scale-110 transition-all fa-brands fa-instagram"></i>
+              <i className=" cursor-pointer hover:scale-110 transition-all fa-brands fa-youtube"></i>
+              <i className=" cursor-pointer hover:scale-110 transition-all fa-brands fa-facebook-f"></i>
+              <i className=" cursor-pointer hover:scale-110 transition-all fa-brands fa-twitter"></i>
+              <i className=" cursor-pointer hover:scale-110 transition-all fa-brands fa-pinterest-p"></i>
+            </ul>
+          </div>
         </div>
-        <div className="flex items-end md:justify-end lg:w-[50vw] lg:h-full  h-[50%]">
-          <ul className="flex sm:flex-row sm:justify-end  w-full justify-center  sm:mr-10 mb-4 gap-8 sm:gap-5">
-            <i className=" cursor-pointer hover:scale-110 transition-all fa-brands fa-instagram"></i>
-            <i className=" cursor-pointer hover:scale-110 transition-all fa-brands fa-youtube"></i>
-            <i className=" cursor-pointer hover:scale-110 transition-all fa-brands fa-facebook-f"></i>
-            <i className=" cursor-pointer hover:scale-110 transition-all fa-brands fa-twitter"></i>
-            <i className=" cursor-pointer hover:scale-110 transition-all fa-brands fa-pinterest-p"></i>
-          </ul>
-        </div>
-      </div>
+      )}
+
       <ChatWidget />
       <PopularCategories />
       <Ad />
       <OnSale />
       <LatestReleases />
-      <Testimonials/>
+      <OurMission />
+      <Features />
+      <Testimonials />
       <Plans />
-      <Stats/>
+      <Stats />
       <NewsLetter />
       <Footer />
     </>

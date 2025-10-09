@@ -13,19 +13,19 @@ const Library = () => {
     <div>
       <div id='LibraryContainer' className=' font-inter'>
         <div id="LibraryContent" className='sm:pl-12 pl-8 py-8'>
-          <h1 className=' text-2xl lg:text-3xl font-semibold my-3'>Your Library</h1>
+          <h1 className=' sm:text-3xl text-xl text-[var(--darker)] dark:text-[var(--lighter)]  font-semibold my-3'>Your Library</h1>
           <div id='LibraryBooks' className='flex gap-3 flex-wrap' >
 
             {libraryItems.length === 0 ? (
               <h1 className='text-gray-400'>Your Library is Empty <Link to={'/store/all'} className='text-blue-500'>Add books now</Link> </h1>)
 
               : libraryItems.map((item) => {
-                return <div key={item.id} id='LibraryBook' className=''>
-                  <div className='h-auto   w-auto  py-2 flex flex-col border shadow text-[16px]'>
+                return <div key={item.id} id='LibraryBook' className='dark:text-gray-300'>
+                  <div className='h-auto   w-auto  py-2 flex flex-col border dark:border-gray-800 dark:shadow-gray-800 shadow text-[16px]'>
                     <Link to={'/library/readbook'}><img className='sm:w-[150px] w-[160px] place-self-center h-[210px] cursor-pointer' src={item.cover_photo} alt="" /></Link>
                     <div className='sm:px-4'>
                       <div className='flex flex-col'>
-                        <h1 className=' sm:text-[18px] font-semibold  tracking-tighter bg-gray-200 '>{item.title}</h1>
+                        <h1 className=' sm:text-[18px] font-semibold  tracking-tighter dark:bg-gray-700 dark:text-gray-300 dark:font-normal bg-gray-200 '>{item.title}</h1>
                         <h1 className='italic text-gray-500 hidden sm:inline-block  '>by: {item.author}</h1>
                         <p className='hidden sm:inline-block'>{item.length}</p>
                         <p className='hidden sm:inline-block' >Publihed on: {item.date_published}</p>

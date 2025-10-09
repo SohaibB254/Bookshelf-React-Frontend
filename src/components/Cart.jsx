@@ -31,8 +31,8 @@ const Cart = () => {
   return (
     <>
       <div id='cartContainer' className='text-[32px] px-4 lg:px-12 pt-16 font-inter'>
-        <h1 className='lg:text-[1.2em] text-2xl text-center mb-10' >Your Cart ({cartItemsCount} items) <i className="fa-solid fa-cart-shopping cursor-pointer transition hover:text-green-500"></i></h1>
-        <div id='cartItemContainer' className='w-full h-auto'>
+        <h1 className='sm:text-3xl text-xl dark:text-[var(--lighter)] text-[var(--darker)] text-center mb-10' >Your Cart ({cartItemsCount} items) <i className="fa-solid fa-cart-shopping cursor-pointer transition hover:text-green-500"></i></h1>
+        <div id='cartItemContainer' className='w-full h-auto dark:text-gray-300'>
           <div className={` ${itemsInCart.length === 0 ? "border-b-0" : ""} border-b`}>
             {
               itemsInCart.length === 0 ? (
@@ -50,7 +50,7 @@ const Cart = () => {
                       <div className='flex lg:items-center w-full flex-col lg:flex-row  lg:justify-between '>
                         <div className='lg:w-[35%]'>
                           <div className='flex flex-col gap-1 justify-center'>
-                            <h1 className='lg:text-[2em] w-full truncate font-semibold text-[#24BF6C] tracking-tight'>{elm.title}</h1>
+                            <h1 className='lg:text-3xl   w-full truncate font-semibold text-[var(--baseColor)] tracking-tight'>{elm.title}</h1>
                             <p className='italic'>by: {elm.author}</p>
                             <p className={`${elm.sale_percent === 0 ? 'hidden' : ''}`}><span className='text-red-500 sm:text-base text-xs font-semibold'>{elm.sale_percent}% OFF</span></p>
                           </div>
@@ -65,7 +65,7 @@ const Cart = () => {
                           </div>
                           {/* Quantity Change Button */}
                           <div className='text-center lg:w-16  '>
-                            <span className=' text-[1em] border flex justify-center gap-2 px-3'>
+                            <span className=' text-[1em] border border-gray-700 flex justify-center gap-2 px-3'>
                               <button onClick={() => handleQuantityChange(elm.id, 'decrease')} className=' font-semibold'>-</button>
                               <span>{elm.quantity}</span>
                               <button onClick={() => handleQuantityChange(elm.id, 'increase')} className=' font-semibold'>+</button>
@@ -87,7 +87,7 @@ const Cart = () => {
         </div>
         {/* Order Overview */}
         <div className='flex justify-center'>
-          <div id='totalCheckout' className={`${itemsInCart.length === 0 ? "hidden" : ""} bg-white py-8 px-4 text-[0.5em]  flex flex-col gap-4 border  border-black/60 rounded-md lg:w-[40vw] my-4 sm:my-10 `}>
+          <div id='totalCheckout' className={`${itemsInCart.length === 0 ? "hidden" : ""} bg-white dark:bg-inherit dark:text-gray-300 py-8 px-4 text-[0.5em]  flex flex-col gap-4 border  border-gray-700 rounded-md lg:w-[40vw] my-4 sm:my-10 `}>
             <h1 className='sm:text-[1.5em] text-xl font-semibold'>Order Overview</h1>
             <h1 className='border-b sm:py-2 flex justify-between'>Total: {getTotalPrice()}<span>Items: {getTotalItems()}</span></h1>
             <h1 className='border-b sm:py-2 flex justify-between'>Total Delivery: {getTotalDelivery()}</h1>

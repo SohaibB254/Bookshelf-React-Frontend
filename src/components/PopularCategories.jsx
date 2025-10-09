@@ -42,11 +42,11 @@ const PopularCategories = () => {
     });
 
   return (
-    <div className="w-full overflow-hidden relative group mt-10 font-inter">
-      <h1 className="text-center mb-8 font-semibold lg:text-[39px] text-2xl">
+    <div className="w-full overflow-hidden relative dark:bg-gray-900 group mt-10 py-10 font-inter">
+      <h1 className="text-center mb-8 font-semibold sm:text-3xl text-xl dark:text-[var(--lighter)] text-[var(--darker)]">
         Popular Categories
       </h1>
-      <div className="w-screen py-8 fade-bg">
+      <div className="w-screen py-8 dark:to-gray-900 dark:via-gray-700 dark:from-gray-900 bg-gradient-to-r from-white  via-gray-300">
         {/* Scrolling Div */}
         <motion.div
           ref={containerRef}
@@ -61,7 +61,7 @@ const PopularCategories = () => {
           {[...FamousCatData, ...FamousCatData].map((elm, idx) => (
             <div
               key={idx}
-              className="cursor-pointer hover:animate-pulse transition-transform flex  items-center mx-4"
+              className="cursor-pointer hover:animate-pulse transition-transform flex dark:text-gray-900 text-white  items-center mx-4"
             >
               <h1 className="sm:text-[50px] text-xl p-3  ">{elm.CatName}</h1>
             </div>

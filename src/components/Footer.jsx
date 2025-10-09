@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { motion } from 'motion/react'
+import { Link } from 'react-router';
+import ThemeSwitcher from './ThemeSwitcher';
 
 
 const Footer = () => {
@@ -21,15 +23,17 @@ const Footer = () => {
     show: { opacity: 1, y: 0 }
   }
   return (
-    <footer id='footerContainer' className='font-inter'>
-      <div id='Footer' className='w-full h-auto flex flex-col gap-4  sm:flex-row border-b border-t justify-evenly mt-8 px-20 py-20'>
+    <footer id='footerContainer' className='font-inter dark:bg-gray-900 dark:text-gray-300 '>
+      <div id='Footer' className='w-full h-auto flex flex-col gap-4 dark:bg-gray-900 dark:text-gray-300 relative sm:flex-row dark:border-gray-800 border-y justify-evenly mt-8 px-20 py-20'>
         <div className='flex flex-col gap-8 sm:gap-20'>
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
+
           >
-            <h1 className='font-kavoon text-[30px] cursor-pointer text-[#24BF6C]'>BookShelf</h1>
+
+            <h1 className='font-kavoon text-[30px] cursor-pointer text-[var(--baseColor)]'>BookShelf</h1>
             <p className='text-gray-500'>H.N J232, Street 35 Block B Wapda Town,<br />Lahore Pakistan</p>
           </motion.div>
           <div>
@@ -73,7 +77,7 @@ const Footer = () => {
             </motion.ul>
             <motion.ul variants={item}>
               <h1 className='font-semibold text-[18px] cursor-pointer'>Terms</h1>
-              <li className='hover:underline cursor-pointer'>Policy</li>
+              <Link to={'/policy'} className='hover:underline cursor-pointer'>Policy</Link>
               <li className='hover:underline cursor-pointer'>Conditions</li>
               <li className='hover:underline cursor-pointer'>FAQs</li>
             </motion.ul>
@@ -95,14 +99,14 @@ const Footer = () => {
           <p>2025 Bookshelf. All rights reserved </p>
         </div>
         <div>
-          <div className="flex sm:text-base text-xs  ">
+          <div className="flex sm:text-base text-xs   ">
             <div className="flex items-center gap-2">
               <label htmlFor="language" className="text-sm"></label>
               <select
                 id="language"
                 value={language}
                 onChange={(e) => setLanguage(e.target.value)}
-                className=" p-2"
+                className=" p-2 dark:bg-gray-900 dark:text-gray-300"
               >
                 <option value="EN">English</option>
                 <option value="UR">Urdu</option>
@@ -119,7 +123,7 @@ const Footer = () => {
                 id="currency"
                 value={currency}
                 onChange={(e) => setCurrency(e.target.value)}
-                className="  p-2"
+                className="  p-2 dark:bg-gray-900 dark:text-gray-300"
               >
                 <option value="PKR">PKR</option>
                 <option value="USD">USD</option>

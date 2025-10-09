@@ -1,4 +1,5 @@
 import { motion, scale } from "motion/react";
+
 import React from "react";
 
 const Testimonials = () => {
@@ -86,8 +87,8 @@ const Testimonials = () => {
   ];
 
   return (
-    <div className="sm:px-12 px-4 py-5 ">
-      <h1 className="sm:text-3xl text-xl font-semibold mt-10">Testimonials</h1>
+    <div className="sm:px-12 px-4 py-5 bg-gray-100 dark:bg-gray-800 ">
+      <h1 className="sm:text-3xl text-xl text-[var(--darker)] dark:text-[var(--lighter)] font-semibold mt-10">Testimonials</h1>
       <p className="py-4 columns-2 text-xs text-zinc-400">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat ab
         dolorum recusandae? Voluptates minima labore inventore explicabo veniam
@@ -107,7 +108,7 @@ const Testimonials = () => {
           <motion.div
             className="flex gap-10"
             drag="x"
-            dragConstraints={{ left: -2000, right: 0 }}
+            dragConstraints={{ left: -1900, right: 0 }}
           >
             {TestData.map((user) => {
               return (
@@ -115,7 +116,7 @@ const Testimonials = () => {
                   key={user.id}
                   id="TestCard"
                   whileHover={{ scale: 1.03 }}
-                  className=" py-3 px-8 relative flex flex-col gap-2 flex-shrink-0 w-[300px]  rounded-md bg-gray-100 shadow-sm shadow-black/50"
+                  className=" py-3 px-8 relative flex flex-col gap-2 flex-shrink-0 w-[300px] dark:shadow-gray-700  rounded-md dark:bg-gray-900 bg-white shadow-md "
                 >
                   <div
                     id="pfp"
@@ -124,13 +125,13 @@ const Testimonials = () => {
                     <img
                       src={user.profilePic}
                       className="object-cover h-full w-full"
-                      alt=""
+                      alt="Testimonial user pfp"
                     />
                   </div>
                   <div id="name" className="text-sm text-zinc-500 text-center">
                     <h1>{user.name}</h1>
                   </div>
-                  <div id="comment" className="text-base">
+                  <div id="comment" className="text-base text-[var(--darker)] dark:text-gray-300">
                     <p>{user.message}</p>
                   </div>
                   <div id="rating" className="text-center text-zinc-500">

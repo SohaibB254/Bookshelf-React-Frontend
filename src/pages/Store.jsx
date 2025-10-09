@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import booksData from "../data/books";
 import TrendingNow from "../components/TrendingNow";
 import OnSale from "../components/OnSale";
@@ -9,12 +9,15 @@ import { useCart } from "../context/CartContext";
 import { useLibrary } from "../context/LibraryContext";
 import { useCheckout } from "../context/CheckoutContext";
 import Popup from "../components/Popup";
+import Dropdown from "../components/Dropdown";
+import { useWish } from "../context/WishContext";
 
 const Store = () => {
   const [itemsCount, setItemsCount] = useState(12);
   const [popView, setPopView] = useState("hidden");
   const [popType, setPopType] = useState("");
   const [popBg, setPopBg] = useState("");
+    const [sortOption, setSortOption] = useState("");
   const [searchStr, setSearchStr] = useState("");
   const saleBooks = booksData.filter((item) => item.sale_percent !== 0);
   const dislpayBooks = booksData.slice(0, itemsCount);
@@ -22,6 +25,7 @@ const Store = () => {
   const { addToLibrary, bookExistLib } = useLibrary();
   const { addToCart } = useCart();
   const { addToCheckout } = useCheckout();
+  const { updateWishlist } = useWish()
   const location = useLocation();
 
   useEffect(() => {
@@ -76,6 +80,15 @@ const Store = () => {
       setPopView("hidden");
     }, 2500);
   };
+  //Popup for wishlist
+  const handlePopupWishlist = () => {
+    setPopView("block");
+    setPopType("Book Wishlisted");
+    setPopBg("bg-red-400");
+    setTimeout(() => {
+      setPopView("hidden");
+    }, 2500);
+  };
   //Popup for cart
   const handlePopupCart = () => {
     setPopView("block");
@@ -94,7 +107,7 @@ const Store = () => {
           className="flex sm:text-base text-xs items-center justify-center py-3 px-3  sm:pt-12"
         >
           <input
-            className="sm:w-[40vw] w-full border border-gray-300 outline-none rounded-sm sm:p-3 py-1 px-2"
+            className="sm:w-[40vw] w-full border border-gray-300  dark:border-gray-700 outline-none dark:bg-gray-900 dark:text-gray-300 rounded-sm sm:p-3 py-1 px-2"
             onChange={(e) => handleSearch(e.target.value)}
             type="search"
             name="search"
@@ -102,15 +115,15 @@ const Store = () => {
             placeholder="Search by Name/Category/language/price/author"
           />
         </div>
-        {searchStr && (!isNaN(searchStr)?( <h1>Books of price Rs: {searchStr} and under</h1> ):(<h1>Showing results for "{searchStr}"</h1>))}
-           <div className="sm:text-base text-xs my-2">
-            <label htmlFor="sortBooks">Sort by  </label>
-            <select className="border px-1 rounded-sm sm:text-base text-xs border-gray-400" name="sortBooks" id="sortBooks">
-              <option value="price">Price low to high</option>
-              <option value="price">Published Date</option>
-              <option value="price">Language</option>
-              <option value="price">Category</option>
-            </select>
+       <p className="dark:text-gray-300"> {searchStr && (!isNaN(searchStr)?( <h1>Books of price Rs: {searchStr} and under</h1> ):(<h1>Showing results for "{searchStr}"</h1>))}</p>
+           <div className=" flex w-52 border rounded-sm text-sm dark:border-gray-700 gap-1 justify-end  items-center my-2">
+          <Dropdown
+        options={["Price: Low to High", "Price: High to Low", "Newest", "Oldest"]}
+        selected={sortOption}
+        onChange={(value) => setSortOption(value)}
+        placeholder="Sort By"
+        bg = 'white'
+      />
           </div>
         <div
           id="storeItemsContainer"
@@ -121,7 +134,7 @@ const Store = () => {
               return (
                 <div
                   key={idx}
-                  className="sm:h-auto h-fit relative   md:w-[15vw] w-[160px] lg:px-4 py-2 flex flex-col  border shadow text-[16px]"
+                  className="sm:h-auto h-fit relative dark:text-gray-300   md:w-[15vw] w-[160px] lg:px-4 py-2 flex flex-col border  dark:border-gray-700 shadow text-[16px]"
                 >
                   <Link
                     onClick={() => addToCheckout(elm)}
@@ -135,7 +148,7 @@ const Store = () => {
                       />
                     </div>
                   </Link>
-                  <h1 className=" text-[14px] sm:text-[18px] font-semibold w-full truncate tracking-tighter bg-gray-200 ">
+                  <h1 className=" text-[14px] sm:text-[18px] font-semibold w-full truncate tracking-tighter dark:bg-gray-700 dark:font-normal bg-gray-200 ">
                     {elm.title}
                   </h1>
                   <h1 className="italic text-gray-500 hidden lg:inline-block truncate ">
@@ -152,8 +165,14 @@ const Store = () => {
                         {elm.price}
                       </span>
                     </p>
+                    {/* Wishlist Icon */}
+                    <span onClick={handlePopupWishlist} className="absolute text-red-500  cursor-pointer group  top-2 right-3 font-semibold">
+                        <i onClick={()=>updateWishlist('add',elm)} className="fa-heart fa-regular"></i>
+                        <p className="text-[12px] bg-zinc-300 opacity-0 group-hover:opacity-100 transition text-black p-1 absolute z-10">Wishlist</p>
+                    </span>
+                    {/* Sale Percent  */}
                     <p className={`${elm.sale_percent === 0 ? "hidden" : ""}`}>
-                      <span className="text-red-500 absolute bg-white/70 top-2 left-3 font-semibold">
+                      <span className="text-red-500 absolute bg-white/70 dark:bg-transparent top-2 left-3 font-semibold">
                         {elm.sale_percent}% OFF
                       </span>
                     </p>
@@ -174,7 +193,7 @@ const Store = () => {
                       onClick={() => {
                         addToLibrary(elm), handlePopupLib();
                       }}
-                      className="bg-green-500 w-full py-1 text-xs sm:text-base hover:text-white"
+                      className="bg-[var(--baseColor)] w-full py-1 text-xs dark:hover:text-black sm:text-base hover:text-white"
                     >
                       Add to Library
                     </button>
@@ -183,12 +202,12 @@ const Store = () => {
               );
             })
           ) : (
-            <p className="text-gray-500 text-lg font-semibold text-center w-full">
+            <p className="text-gray-500 text-lg font-semibold text-center dark:text-gray-300 w-full">
              {!isNaN(searchStr)?( <h1>No books of price Rs:{searchStr}</h1> ):(<h1>No books found for "{searchStr}"</h1>)}
             </p>
           )}
         </div>
-        <div className="flex gap-2 justify-center sm:bg-transparent bg-green-500">
+        <div className="flex gap-2 justify-center sm:bg-transparent dark:text-gray-300 bg-green-500">
           <button
             disabled={itemsCount >= booksData.length}
             onClick={() => setItemsCount(itemsCount + 6)}

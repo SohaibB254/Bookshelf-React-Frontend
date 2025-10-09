@@ -6,8 +6,8 @@ const Profile = () => {
     <>
       <div className="flex">
         <UserSidebar />
-        <div id="accountInfo" className=" lg:w-[90vw] md:px-12 font-inter py-10">
-          <div id="basicInfo" className="rounded-md px-4  w-full" >
+        <div id="accountInfo" className=" lg:w-[90vw] md:px-12 dark:text-gray-300 font-inter py-10">
+          <div id="basicInfo" className="rounded-md px-4  w-full dark:text-gray-300" >
             <div className="flex justify-between border-b border-gray-500">
               <h1 className="text-xl text-[var(--baseColor)]  py-4" >Personal Info</h1>
               <button className="text-blue-500">Edit</button>

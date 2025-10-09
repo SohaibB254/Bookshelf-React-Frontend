@@ -1,8 +1,17 @@
 import React from "react";
 import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
-  BarChart, Bar
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+  BarChart,
+  Bar,
 } from "recharts";
+import { useTheme } from "../../../context/ThemeContext";
 
 const visitorsData = [
   { day: "Mon", visitors: 120 },
@@ -25,34 +34,55 @@ const salesData = [
 ];
 
 const DataCharts = () => {
+  let { theme } = useTheme();
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
       {/* Visitors Line Chart */}
-      <div className="bg-white p-4 rounded-xl shadow-md border">
+      <div className="bg-white dark:bg-gray-900 dark:border-gray-800 p-4 rounded-xl shadow-md border">
         <h2 className="text-lg font-semibold mb-3">Visitors (This Week)</h2>
         <ResponsiveContainer width="100%" height={300}>
           <LineChart data={visitorsData}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="day" />
             <YAxis />
-            <Tooltip />
+            <Tooltip
+              contentStyle={{
+                backgroundColor: theme === "dark" ? "#0f172a" : "#ffffff",
+                color: theme === "dark" ? "#f1f5f9" : "#1e293b",
+              }}
+            />
             <Legend />
-            <Line type="monotone" dataKey="visitors" stroke="#4F46E5" strokeWidth={2} />
+            <Line
+              type="monotone"
+              dataKey="visitors"
+              stroke="#4F46E5"
+              strokeWidth={2}
+            />
           </LineChart>
         </ResponsiveContainer>
       </div>
 
       {/* Sales Bar Chart */}
-      <div className="bg-white p-4 rounded-xl shadow-md border">
+      <div className="bg-white dark:bg-gray-900 dark:border-gray-800 p-4 rounded-xl shadow-md border">
         <h2 className="text-lg font-semibold mb-3">Sales (This Week)</h2>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={salesData}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="day" />
             <YAxis />
-            <Tooltip />
+            <Tooltip
+              contentStyle={{
+                backgroundColor: theme === "dark" ? "#0f172a" : "#ffffff",
+                color: theme === "dark" ? "#f1f5f9" : "#1e293b",
+              }}
+            />
             <Legend />
-            <Bar dataKey="sales" fill="#10B981" barSize={40} />
+            <Bar
+              dataKey="sales"
+              fill= "#24BF6C"
+              barSize={40}
+            />
           </BarChart>
         </ResponsiveContainer>
       </div>

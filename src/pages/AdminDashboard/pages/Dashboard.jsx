@@ -17,17 +17,15 @@ const orders = [
 const Dashboard = () => {
   return (
     <>
-      <div className="flex overflow-x-hidden px-2 font-inter ">
+      <div className="flex overflow-x-hidden px-2 font-inter dark:text-gray-300 ">
         <div id="dashboardContainer" className="  sm:px-12 py-4">
             <h1 className="sm:text-2xl font-semibold my-3">Analytics</h1>
           <div id="analytics" className=" flex gap-3 sm:px-0 px-12 flex-wrap ">
-            <div
-              id="card"
-              className="py-2 px-4 h-[200px] w-64 rounded-lg flex flex-col gap-3 border-gray-300 border"
+            <div id="card" className="py-2 px-4 h-[200px] w-64 rounded-lg flex flex-col gap-3 shadow-sm shadow-gray-600 dark:shadow-inner  dark:shadow-gray-700/60 dark:bg-gray-800 dark:border-gray-800  "
             >
               <div className="flex justify-between">
                 <h4 className="text-zinc-500">Users</h4>
-                <p className="px-1 border flex gap-1 items-center boder-black rounded-md">
+                <p className="px-1 border flex gap-1 items-center dark:border-gray-800  rounded-md">
                   <i className="fa-solid fa-arrow-trend-up"></i>+12%
                 </p>
               </div>
@@ -37,13 +35,11 @@ const Dashboard = () => {
                 <p className="text-zinc-500">Meets growth projection</p>
               </div>
             </div>
-            <div
-              id="card"
-              className="py-2 px-4 h-[200px] w-64 rounded-lg flex flex-col gap-3 border-gray-300 border"
+            <div id="card"  className="py-2 px-4 h-[200px] w-64 rounded-lg flex flex-col gap-3 shadow-sm shadow-gray-600 dark:shadow-inner  dark:shadow-gray-700/60 dark:bg-gray-800 dark:border-gray-800 "
             >
               <div className="flex justify-between">
                 <h4 className="text-zinc-500">Books</h4>
-                <p className="px-1 border flex gap-1 items-center boder-black rounded-md">
+                <p className="px-1 border flex gap-1 items-center dark:border-gray-800  rounded-md">
                   <i className="fa-solid fa-arrow-trend-up"></i>+10.3%
                 </p>
               </div>
@@ -53,13 +49,11 @@ const Dashboard = () => {
                 <p className="text-zinc-500">Meets growth projection</p>
               </div>
             </div>
-            <div
-              id="card"
-              className="py-2 px-4 h-[200px] w-64 rounded-lg flex flex-col gap-3 border-gray-300 border"
+            <div  id="card" className="py-2 px-4 h-[200px] w-64 rounded-lg flex flex-col gap-3 shadow-sm shadow-gray-600 dark:shadow-inner  dark:shadow-gray-700/60 dark:bg-gray-800 dark:border-gray-800 "
             >
               <div className="flex justify-between">
                 <h4 className="text-zinc-500">Sales</h4>
-                <p className="px-1 border boder-black flex gap-1 items-center rounded-md">
+                <p className="px-1 border  flex gap-1 dark:border-gray-800 items-center rounded-md">
                   <i className="fa-solid fa-arrow-trend-up"></i>+14.5%
                 </p>
               </div>
@@ -69,13 +63,11 @@ const Dashboard = () => {
                 <p className="text-zinc-500">Meets growth projection</p>
               </div>
             </div>
-            <div
-              id="card"
-              className="py-2 px-4 h-[200px] w-64 rounded-lg flex flex-col gap-3 border-gray-300 border"
+            <div id="card" className="py-2 px-4 h-[200px] w-64 rounded-lg flex flex-col gap-3 shadow-sm shadow-gray-600 dark:shadow-inner  dark:shadow-gray-700/60 dark:bg-gray-800 dark:border-gray-800 "
             >
               <div className="flex justify-between">
                 <h4 className="text-zinc-500">Orders</h4>
-                <p className="px-1 border flex gap-1 items-center boder-black rounded-md">
+                <p className="px-1 border flex gap-1 items-center dark:border-gray-800  rounded-md">
                   <i className="fa-solid fa-arrow-trend-up"></i>+4%
                 </p>
               </div>

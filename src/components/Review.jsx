@@ -20,9 +20,9 @@ const Review = () => {
     <div>
       <div
         id="ReviewContainer"
-        className="text-[30px] px-8 sm:px-12 py-2"
+        className="text-[30px] px-8 sm:px-12 py-2 dark:text-gray-400"
       >
-        <h1 className="font-semibold text-2xl lg:text-[1.3em] mb-10">Reviews</h1>
+        <h1 className="font-semibold dark:text-[var(--lighter)] sm:text-3xl text-xl text-[var(--darker)] mb-10">Reviews</h1>
         {reviews.map((elm, idx) => (
           <div
             key={idx}
@@ -39,7 +39,7 @@ const Review = () => {
               <p>
                 <i className="fa-solid fa-thumbs-up cursor-pointer text-blue-500"></i>: {elm.likes}
               </p>
-              <p className='cursor-pointer text-black'>Reply</p>
+              <p className='cursor-pointer dark:text-gray-300 text-black'>Reply</p>
             </div>
           </div>
         ))}
@@ -47,7 +47,7 @@ const Review = () => {
 
       <button
         onClick={showMoreReviews}
-        className="text-center hover:underline px-8 sm:px-12"
+        className="text-center hover:underline px-8 dark:text-gray-300 sm:px-12"
       >
         {reviewCount < bookReviews.length ? 'Show More' : 'Show Less'}
       </button>

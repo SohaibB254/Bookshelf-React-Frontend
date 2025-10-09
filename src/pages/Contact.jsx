@@ -7,8 +7,8 @@ import Stats from "../components/Stats";
 const Contact = () => {
   return (
     <>
-      <div className=" flex lg:flex-row flex-col-reverse font-inter h-auto items-center px-6 lg:px-12 w-screen relative border py-6">
-        <div className=" sm:h-[500px] lg:gap-7 rounded-md bg-[var(--baseColor)] shadow-md shadow-gray-400  text-white  w-full p-4 lg:p-6  flex justify-around flex-col lg:w-auto">
+      <div className=" flex lg:flex-row flex-col-reverse font-inter h-auto items-center px-6 lg:px-12 w-screen relative border dark:border-gray-700 py-6">
+        <div className=" sm:h-[500px] lg:gap-7 rounded-md  bg-[var(--baseColor)] shadow-md shadow-gray-400 dark:shadow-gray-800  dark:border-gray-700 text-white  w-full p-4 lg:p-6  flex justify-around flex-col lg:w-auto">
           <div className=" sm:p-3 p-1 border-b">
             <h1 className="sm:text-xl  cursor-pointer lg:text-2xl font-semibold">
               Phone <i className="fa-solid fa-phone"></i>
@@ -48,24 +48,24 @@ const Contact = () => {
           id="formContainer"
           className="flex h-[300px] sm:h-[500px] flex-col w-full  items-center"
         >
-          <form className="flex flex-col gap-2 h-full py-4 px-6 lg:p-12 w-full border rounded-md shadow-md shadow-gray-400 border-gray-300">
-            <h1 className="sm:text-3xl text-xl font-semibold">Get in touch</h1>
+          <form className="flex flex-col gap-2 h-full py-4 px-6 lg:p-12 w-full border rounded-md shadow-md dark:shadow-gray-800 shadow-gray-400 dark:border-gray-700 border-gray-300">
+            <h1 className="sm:text-3xl text-xl text-[var(--darker)] dark:text-[var(--lighter)]  font-semibold">Get in touch</h1>
             <input
-              className="border border-gray-400 text-xs sm:text-base outline-none rounded-sm  transition  p-2 "
+              className="border border-gray-400 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300 text-xs sm:text-base outline-none rounded-sm  transition  p-2 "
               type="text"
               name="username"
               id="username"
               placeholder="Your Name"
             />
             <input
-              className="border border-gray-400 text-xs sm:text-base outline-none rounded-sm  transition  p-2 "
+              className="border border-gray-400 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300 text-xs sm:text-base outline-none rounded-sm  transition  p-2 "
               type="email"
               name="email"
               id="email"
               placeholder="Your Email"
             />
             <textarea
-              className="w-full border-gray-400 text-xs sm:text-base outline-none rounded-sm   border p-2 h-full "
+              className="w-full border-gray-400 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300 text-xs sm:text-base outline-none rounded-sm   border p-2 h-full "
               name="message"
               id="message"
               placeholder="Write your message/suggestion/complain"
@@ -79,6 +79,7 @@ const Contact = () => {
           </form>
         </div>
       </div>
+
       <Services />
       <Stats/>
       <NewsLetter />

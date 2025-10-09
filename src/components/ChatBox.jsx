@@ -32,7 +32,7 @@ const ChatBox = ({ onClose }) => {
   return (
     <div className="flex flex-col h-80 ">
       {/* Header */}
-      <div className="flex justify-between items-center bg-[var(--baseColor)] text-white p-2 rounded-t-md">
+      <div className="flex justify-between items-center bg-[var(--baseColor)] text-gray-300 p-2 rounded-t-md">
         <h3 className="font-semibold flex flex-col items-start">Bookstore Assistant
             <button
     onClick={() => setMessages([])}
@@ -52,8 +52,8 @@ const ChatBox = ({ onClose }) => {
             key={i}
             className={`p-2 rounded-md max-w-[75%] ${
               msg.sender === "user"
-                ? "ml-auto bg-[var(--baseColor)] text-right"
-                : "bg-gray-100 border border-black"
+                ? "ml-auto bg-[var(--baseColor)] dark:text-gray-300  text-right"
+                : "bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 border "
             }`}
           >
             {msg.text}
@@ -65,7 +65,7 @@ const ChatBox = ({ onClose }) => {
       <div className="flex items-center gap-2 p-2 border-t">
         <input
           type="text"
-          className="flex-1 border rounded-md px-2 py-1 text-sm"
+          className="flex-1 border dark:border-gray-700 outline-none dark:bg-gray-800 dark:text-gray-300 rounded-md px-2 py-1 text-sm"
           placeholder="Try asking something"
           value={input}
           onChange={(e) => setInput(e.target.value)}

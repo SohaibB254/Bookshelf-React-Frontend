@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router";
 import { useCheckout } from "../context/CheckoutContext";
+import { useCart } from "../context/CartContext";
+import { div, h1 } from "motion/react-client";
 
 const Checkout = () => {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [showAddress, setShowAddress] = useState(true);
+  const { itemsInCart } = useCart()
   const { checkoutItem,totals } = useCheckout();
   const [payMethod, setPayMethod] = useState("online");
   const path = useLocation().pathname
@@ -23,7 +26,7 @@ const Checkout = () => {
   };
   return (
     <>
-      <div className=" w-screen relative  font-inter  px-[5vw] ">
+      <div className=" w-screen relative  font-inter dark:text-gray-300  px-[5vw] ">
         <div
           id="Checkout"
           className={`flex flex-wrap sm:flex-nowrap checkout-page ${
@@ -31,9 +34,17 @@ const Checkout = () => {
           } w-[90vw] gap-1 mt-4`}
         >
           <div className="w-[90vw]">
-            <div id="OrderReview" className="border w-auto pt-2 pl-4 h-[30vh] ">
-              <h1 className="text-base sm:text-[24px]"> Order Summary</h1>
+            <div id="OrderReview" className="border w-auto pt-2 pl-4 sm:h-[300px] ">
+              <h1 className=" text-xl font-semibold px-4"> Order Summary</h1>
             { path.startsWith('/total') ? (
+              <div className="flex sm:items-center sm:flex-row py-4 flex-col justify-between px-3">
+                <div id="itemNames">
+                  <h1>Items:</h1>
+                  {itemsInCart.map((item)=>{
+                    return <h1 className="text-green-500">{item.title} x {item.quantity}</h1>
+                  })}
+                </div>
+
                 <div className=" flex flex-col mt-3">
                     <span>
                       Total Price:{" "}
@@ -48,6 +59,7 @@ const Checkout = () => {
                                         </span>
                     <span>Total items: {totals.totalItems}</span>
                   </div>
+                   </div>
             ):(
                  <div className="flex gap-3 mt-3">
                 <div id="OrderImg">
@@ -90,8 +102,8 @@ const Checkout = () => {
 
             </div>
             <div id="OrderDelievryDetails" className="border  px-4 py-3">
-              <div className="flex w-full justify-between pr-4">
-                <h1 className=" text-base sm:text-[24px]">Delivery Details</h1>
+              <div className="flex w-full justify-between px-4">
+                <h1 className=" text-xl font-semibold ">Delivery Details</h1>
                 <div className="flex items-center gap-2">
                   <input
                     onClick={handleDeliveryInfo}
@@ -108,38 +120,38 @@ const Checkout = () => {
                 } flex-col gap-2  mt-3`}
               >
                 <input
-                  className="w-80 p-2 rounded-sm"
+                  className="w-80 p-2 dark:bg-gray-900 rounded-sm"
                   type="text"
                   name="name"
                   placeholder="Full Name"
                 />
                 <input
-                  className="min-w-[80%] p-2 rounded-sm"
+                  className="min-w-[80%] p-2 dark:bg-gray-900  rounded-sm"
                   type="text"
                   name="name"
                   placeholder="Address"
                 />
                 <div>
                   <input
-                    className=" w-80 my-2 mr-2 p-2 rounded-sm"
+                    className=" w-80 my-2 mr-2 dark:bg-gray-900 p-2 rounded-sm"
                     type="text"
                     name="city"
                     placeholder="City/Region"
                   />
                   <input
-                    className=" w-80 my-2  p-2 rounded-sm"
+                    className=" w-80 my-2  p-2 dark:bg-gray-900 rounded-sm"
                     type="number"
                     name="zipCode"
                     placeholder="Zip Code"
                   />
                   <input
-                    className=" w-80 my-2 mr-2  p-2 rounded-sm"
+                    className=" w-80 my-2 mr-2  p-2 dark:bg-gray-900 rounded-sm"
                     type="email"
                     name="email"
                     placeholder="Email"
                   />
                   <input
-                    className="w-80  my-2 p-2 rounded-sm"
+                    className="w-80  my-2 p-2 dark:bg-gray-900 rounded-sm"
                     type="text"
                     name="phone"
                     placeholder="Phone"
@@ -157,15 +169,14 @@ const Checkout = () => {
               </form>
             </div>
           </div>
-          <div
-            id="OrderPaymentDetails"
-            className="border  sm:text-[24px] px-4 w-[50%] "
+          <div id="OrderPaymentDetails"
+            className="border py-3  sm:text-[24px] px-4 w-[50%] "
           >
             <div>
               <h1 className=" text-base">Got a Coupon Code?</h1>
               <div className="flex items-center  text-base border-b">
                 <input
-                  className="w-80 h-10 my-3 p-2  rounded-r-none rounded-sm"
+                  className="w-80 h-10 my-3 p-2 dark:bg-gray-900  rounded-r-none rounded-sm"
                   type="text"
                   name="code"
                   placeholder="Coupon Code"
@@ -247,19 +258,19 @@ const Checkout = () => {
                     <label htmlFor="card">Debit/Credit Card</label>
                   </span>
                   <input
-                    className="w-80 my-1 mr-4 p-2 rounded-sm"
+                    className="w-80 my-1 mr-4 p-2 dark:bg-gray-900 rounded-sm"
                     type="number"
                     name="cardNumber"
                     placeholder="Card number"
                   />
                   <input
-                    className="w-80 my-1 mr-4 p-2 rounded-sm"
+                    className="w-80 my-1 mr-4 p-2 dark:bg-gray-900 rounded-sm"
                     type="date"
                     name="cardExpDate"
                     placeholder="Expiry MM/YY e.g, 07/35 "
                   />
                   <input
-                    className="w-80 my-1 mr-4 p-2 rounded-sm"
+                    className="w-80 my-1 mr-4 p-2 dark:bg-gray-900 rounded-sm"
                     type="number"
                     name="cardCv"
                     placeholder="Security Number e.g, 054"
@@ -289,11 +300,11 @@ const Checkout = () => {
       </div>
       {showConfirmation && (
         <div className="confirmation-modal">
-          <div className="w-[450px] flex flex-col gap-3 text-[26px] items-center py-10 h-auto bg-white">
+          <div className="w-[450px] flex flex-col gap-3 text-[26px] items-center rounded-md py-10 h-auto dark:bg-gray-800 dark:text-gray-200 bg-white">
             <h1 className="font-semibold">Congratulations!🥳</h1>
             <p className="text-[0.6em]">Your order is successfully placed</p>
             <i
-              className="fa-solid fa-circle-check text-[54px] animate-pulse text-[#4fbe81]"
+              className="fa-solid fa-circle-check text-[54px] animate-pulse text-[var(--baseColor)]"
               style={{ color: "#63E6BE;" }}
             ></i>
             <Link to="/store/all" className="hover:underline text-[0.5em]">

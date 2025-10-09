@@ -17,7 +17,7 @@ const ChatWidget = () => {
 
       {/* Chat Box */}
       {isOpen && (
-        <div className="absolute bottom-16 right-0 w-80 bg-white rounded-lg shadow-lg border p-4">
+        <div className="absolute bottom-16 right-0 w-80 bg-white dark:bg-gray-800 rounded-lg shadow-md dark:border-gray-700 dark:shadow-gray-700 border p-4">
           <ChatBox onClose={() => setIsOpen(false)} />
         </div>
       )}
