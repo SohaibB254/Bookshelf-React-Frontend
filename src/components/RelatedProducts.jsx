@@ -36,7 +36,7 @@ const RelatedProducts = () => {
           );
         })}
       </div>
-      <Link to={"/store/all"} className="text-base hover:underline  my-10 ">
+      <Link to={"/store/all"} className="text-base hover:underline dark:text-gray-300  my-10 ">
         See More
       </Link>
     </div>

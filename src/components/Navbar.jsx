@@ -182,7 +182,7 @@ const Navbar = () => {
                           itemsInWish.map((item)=>{
                             return (
                                 <div key={item.id} className="item flex items-center justify-between py-1">
-                      <div className="WishItemImg w-14 h-20 bg-blue-500">
+                      <div className="WishItemImg w-14 h-20">
                         <img src={item.cover_photo} alt="" />
                       </div>
                         <h1 className="text-[var(--baseColor)] truncate">{item.title}</h1>
