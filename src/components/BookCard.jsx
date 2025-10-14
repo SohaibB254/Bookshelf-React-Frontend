@@ -160,7 +160,7 @@ const BookCard = () => {
         </div>
       </div>
       <div id="bookDescription" className="max-w-screen py-3 px-12 font-inter">
-                <div className="flex  text-base border-b border-gray-300  font-normal ">
+                <div className="flex  text-base border-b dark:border-gray-700  font-normal ">
                   <Link className="sm:p-4 p-1 sm:text-3xl text-xl dark:text-[var(--lighter)] text-[var(--darker)] ">Description</Link>
                 </div>
                 <div className="sm:text-base text-sm sm:px-10 flex dark:text-gray-300 flex-col gap-3 py-4">

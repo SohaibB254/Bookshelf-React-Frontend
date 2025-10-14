@@ -12,6 +12,10 @@
 body{
     overflow-x: hidden;
 }
+#Home{
+    background-image: url('./assets/homeV1-bg.jpg');
+    background-size: cover;
+}
 .font-inter {
     font-family: "Inter";
 }
@@ -71,11 +75,6 @@ body{
     appearance: textfield;
    -moz-appearance: textfield;
 }
-/*Making a custom bg for popular categories component*/
-.fade-bg{
-    background:linear-gradient(to right,white,rgba(128, 128, 128, 0.579),white);
-}
-
 
 @media (max-width: 1024px) {
 .u-btn{
@@ -99,6 +98,7 @@ body{
 .u-btn2:hover {
     color: rgb(87, 84, 84);
 }
+
 
 #catContainer{
     overflow-x: auto;

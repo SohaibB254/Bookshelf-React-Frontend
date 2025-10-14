@@ -24,7 +24,7 @@ const ThemeSwitcher = () => {
         className="flex items-center gap-2   px-3    transition"
       >
         {theme === "dark" ? <Moon size={16} /> : theme === "light" ? <Sun size={16} /> : <Monitor size={16} />}
-        <span className="capitalize md:block hidden">{theme}</span>
+       
       </button>
 
       {open && (

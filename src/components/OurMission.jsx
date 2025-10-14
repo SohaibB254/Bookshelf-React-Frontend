@@ -38,7 +38,7 @@ const OurMission = () => {
                 assumenda? Voluptatum, omnis?
               </div>
               <button className="py-2 text-blue-800  w-fit">
-                Learn More &gt;&gt;
+                Learn More
               </button>
             </div>
           );

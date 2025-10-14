@@ -81,7 +81,7 @@ const AdminDbNav = () => {
       <div className={`w-2 ${isMobile ? "" : "hidden"}  `}>
         <i
           onClick={toggleSidebar}
-          className={`fa-solid absolute fa-ellipsis-vertical text-2xl py-3  px-4`}
+          className={`fa-solid absolute fa-ellipsis-vertical dark:text-gray-300 text-2xl py-3  px-4`}
         ></i>
       </div>
     </>

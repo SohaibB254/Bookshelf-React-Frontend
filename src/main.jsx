@@ -4,6 +4,8 @@ import './index.css'
 import App from './App.jsx'
 import { BrowserRouter, Route, Routes } from 'react-router'
 import { ThemeProvider } from './context/ThemeContext.jsx'
+import NotFound from './pages/NotFound.jsx'
+
 createRoot(document.getElementById('root')).render(
  <StrictMode>
   <BrowserRouter>
@@ -11,5 +13,6 @@ createRoot(document.getElementById('root')).render(
    <App />
    </ThemeProvider>
   </BrowserRouter>
+
  </StrictMode>
 )

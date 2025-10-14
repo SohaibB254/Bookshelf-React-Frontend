@@ -8,12 +8,12 @@ const Plans = () => {
       </h1>
 
       <div className="w-screen gap-3  h-auto lg:p-12 flex px-3 mt-8  justify-center md:flex-nowrap flex-wrap">
-        <div className=" py-2 pt-0 shadow-md overflow-hidden dark:shadow-gray-800 dark:border-gray-700   sm:flex-1 lg:flex-initial  flex flex-col gap-4 w-[88%] md:w-1/3  rounded-md">
-          <div className="bg-red-400 px-2">
-            <h1 className="text-3xl mt-2 font-bold text-center text-white uppercase">
+        <div className=" py-2 pt-0 shadow-md overflow-hidden border dark:shadow-gray-800 dark:border-gray-700   sm:flex-1 lg:flex-initial  flex flex-col gap-4 w-[88%] md:w-1/3  rounded-md">
+          <div className="px-2">
+            <h1 className="text-3xl mt-2 font-bold text-center  uppercase">
               Basic
             </h1>
-            <p className="text-center text-white/80 ">
+            <p className="text-center text-gray-500 ">
               Per month/ cancel anytime
             </p>
           </div>
@@ -61,12 +61,12 @@ const Plans = () => {
             Subscribe now
           </button>
         </div>
-        <div className=" py-2 pt-0 shadow-md overflow-hidden dark:shadow-gray-800 dark:border-gray-700   sm:flex-1 lg:flex-initial flex flex-col gap-4 w-[88%] md:w-1/3 rounded-md">
-          <div className="bg-blue-400 px-2 ">
-            <h1 className="text-3xl mt-2 font-bold text-center text-white uppercase">
+        <div className=" py-2 pt-0 shadow-md overflow-hidden border dark:shadow-gray-800 dark:border-gray-700   sm:flex-1 lg:flex-initial flex flex-col gap-4 w-[88%] md:w-1/3 rounded-md">
+          <div className=" px-2 ">
+            <h1 className="text-3xl mt-2 font-bold text-center  uppercase">
               Standard
             </h1>
-            <p className="text-center text-white/80">
+            <p className="text-center text-gray-400">
               Per month/ cancel anytime
             </p>
           </div>
@@ -114,15 +114,15 @@ const Plans = () => {
             Subscribe now
           </button>
         </div>
-        <div className=" py-2 pt-0 shadow-md overflow-hidden dark:shadow-gray-800 dark:border-gray-700 relative  sm:flex-1 lg:flex-initial flex flex-col gap-4 w-[88%] md:w-1/3 rounded-md">
-          <div className="bg-green-500 px-2 ">
+        <div className=" py-2 pt-0 shadow-md overflow-hidden border dark:shadow-gray-800 dark:border-gray-700 relative  sm:flex-1 lg:flex-initial flex flex-col gap-4 w-[88%] md:w-1/3 rounded-md">
+          <div className=" px-2 ">
             <h1 className="absolute top-40 right-0 text-white  bg-red-400 font-semibold px-2  text-xl ">
               Most Popular 🔥
             </h1>
-            <h1 className="text-3xl mt-2 font-bold text-center text-white uppercase">
+            <h1 className="text-3xl mt-2 font-bold text-center  uppercase">
               Premium
             </h1>
-            <p className="text-center text-white/80">
+            <p className="text-center text-gray-400">
               Per month/ cancel anytime
             </p>
           </div>

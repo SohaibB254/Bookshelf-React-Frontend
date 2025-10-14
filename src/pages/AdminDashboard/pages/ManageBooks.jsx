@@ -77,6 +77,12 @@ const ManageBooks = () => {
                     name=""
                     placeholder="Discount %"
                   />
+                  <input
+                    className="px-5 py-3 border  dark:border-gray-800 rounded dark:bg-gray-900 outline-none"
+                    type="text"
+                    name=""
+                    placeholder="ISBN"
+                  />
                   <select
                     className="px-5 py-3 border  dark:border-gray-800 rounded dark:bg-gray-900 outline-none"
                     type="text"

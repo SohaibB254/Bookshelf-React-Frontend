@@ -28,7 +28,7 @@ const Dropdown = ({ options, selected, onChange, placeholder ,bg }) => {
 
       {/* Dropdown menu */}
       {isOpen && (
-        <div className={`absolute mt-1 w-full bg-${bg} backdrop-blur-sm dark:text-gray-300 dark:bg-gray-900  dark:border-gray-800  border rounded-md shadow-lg z-50`}>
+        <div className={`absolute mt-1 w-full bg-gray-100 backdrop-blur-sm dark:text-gray-300 dark:bg-gray-900  dark:border-gray-800  border rounded-md shadow-lg z-50`}>
           {options.map((opt, idx) => (
             <button
               key={idx}

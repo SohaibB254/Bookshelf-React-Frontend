@@ -26,7 +26,7 @@ const Home = () => {
       {homeV === "v2" ? (
         <div
           id="hv2"
-          className="h-[100vh] sm:h-[min(90vh,50vw)] bg-gray-100 dark:bg-gray-800 py-8"
+          className="h-[100vh] sm:h-[min(90vh,50vw)] bg-gray-100 dark:bg-gray-900 py-8"
         >
           <header id="headerV2" className="lg:px-10  flex overflow-auto  py-4">
 
@@ -75,7 +75,7 @@ const Home = () => {
                     }}
                     className={` bg-cover  relative overflow-hidden b lg:w-[500px] lg:h-[500px] h-[200px] w-[200px] sm:h-[300px] sm:w-[300px] rounded-full flex items-center justify-center p-10`}
                   >
-                    <div className="absolute inset-0 backdrop-blur-sm bg-black/50"></div>
+                    <div className="absolute inset-0 backdrop-blur-[2px] bg-black/50"></div>
                     <div
                       id="img"
                       className="lg:h-[300px] z-20 h-[150px] sm:h-[200px]"
@@ -92,15 +92,19 @@ const Home = () => {
         // Home V1 Design
         <div
           id="Home"
-          className="  flex-col py-10 flex font-sans text-black  bg-gray-100 justify-between dark:bg-gray-800  items-center dark:text-white h-[90vh] sm:h-[min(90vh,90vw)]"
+          className="  flex-col py-10 flex font-sans relative text-black  bg-gray-100/80 justify-between dark:bg-gray-800  items-center dark:text-white h-[90vh] sm:h-[min(90vh,90vw)]"
         >
-          <div
-            className="h-auto  flex justify-center items-center"
+          {/* Overlay */}
+
+<div className="absolute h-full w-full bg-black/60 backdrop-blur-sm top-0">
+  </div>
+       <div
+            className="h-full z-20 flex justify-center items-center"
           >
             {/* Home left */}
-            <div className="w-[100%] flex flex-col px-4 sm:px-10 ">
+            <div className="w-[100%] flex flex-col px-4  ">
               <TextType
-              className="sm:text-[46px] md:text-[76px] text-[36px] text-center    lg:mt-0 font-merri  font-bold "
+              className="sm:text-[46px] md:text-[76px] text-[36px] text-center   font-merri  font-bold "
               text={["An Online Library"]}
               typingSpeed={70}
               cursorCharacter=""
@@ -108,35 +112,35 @@ const Home = () => {
               textColors={['var(--baseColor)']}
                />
               <TextType
-              className="sm:text-[46px] md:text-[76px] text-[36px] text-center    lg:mt-0 font-merri  font-bold "
+              className="sm:text-[46px] md:text-[76px] text-[36px] text-center   font-merri  font-bold "
               text={["And Book Store"]}
               typingSpeed={60}
               initialDelay={1000}
                cursorCharacter=""
               textColors={[`#E0E0E0`]}
                />
-              <p className="font-inter mt-6 text-center text-gray-500 dark:text-gray-300 fade-elm">
+              <p className="font-inter mt-2 text-center text-gray-300 fade-elm">
                 Explore worlds from <strong>millions</strong> of authors across
                 every genre imaginable <br />
                 <span className="italic font-inter hidden sm:block">
                   Epic tales, self-help gems, and timeless classics
                 </span>{" "}
               </p>
-              <div className="flex sm:flex-row  sm:items-center flex-col justify-center gap-2 mt-12 sm:mt-8 ">
+              <div className="flex sm:flex-row  sm:items-center flex-col justify-center gap-2 mt-12  ">
                 <Link to={"/library"}>
-                  <button className="u-btn border border-[var(--baseColor )]   rounded-md w-full">
+                  <button className="u-btn    rounded-md  w-full">
                     Start Reading
                   </button>
                 </Link>
                 <Link to="/store/all">
-                  <button className="u-btn   rounded-md w-full">
+                  <button className=" border p-2 hover:bg-[var(--baseColor)] hover:border-[var(--baseColor)] text-white  rounded-md  w-full">
                     Browse Books
                   </button>
                 </Link>
               </div>
             </div>
           </div>
-          <div>
+          <div className="text-white z-30 ">
             <ul className="flex w-full justify-center  gap-8 sm:gap-5">
               <i className=" cursor-pointer hover:scale-110 transition-all fa-brands fa-instagram"></i>
               <i className=" cursor-pointer hover:scale-110 transition-all fa-brands fa-youtube"></i>

@@ -3,13 +3,19 @@ import Services from "../components/Services";
 import NewsLetter from "../components/NewsLetter";
 import Footer from "../components/Footer";
 import Stats from "../components/Stats";
+import contactBg from '../assets/contact-bg.jpg'
 
 const Contact = () => {
   return (
     <>
-      <div className=" flex lg:flex-row flex-col-reverse font-inter h-auto items-center px-6 lg:px-12 w-screen relative border dark:border-gray-700 py-6">
-        <div className=" sm:h-[500px] lg:gap-7 rounded-md  bg-[var(--baseColor)] shadow-md shadow-gray-400 dark:shadow-gray-800  dark:border-gray-700 text-white  w-full p-4 lg:p-6  flex justify-around flex-col lg:w-auto">
-          <div className=" sm:p-3 p-1 border-b">
+      <div className=" flex lg:flex-row flex-col-reverse font-inter h-auto items-center px-6 lg:px-12 w-screen relative py-6">
+        <div style={{
+          backgroundImage: `url(${contactBg})`
+        }} className=" sm:h-[500px] lg:gap-7 rounded-md bg-cover relative  shadow-md shadow-gray-400 dark:shadow-gray-800  dark:border-gray-700 text-white  w-full p-4 lg:p-6  flex justify-around flex-col lg:w-auto">
+
+            <div className="h-full w-full bg-black/40 backdrop-blur-[3px] right-0 rounded-md  absolute">
+          </div>
+          <div className=" sm:p-3 p-1 border-b z-10">
             <h1 className="sm:text-xl  cursor-pointer lg:text-2xl font-semibold">
               Phone <i className="fa-solid fa-phone"></i>
             </h1>
@@ -17,7 +23,7 @@ const Contact = () => {
               +92 323 4353123{" "}
             </h1>
           </div>
-          <div className=" sm:p-3 p-1 border-b">
+          <div className=" sm:p-3 p-1 border-b z-10">
             <h1 className="sm:text-xl    cursor-pointer lg:text-2xl font-semibold">
               Email <i className="fa-solid fa-envelope"></i>
             </h1>
@@ -25,7 +31,7 @@ const Contact = () => {
               bookshelf@gmail.com
             </h1>
           </div>
-          <div className=" sm:p-3 px-1 py-3 border-b">
+          <div className=" sm:p-3 px-1 py-3 border-b z-10">
             <h1 className="sm:text-xl   cursor-pointer lg:text-2xl font-semibold">
               Location <i className="fa-solid fa-location-dot"></i>
             </h1>
@@ -33,7 +39,7 @@ const Contact = () => {
               H.N J232, Street 35 Block B Wapda Town, Lahore Pakistan
             </h1>
           </div>
-          <div className="sm:px-3 px-1 flex flex-col gap-1">
+          <div className="sm:px-3 px-1 flex flex-col gap-1 z-10">
             <h1>Follow us</h1>
             <ul className="flex gap-4">
               <i className=" cursor-pointer hover:scale-110 transition-all fa-brands fa-instagram"></i>

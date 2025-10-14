@@ -36,7 +36,8 @@ const Library = () => {
                         <button onClick={() => removeBook(item.id)} className=' text-gray-500 hover:text-red-500'>Remove book</button>
                       </div>
                     </div>
-
+                      {/* Login Warning Modal */}
+                      
                   </div>
                 </div>
               })
@@ -51,4 +52,4 @@ const Library = () => {
   )
 }
 
-export default Library
+export default React.memo(Library)

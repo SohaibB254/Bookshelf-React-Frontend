@@ -49,7 +49,7 @@ const Navbar = () => {
     <>
       <div
         id="NavFakeBg"
-        className={`${path.startsWith("/auth") ? "hidden" : ""} dark:bg-gray-900 w-screen h-[10vh] absolute top-0`}
+        className={`${path.startsWith("/auth") ? "hidden" : ""} dark:bg-gray-900  w-screen h-[10vh] absolute top-0`}
       ></div>
       <div
         id="NavbarContainer"
@@ -64,7 +64,7 @@ const Navbar = () => {
           <div id="Logo">
             <Link >
             <span className="flex relative items-center">
-              <h1 className="text-[var(--baseColor)] sm:text-[1em] text-[0.9em] cursor-pointer transition hover:text-[var(--darker)] ">
+              <h1 className="text-[var(--baseColor)] sm:text-[1em] text-[0.7em] cursor-pointer transition hover:text-[var(--darker)] ">
                 BookShelf
               </h1>
             </span>
@@ -77,8 +77,7 @@ const Navbar = () => {
                 onChange={(value) =>
                   handleHomeV(value === "Home V1" ? "v1" : "v2")
                 }
-                bg ={`${homeV === 'v1'? 'black/50':'white'}`}
-                placeholder="Select Home Style"
+                bg ={``}
               />
                  </div>
             </Link>
@@ -239,7 +238,7 @@ const Navbar = () => {
                 to="/auth/signup"
                 className="border-b transition hover:bg-gray-100 dark:hover:bg-gray-800 dark:border-gray-700   px-2 py-1"
               >
-                Signup
+                Sign Up
               </Link>
             </div>
           </div>

@@ -25,7 +25,7 @@ const UserSidebar = () => {
         }), [])
   return (
     <>
-    <div id="DashBoardNav" className={`bg-white dark:bg-gray-900 dark:text-gray-300 fixed dark:border-gray-800 lg:static sm:w-[300px] w-full  border lg:shadow-none shadow-sm shadow-black border-b-0 border-t-0 ${isShown?'flex':'hidden'} flex-col py-3 sm:h-auto  h-[90vh]`}>
+    <div id="DashBoardNav" className={`bg-white dark:bg-gray-900 dark:text-gray-300 fixed dark:border-gray-800 lg:static sm:w-[300px] w-full  border lg:shadow-none shadow-sm shadow-black border-b-0 border-t-0 ${isShown?'flex':'hidden'} flex-col py-3 sm:h-auto z-20  h-[90vh]`}>
         <div className={`${isMobile?'':'hidden'}`}>
           <i onClick={toggleSidebar} className="fa-solid fa-xmark text-xl  text-right w-full  px-2"></i>
         </div>
@@ -49,7 +49,7 @@ const UserSidebar = () => {
 
         </div>
         <div className={`${isMobile?'':'hidden'}`}>
-          <i onClick={toggleSidebar} className="fa-solid fa-ellipsis-vertical text-2xl py-3  px-4"></i>
+          <i onClick={toggleSidebar} className="fa-solid fa-ellipsis-vertical dark:text-gray-300 text-2xl py-3  px-4"></i>
         </div>
 
         </>

@@ -29,8 +29,10 @@ import Blog from "./pages/Blog.jsx";
 import BlogDetails from "./components/BlogDetails.jsx";
 
 function App() {
+  //Manages loading timing
   const [loading, setLoading] = useState(true);
-  const [showNavbar, setShowNavbar] = useState(true);
+  //manages Navbar's appearence on 404 page
+  const [showNav, setShowNav] = useState(true)
 
   useEffect(() => {
     // Loader runs for a few seconds, then disappears
@@ -46,33 +48,31 @@ function App() {
           <LibraryProvider>
             <WishProvider>
               <CartProvider>
-                {showNavbar && <Navbar />}
+                { showNav && <Navbar />}
                 <Routes>
-                  <Route path="/" element={<Home />} />
+                  <Route exact path="/" element={<Home />} />
                   <Route path="/store/:booktype" element={<Store />} />
                   <Route path="/cart" element={<Cart />} />
                   <Route path="/library" element={<Library />} />
                   <Route path="/:source/:id/checkout" element={<Checkout />} />
                   <Route path="/:source/book/:id" element={<BookCard />} />
                   <Route path="/categories/:catName" element={<Categories />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/blog" element={<Blog />} />
+                  <Route path="/blog/details/:id" element={<BlogDetails />} />
+                  <Route path="/policy" element={<Policy />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/library/readbook" element={<ReaderPage />} />
+                  <Route path="/admin/*" element={<AdminPanel />} />
+                  <Route path="/userprofile" element={<Profile />} />
+                  <Route path="/auth/login" element={<Login />} />
+                  <Route path="/auth/signup" element={<Signup />} />
+                  <Route path="*" element={<NotFound setShowNav={setShowNav} />} />
                 </Routes>
               </CartProvider>
             </WishProvider>
           </LibraryProvider>
         </CheckoutProvider>
-        <Routes>
-          {/* <Route path="/*" element={<NotFound setShowNavbar={setShowNavbar} />} /> */}
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/blog" element={<Blog/>}/>
-          <Route path="/blog/details/:id" element={<BlogDetails/>}/>
-          <Route path="/policy" element={<Policy />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/library/readbook" element={<ReaderPage />} />
-          <Route path="/admin/*" element={<AdminPanel />} />
-          <Route path="/userprofile" element={<Profile />} />
-          <Route path="/auth/login" element={<Login />} />
-          <Route path="/auth/signup" element={<Signup />} />
-        </Routes>
       </HomeVProvider>
     </>
   );

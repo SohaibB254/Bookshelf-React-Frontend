@@ -13,7 +13,7 @@ const Blog = () => {
     {
         shownBlogs.map((blog,idx)=>{
             return   (
-                <div key={idx}  id="blog" className='lg:w-96 w-full   my-4 border rounded-md p-2 overflow-hidden'>
+                <div key={idx}  id="blog" className='lg:w-96 w-full   my-4 border dark:border-gray-700 rounded-md p-2 overflow-hidden'>
                 <div id='img' className='rounded-md overflow-hidden bg-gray-500'>
                     <img className='w-full  lg:h-64' src={blog.image_url} alt="" />
                 </div>

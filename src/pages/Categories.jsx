@@ -24,33 +24,40 @@ const Categories = () => {
   const location = useLocation();
   const allCatBooks = categoriesData.slice(0, 3);
   const booksByCat = booksData.filter((item) => item.category === catName);
-  //Popup for library
-  const handlePopupLib = () => {
-    setPopView("block");
-    setPopType(bookExistLib);
-    setPopBg("bg-blue-400");
-    setTimeout(() => {
-      setPopView("hidden");
-    }, 2500);
-  };
-   //Popup for wishlist
-  const handlePopupWishlist = () => {
-    setPopView("block");
-    setPopType("Book Wishlisted");
-    setPopBg("bg-red-400");
-    setTimeout(() => {
-      setPopView("hidden");
-    }, 2500);
-  };
-  //Popup for cart
-  const handlePopupCart = () => {
-    setPopView("block");
-    setPopType("Book added to Cart");
-    setPopBg("bg-green-400");
-    setTimeout(() => {
-      setPopView("hidden");
-    }, 2500);
-  };
+
+  const handlePopup = (action, customMsg = "") => {
+  let bgColor = "";
+  let message = "";
+
+  switch (action) {
+    case "library":
+      bgColor = "bg-blue-400";
+      message = customMsg || bookExistLib;
+      break;
+    case "wishlist":
+      bgColor = "bg-red-400";
+      message = customMsg || "Book Wishlisted";
+      break;
+    case "cart":
+      bgColor = "bg-green-400";
+      message = customMsg || "Book added to Cart";
+      break;
+    default:
+      bgColor = "bg-gray-400";
+      message = customMsg || "Action completed";
+      break;
+  }
+
+  // Set popup states
+  setPopView("block");
+  setPopType(message);
+  setPopBg(bgColor);
+
+  // Hide after delay
+  setTimeout(() => {
+    setPopView("hidden");
+  }, 2500);
+};
   const lastPostIndex = currentPage * postsPerPage;
   const fistPostIndex = lastPostIndex - postsPerPage;
   const currentPosts = booksByCat.slice(fistPostIndex, lastPostIndex);
@@ -102,7 +109,7 @@ const Categories = () => {
                             className="flex  relative   h-auto flex-shrink-0  dark:text-gray-300  flex-col w-[30%] sm:w-[210px] p-1 border dark:border-gray-700  border-gray-300 sm:text-[25px]"
                           >
                                {/* Wishlist Icon */}
-                    <span  onClick={()=>{ handlePopupWishlist(),updateWishlist('add',elm)}} className="absolute text-red-500 text-base cursor-pointer group  top-2 right-3 font-semibold">
+                    <span  onClick={()=>{ handlePopup('wishlist'),updateWishlist('add',elm)}} className="absolute text-red-500 text-base cursor-pointer group  top-2 right-3 font-semibold">
                         <i className="fa-heart fa-regular"></i>
                         <p className="text-[12px] bg-zinc-300 opacity-0 group-hover:opacity-100 transition text-black p-1 absolute z-10">Wishlist</p>
                     </span>
@@ -134,7 +141,7 @@ const Categories = () => {
                             >
                               <Link
                                 onClick={() => {
-                                  addToCart(elm), handlePopupCart();
+                                  addToCart(elm), handlePopup('cart');
                                 }}
                                 className="text-[0.6em]    rounded-sm hover:underline "
                               >
@@ -145,7 +152,7 @@ const Categories = () => {
                             <div className="w-full text-center self-end">
                               <button
                                 onClick={() => {
-                                  addToLibrary(elm), handlePopupLib();
+                                  addToLibrary(elm), handlePopup('library');
                                 }}
                                 className="bg-[var(--baseColor)] w-full p-1 text-[10px] sm:text-base dark:hover:text-black hover:text-white"
                               >
@@ -180,9 +187,9 @@ const Categories = () => {
                       className="flex   relative  h-auto flex-shrink-0   flex-col w-[30%] sm:w-[210px] p-1 border border-gray-700 sm:text-[25px]"
                     >
                        {/* Wishlist Icon */}
-                    <span onClick={handlePopupWishlist}  className="absolute text-red-500 text-base cursor-pointer group  top-2 right-3 font-semibold">
+                    <span onClick={()=>handlePopup('wishlist')}  className="absolute text-red-500 text-base cursor-pointer group  top-2 right-3 font-semibold">
                         <i className="fa-heart fa-regular"></i>
-                        <p className="text-[12px] bg-zinc-300 opacity-0 group-hover:opacity-100 transition text-black p-1 absolute z-10">Wishlist</p>
+                        <p className="text-[12px] bg-zinc-300 opacity-0 group-hover:opacity-100 transition text-black px-1 absolute z-10">Wishlist</p>
                     </span>
                       <Link
                         onClick={() => addToCheckout(elm)}
@@ -209,7 +216,7 @@ const Categories = () => {
                       >
                         <Link
                           onClick={() => {
-                            addToCart(elm), handlePopupCart();
+                            addToCart(elm), handlePopup('cart');
                           }}
                           className="text-[0.6em]    rounded-sm hover:underline "
                         >
@@ -220,7 +227,7 @@ const Categories = () => {
                       <div className="w-full text-center self-end">
                         <button
                           onClick={() => {
-                            addToLibrary(elm), handlePopupLib();
+                            addToLibrary(elm), handlePopup('library');
                           }}
                           className="bg-[var(--baseColor)] w-full p-1 text-[10px] dark:hover:text-black sm:text-base hover:text-white"
                         >

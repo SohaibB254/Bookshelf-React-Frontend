@@ -3,14 +3,15 @@ import { Link } from "react-router";
 import { AlertTriangle } from "lucide-react";
 import { useEffect } from "react";
 
-export default function NotFound({setShowNavbar}) {
+export default function NotFound({setShowNav}) {
 
-    useEffect(()=>{
-        setShowNavbar(false);
-        return ()=> setShowNavbar(true);
-    },[setShowNavbar])
+  useEffect(()=>{
+    setShowNav(false)
+
+    return ()=> setShowNav(true)
+  },[setShowNav])
   return (
-    <div className="flex items-center justify-center  z-50 min-h-screen bg-gradient-to-br from-green-900 to-gray-800 text-white px-4">
+    <div className="flex items-center justify-center  z-50 min-h-screen text-gray-700  dark:text-white px-4">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -33,9 +34,10 @@ export default function NotFound({setShowNavbar}) {
 
         <Link
           to="/"
-          className="px-6 py-3 bg-red-500 hover:bg-red-600 transition-colors rounded-2xl font-semibold shadow-lg"
+          className="px-6 py-3  border relative  rounded-[8px] font-semibold "
         >
-          Back to Home
+
+          &lt;&lt;Back to Home
         </Link>
       </motion.div>
     </div>

@@ -65,7 +65,7 @@ const Cart = () => {
                           </div>
                           {/* Quantity Change Button */}
                           <div className='text-center lg:w-16  '>
-                            <span className=' text-[1em] border border-gray-700 flex justify-center gap-2 px-3'>
+                            <span className=' text-[1em]  flex justify-center gap-2 px-3'>
                               <button onClick={() => handleQuantityChange(elm.id, 'decrease')} className=' font-semibold'>-</button>
                               <span>{elm.quantity}</span>
                               <button onClick={() => handleQuantityChange(elm.id, 'increase')} className=' font-semibold'>+</button>
@@ -102,4 +102,4 @@ const Cart = () => {
   )
 }
 
-export default Cart
+export default React.memo(Cart)
