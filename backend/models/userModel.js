@@ -17,8 +17,8 @@ let userSchema = mongoose.Schema({
     },
     gender: String,
     cart: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Book'
+        book:{ type: mongoose.Schema.Types.ObjectId,ref: 'Book'},
+        quantity: { type: Number, default: 1}
     }],
     library:[{
         type: mongoose.Schema.Types.ObjectId,
