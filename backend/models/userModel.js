@@ -6,20 +6,27 @@ let userSchema = mongoose.Schema({
     password: String,
     phone:String,
     address: String,
-    cardNo: String,
-    pfp: String,
-    balance: String,
+    cardNo: {type: String,
+        default: ''
+    },
+    pfp:  {type: String,
+        default: ''
+    },
+    balance: {type: Number,
+        default: 0
+    },
+    gender: String,
     cart: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'book'
+        ref: 'Book'
     }],
     library:[{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'book'
+        ref: 'Book'
     }],
     wishlist: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'book'
+        ref: 'Book'
     }],
 
 })

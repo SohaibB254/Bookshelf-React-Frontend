@@ -1,13 +1,21 @@
 const userModel = require('../models/userModel')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken');
+const { generateToken } = require('../utils/generateToken');
 
 module.exports.createUser = async (req, res) => {
     try {
-        let { username, email, password } = req.body;
-        let foundUser = await userModel.findOne({ email: email })
-        if (foundUser) {
-            res.status(404).send('email already registered');
+        let { username, email, password, address, phone, gender } = req.body;
+        const [existingEmail, existingUsername] = await Promise.all([
+            userModel.findOne({ email: new RegExp(`^${email}$`, "i") }),
+            userModel.findOne({ username: new RegExp(`^${username}$`, "i") })
+        ]);
+
+        if (existingEmail) {
+            return res.status(400).send("Email already registered");
+        }
+        if (existingUsername) {
+            return res.status(400).send("Username already taken");
         }
         else {
             bcrypt.genSalt(10, (err, salt) => {
@@ -18,9 +26,15 @@ module.exports.createUser = async (req, res) => {
                         let user = await userModel.create({
                             username,
                             email,
+                            address,
+                            phone,
+                            gender,
                             password: hash
                         })
-                       
+                        let token = generateToken(user)
+                        res.cookie('token', token)
+                        res.send(user)
+
                     }
                 })
             })
@@ -29,4 +43,30 @@ module.exports.createUser = async (req, res) => {
     } catch (error) {
         console.log(error.message)
     }
+}
+module.exports.loginUser = async (req, res) => {
+    try {
+        let { email, password } = req.body
+        let foundUser = await userModel.findOne({ email: email })
+        if (!foundUser) {
+            return res.status(500).send('Email or password incorrect')
+        } else {
+            bcrypt.compare(password, foundUser.password, (err, result) => {
+
+                if (result) {
+                    let token = generateToken(foundUser)
+                    res.cookie('token', token)
+                    res.send('User Logged in')
+                } else {
+                    res.status(500).send('Email or password incorrect')
+                }
+            });
+        }
+    } catch (error) {
+        res.status(500).send(error.message)
+    }
+}
+module.exports.logoutUser = (req, res) => {
+    res.cookie('token', "");
+    res.send('User logged out')
 }

@@ -5,13 +5,17 @@ const userRoutes = require('./routes/userRoutes')
 const bookRoutes = require('./routes/bookRoutes')
 const connectDB = require('./config/db');
 const dotenv = require('dotenv');
+const cookieParser = require('cookie-parser');
 
 
 dotenv.config() // Load the env file
+//Connect to db
 connectDB();
 
 //Middlewares
-app.use(express.json())
+app.use(express.json());
+app.use(cookieParser()) //The lines lets routes use cookies for authorization
+app.use('/uploads',express.static("uploads")) //This line serves the static images to frontend
 app.use(express.urlencoded({extended: true}))
 app.get('/',(req,res)=>{
     res.send('Hellooo')

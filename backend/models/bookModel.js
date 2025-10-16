@@ -106,10 +106,7 @@ const bookSchema = new Schema(
       maxlength: 2000,
     },
 
-    coverPhoto: {
-      type: String, // URL or local path
-      default: '',
-    },
+    image:String,
   },
   {
     timestamps: true,
