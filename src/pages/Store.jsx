@@ -111,10 +111,10 @@ const Store = () => {
       <div id="storeContainer" className="lg:p-12 p-4 font-poppins">
         <div
           id="storeSearchBox"
-          className="flex sm:text-base text-xs items-center justify-center py-3 px-3  sm:pt-12"
+          className="flex sm:text-base text-xs items-center justify-center p-3  sm:pt-12"
         >
           <input
-            className="sm:w-[40vw] w-full border border-gray-300  dark:border-gray-700 outline-none dark:bg-gray-900 dark:text-gray-300 rounded-sm sm:p-3 py-1 px-2"
+            className="sm:w-[40vw] w-full border border-gray-300  dark:border-gray-700 outline-none dark:bg-gray-900 dark:text-gray-300 rounded-sm sm:p-3 p-2"
             onChange={(e) => handleSearch(e.target.value)}
             type="search"
             name="search"

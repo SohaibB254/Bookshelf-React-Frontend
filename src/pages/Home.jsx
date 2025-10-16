@@ -16,10 +16,13 @@ import { useHomeV } from "../context/HomeVContext";
 import booksData from "../data/books";
 import { useCheckout } from "../context/CheckoutContext";
 import TextType from '../components/TextType'
+import { useTheme } from "../context/ThemeContext";
+
 const Home = () => {
   const { homeV } = useHomeV();
   const { addToCheckout } = useCheckout()
   const headerBooks = booksData.slice(3, 6);
+  const { theme } = useTheme()
   return (
     <>
       {/* Home V2 Design */}
@@ -96,7 +99,7 @@ const Home = () => {
         >
           {/* Overlay */}
 
-<div className="absolute h-full w-full bg-black/60 backdrop-blur-sm top-0">
+<div className="absolute h-full w-full bg-gray-300/30 dark:bg-gray-900/60 backdrop-blur-sm top-0">
   </div>
        <div
             className="h-full z-20 flex justify-center items-center"
@@ -104,22 +107,22 @@ const Home = () => {
             {/* Home left */}
             <div className="w-[100%] flex flex-col px-4  ">
               <TextType
-              className="sm:text-[46px] md:text-[76px] text-[36px] text-center   font-merri  font-bold "
+              className="sm:text-[46px] md:text-[76px] text-[40px] text-center text-shadow  leading-tight    font-merri  font-bold "
               text={["An Online Library"]}
-              typingSpeed={70}
+              typingSpeed={80}
               cursorCharacter=""
 
               textColors={['var(--baseColor)']}
                />
               <TextType
-              className="sm:text-[46px] md:text-[76px] text-[36px] text-center   font-merri  font-bold "
+              className="sm:text-[46px] md:text-[76px] text-[40px] text-center text-shadow  leading-snug  font-merri  font-bold "
               text={["And Book Store"]}
-              typingSpeed={60}
+              typingSpeed={80}
               initialDelay={1000}
                cursorCharacter=""
-              textColors={[`#E0E0E0`]}
+              textColors={[`${theme === 'dark'?'#E0E0E0':'#111827'}`]}
                />
-              <p className="font-inter mt-2 text-center text-gray-300 fade-elm">
+              <p className="font-inter mt-2 text-center dark:text-gray-300 fade-elm">
                 Explore worlds from <strong>millions</strong> of authors across
                 every genre imaginable <br />
                 <span className="italic font-inter hidden sm:block">
@@ -128,12 +131,12 @@ const Home = () => {
               </p>
               <div className="flex sm:flex-row  sm:items-center flex-col justify-center gap-2 mt-12  ">
                 <Link to={"/library"}>
-                  <button className="u-btn    rounded-md  w-full">
+                  <button className="u-btn  hover:bg-[var(--lighter)] border border-[var(--baseColor)]   rounded-md  w-full">
                     Start Reading
                   </button>
                 </Link>
                 <Link to="/store/all">
-                  <button className=" border p-2 hover:bg-[var(--baseColor)] hover:border-[var(--baseColor)] text-white  rounded-md  w-full">
+                  <button className=" border p-2 hover:bg-[var(--baseColor)] hover:border-[var(--baseColor)] dark:hover:border-[var(--baseColor)] dark:text-white border-black dark:border-white  rounded-md  w-full font-inter">
                     Browse Books
                   </button>
                 </Link>

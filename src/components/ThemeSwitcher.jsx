@@ -21,10 +21,10 @@ const ThemeSwitcher = () => {
     <div className="relative">
       <button
         onClick={() => setOpen((prev) => !prev)}
-        className="flex items-center gap-2   px-3    transition"
+        className="flex items-center gap-2      transition"
       >
-        {theme === "dark" ? <Moon size={16} /> : theme === "light" ? <Sun size={16} /> : <Monitor size={16} />}
-       
+        {theme === "dark" ? <Moon size={18} /> : theme === "light" ? <Sun size={16} /> : <Monitor size={16} />}
+
       </button>
 
       {open && (
@@ -33,7 +33,7 @@ const ThemeSwitcher = () => {
             <button
               key={opt.value}
               onClick={() => handleSelect(opt.value)}
-              className={`flex items-center gap-2 w-full px-3 py-2 text-left text-sm hover:bg-slate-100 dark:hover:bg-slate-700 ${
+              className={`flex items-center gap-2 w-full px-3 py-2 text-left text-sm  hover:bg-slate-100 dark:hover:bg-slate-700 ${
                 theme === opt.value ? "font-semibold" : ""
               }`}
             >

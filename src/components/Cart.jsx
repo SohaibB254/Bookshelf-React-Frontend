@@ -33,7 +33,7 @@ const Cart = () => {
       <div id='cartContainer' className='text-[32px] px-4 lg:px-12 pt-16 font-inter'>
         <h1 className='sm:text-3xl text-xl dark:text-[var(--lighter)] text-[var(--darker)] text-center mb-10' >Your Cart ({cartItemsCount} items) <i className="fa-solid fa-cart-shopping cursor-pointer transition hover:text-green-500"></i></h1>
         <div id='cartItemContainer' className='w-full h-auto dark:text-gray-300'>
-          <div className={` ${itemsInCart.length === 0 ? "border-b-0" : ""} border-b`}>
+          <div >
             {
               itemsInCart.length === 0 ? (
                 <div className="text-center py-20 text-xl text-gray-500">
@@ -41,7 +41,7 @@ const Cart = () => {
                 </div>
               ) :
                 itemsInCart.map((elm, idx) => {
-                  return <div key={idx} className='flex border-b '>
+                  return <div key={idx} className='flex border-b dark:border-gray-800  '>
                     <div id='cartItem' className='flex  w-full lg:px-10 items-center    py-2 gap-2 lg:gap-4 text-[0.5em]'>
 
                       <div className='bg-gray-400 flex-shrink-0 border border-black/50'>
@@ -89,9 +89,9 @@ const Cart = () => {
         <div className='flex justify-center'>
           <div id='totalCheckout' className={`${itemsInCart.length === 0 ? "hidden" : ""} bg-white dark:bg-inherit dark:text-gray-300 py-8 px-4 text-[0.5em]  flex flex-col gap-4 border  border-gray-700 rounded-md lg:w-[40vw] my-4 sm:my-10 `}>
             <h1 className='sm:text-[1.5em] text-xl font-semibold'>Order Overview</h1>
-            <h1 className='border-b sm:py-2 flex justify-between'>Total: {getTotalPrice()}<span>Items: {getTotalItems()}</span></h1>
-            <h1 className='border-b sm:py-2 flex justify-between'>Total Delivery: {getTotalDelivery()}</h1>
-            <h1 className='border-b sm:py-2 flex justify-between'>Address: House 34, street 12, Garden Town <Link className='text-blue-500'>Change</Link></h1>
+            <h1 className='border-b dark:border-gray-800  sm:py-2 flex justify-between'>Total: {getTotalPrice()}<span>Items: {getTotalItems()}</span></h1>
+            <h1 className='border-b dark:border-gray-800  sm:py-2 flex justify-between'>Total Delivery: {getTotalDelivery()}</h1>
+            <h1 className='border-b dark:border-gray-800  sm:py-2 flex justify-between'>Address: House 34, street 12, Garden Town <Link className='text-blue-500'>Change</Link></h1>
             <h1 className='flex justify-between'>Payment Method: Credit Card <Link className='text-blue-500'>Change</Link></h1>
             <Link to={'/total/3/checkout'} onClick={()=>handleTotalCheckout(getTotalItems(),getTotalPrice(),getTotalDelivery(),totalCheckout())}><button  className='u-btn rounded-sm'>Checkout: Rs {totalCheckout()}</button></Link>
           </div>

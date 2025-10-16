@@ -49,11 +49,13 @@ body{
 }
 .u-btn{
     background-color: var(--baseColor);
-    padding: 10px 8px;
     font-family: 'Inter';
-    font-weight: 500;
+    padding: 0.5rem;
     color: white;
     transition: all 0.2s ease;
+}
+.text-shadow{
+    text-shadow: 1px 1px  4px solid black;
 }
 .u-btn3{
     padding: 10px 8px;
@@ -86,7 +88,7 @@ body{
 }
 }
 .u-btn2 {
-   color: rgb(214, 16, 16);
+   color: rgb(210, 47, 47);
     padding: 5px 10px;
     font-family: 'Inter';
     font-weight: 500;
@@ -96,7 +98,7 @@ body{
     color: black;
 }
 .u-btn2:hover {
-    color: rgb(87, 84, 84);
+    color: rgb(108, 27, 27);
 }
 
 
