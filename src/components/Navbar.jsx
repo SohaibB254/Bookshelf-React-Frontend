@@ -53,7 +53,7 @@ const Navbar = () => {
         id="NavbarContainer"
         className={`${
           path.startsWith("/auth") ? "hidden" : ""
-        } sticky top-0  z-40 dark:text-gray-300`}
+        } sticky top-0  z-30 dark:text-gray-300`}
       >
         <div
           id="Navbar"
