@@ -2,25 +2,33 @@ const mongoose = require('mongoose')
 
 let userSchema = mongoose.Schema({
     username: String,
-    email:String,
+    email: String,
     password: String,
-    phone:String,
-    address: String,
-    cardNo: {type: String,
+    phone: String,
+    address: {
+        street: String,
+        city: String,
+        zip: String,
+        country: String
+    },
+    cardNo: {
+        type: String,
         default: ''
     },
-    pfp:  {type: String,
+    pfp: {
+        type: String,
         default: ''
     },
-    balance: {type: Number,
+    balance: {
+        type: Number,
         default: 0
     },
     gender: String,
     cart: [{
-        book:{ type: mongoose.Schema.Types.ObjectId,ref: 'Book'},
-        quantity: { type: Number, default: 1}
+        book: { type: mongoose.Schema.Types.ObjectId, ref: 'Book' },
+        quantity: { type: Number, default: 1 }
     }],
-    library:[{
+    library: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Book'
     }],
@@ -28,7 +36,11 @@ let userSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Book'
     }],
+    orders: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'order'
+    }],
 
 })
 
- module.exports = mongoose.model('user',userSchema)
+module.exports = mongoose.model('user', userSchema)

@@ -39,7 +39,7 @@ const UserSidebar = () => {
                 <Link onClick={toggleSidebar} to={'/userprofile'} className='cursor-pointer border-b dark:border-gray-800 dark:hover:bg-[var(--baseColor)] px-1 py-2 flex gap-1 items-center hover:bg-green-200'><i class="fa-solid fa-user"></i>Profile</Link>
                 <li className='cursor-pointer border-b dark:border-gray-800 dark:hover:bg-[var(--baseColor)] py-2 px-1 flex gap-1 items-center hover:bg-green-200'><i className="fa-solid fa-cart-shopping"></i>My cart</li>
                 <li className='cursor-pointer border-b dark:border-gray-800 dark:hover:bg-[var(--baseColor)] py-2 px-1 flex gap-1 items-center hover:bg-green-200'><i class="fa-regular fa-heart"></i>Wishlist</li>
-                <li className='cursor-pointer border-b dark:border-gray-800 dark:hover:bg-[var(--baseColor)] py-2 px-1 flex gap-1 items-center hover:bg-green-200'><i class="fa-solid fa-shop"></i>Store</li>
+                <li className='cursor-pointer border-b dark:border-gray-800 dark:hover:bg-[var(--baseColor)] py-2 px-1 flex gap-1 items-center hover:bg-green-200'><i class="fa-solid fa-shop"></i>Orders</li>
                 <li className='cursor-pointer border-b dark:border-gray-800 dark:hover:bg-[var(--baseColor)] py-2 px-1 flex gap-1 items-center hover:bg-green-200'><i class="fa-solid fa-circle-info"></i>Help center</li>
                 <li className='cursor-pointer border-b dark:border-gray-800 dark:hover:bg-[var(--baseColor)] py-2 px-1 flex gap-1 items-center hover:bg-green-200'><i class="fa-solid fa-key"></i>Terms & Policy</li>
              <Link className='cursor-pointer  border-b dark:border-gray-800  py-2 px-1 flex gap-1 items-center text-red-600 font-[500] '><i class="fa-solid fa-right-from-bracket"></i>Logout</Link>

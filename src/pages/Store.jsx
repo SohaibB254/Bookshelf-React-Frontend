@@ -214,7 +214,7 @@ const Store = () => {
             </p>
           )}
         </div>
-        <div className="flex gap-2 justify-center sm:bg-transparent dark:text-gray-300 bg-green-500">
+        { filteredBooks.length !== 0 && <div className="flex gap-2 justify-center sm:bg-transparent dark:text-gray-300 bg-green-500">
           <button
             disabled={itemsCount >= booksData.length}
             onClick={() => setItemsCount(itemsCount + 6)}
@@ -229,7 +229,7 @@ const Store = () => {
           >
             Show Less
           </button>
-        </div>
+        </div>}
       </div>
 
       {location.pathname !== "/store/trendingbooks" && <TrendingNow />}

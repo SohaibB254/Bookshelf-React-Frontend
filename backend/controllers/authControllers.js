@@ -10,6 +10,7 @@ module.exports.createUser = async (req, res) => {
             userModel.findOne({ email: new RegExp(`^${email}$`, "i") }),
             userModel.findOne({ username: new RegExp(`^${username}$`, "i") })
         ]);
+         const { city,zip,country,street } = address || {};
 
         if (existingEmail) {
             return res.status(400).send("Email already registered");
@@ -26,7 +27,12 @@ module.exports.createUser = async (req, res) => {
                         let user = await userModel.create({
                             username,
                             email,
-                            address,
+                            address:{
+                                city,
+                                zip,
+                                country,
+                                street
+                            },
                             phone,
                             gender,
                             password: hash

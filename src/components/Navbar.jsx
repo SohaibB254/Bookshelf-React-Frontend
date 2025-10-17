@@ -6,7 +6,7 @@ import { useHomeV } from "../context/HomeVContext";
 import Dropdown from "./Dropdown";
 import { useWish } from "../context/WishContext";
 import ThemeSwitcher from "./ThemeSwitcher";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, Heart } from "lucide-react";
 
 const Navbar = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -95,15 +95,17 @@ const Navbar = () => {
                   <p className="bg-gray-300 absolute top-5 right-2 hidden group-hover:block text-xs text-black border px-2 ">
                     Wishlist
                   </p>
-                  <i
+                  <span
                     onClick={toggleWishlist}
                     id="wishlistIcon"
-                    className="fa-regular fa-heart  cursor-pointer relative "
-                  ></i>
+                    className=" cursor-pointer relative "
+                  >
+                    <Heart size={17}/>
+                  </span>
                   {itemsInWish.length > 0 && (
                     <span
                       id="CartBadge"
-                      className="w-5 h-5 bg-red-500 text-center rounded-full absolute -top-3   -right-4"
+                      className="w-5 h-5 bg-red-500 text-center rounded-full absolute -top-4   -right-4"
                     >
                       {itemsInWish.length}
                     </span>
@@ -112,7 +114,7 @@ const Navbar = () => {
                     id="wishCartModal"
                     className={`w-72 h-72 ${
                       isWishOpen ? "" : "hidden"
-                    } overflow-auto dark:bg-gray-800 bg-white border dark:border-gray-700 rounded-md px-3 py-2 absolute -right-6 sm:right-0 top-5 z-50 `}
+                    } overflow-auto  dark:bg-gray-800 bg-white border dark:border-gray-700 rounded-md px-3 py-2 absolute -right-6 sm:right-0 top-5 z-50 `}
                   >
                     <h1 className="text-red-400 font-bold pb-1 border-b dark:border-gray-700 flex items-center justify-between">
                       Wishlist{" "}

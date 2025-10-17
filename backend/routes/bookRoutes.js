@@ -4,6 +4,7 @@ const bookModel = require('../models/bookModel')
 const upload = require('../config/multer-config')
 const isLoggedIn = require('../middlewares/isLoggedIn')
 const userModel = require('../models/userModel')
+const isAdmin = require('../middlewares/isAdmin')
 //add a book to db
 router.post('/addbook',
     (req, res, next) => {
@@ -27,14 +28,24 @@ router.post('/addbook',
             await newBook.save()
             res.send(newBook)
         } catch (error) {
-            console.log(error)
+            res.send(error.message)
         }
-    })
+ })
+// Route for viewing all books
+router.get('/allbooks',isAdmin,async (req,res)=>{
+    try {
+       let books = await bookModel.find();
+       res.json(books)
+    } catch (error) {
+        res.send(error.message)
+    }
+})
+
+
 //Test route for serving images
 router.get('/bookcover', async (req, res) => {
     try {
-        let book = await bookModel.findOne({ title: 'Js' })
-        res.set('Content-Type', book.image.contentType);
+        let book = await bookModel.findOne({ title: 'NodeJs' })
         res.redirect(`http://localhost:3000${book.image}`)
     } catch (error) {
         res.send(error.message)
@@ -46,6 +57,11 @@ router.post('/:list/:bookId', isLoggedIn, async (req, res) => {
     try {
         const { list, bookId } = req.params;
         const userId = req.user._id;
+
+        let bookExist = await bookModel.findById(bookId);
+        if(!bookExist){
+            return res.status(500).send("This book is not available")
+        }
 
         const validLists = ['cart', 'wishlist', 'library'];
         if (!validLists.includes(list)) {
@@ -164,7 +180,6 @@ router.get('/:list/getbooks', isLoggedIn, async (req, res) => {
     }
 });
 
-
 //Dynamic route to remove books from cart,wishlist and library
 router.delete('/:list/:bookId/remove', isLoggedIn, async (req, res) => {
     try {
@@ -191,6 +206,56 @@ router.delete('/:list/:bookId/remove', isLoggedIn, async (req, res) => {
     }
 
 })
+//Route for updating book details
+router.put('/:bookId/update',isAdmin,
+    (req, res, next) => {
+        req.uploadType = "book"
+            , next()
+    },
+    upload.single('image'), async (req, res) => {
+        try {
+            const { bookId } = req.params;
+            const imagePath = req.file ? `/uploads/books/${req.file.filename}` : null
 
+            let { title, author, price, length, category } = req.body;
+            let Book = await bookModel.findByIdAndUpdate(bookId,{
+                title,
+                author,
+                price,
+                category,
+                length,
+                ...(imagePath && {image: imagePath})
+            })
+            res.send(`${Book.title} has been updated`)
+        } catch (error) {
+            res.send(error.message)
+        }
+ })
+ //Route for viewing book details from id //AdminOnly
+ router.get('/:bookId/viewdetails',async(req,res)=>{
+    try {
+        const { bookId }  = req.params;
+        let book = await bookModel.findById(bookId);
+        if(!book){
+            return res.status(500).send("Book not found")
+        }
+        res.json(book)
+    } catch (error) {
+        res.send(error.message)
+    }
+ })
+//Route for book deletion from db
+router.delete('/:bookId/delete', isAdmin, async (req, res) => {
+  try {
+    const { bookId } = req.params;
+    const book = await bookModel.findById(bookId);
 
+    if (!book) return res.status(404).send('Book not found');
+
+    await bookModel.deleteOne({ _id: bookId });
+    res.send(`${book.title} removed permanently`);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
 module.exports = router;

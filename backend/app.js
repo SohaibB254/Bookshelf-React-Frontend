@@ -3,6 +3,7 @@ const app = express();
 const adminRoutes = require('./routes/adminRoutes')
 const userRoutes = require('./routes/userRoutes')
 const bookRoutes = require('./routes/bookRoutes')
+const orderRoutes = require('./routes/orderRoutes')
 const connectDB = require('./config/db');
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
@@ -24,5 +25,6 @@ app.get('/',(req,res)=>{
 app.use('/admin',adminRoutes)
 app.use('/users',userRoutes)
 app.use('/books',bookRoutes)
+app.use('/orders', orderRoutes)
 
 app.listen(3000)
