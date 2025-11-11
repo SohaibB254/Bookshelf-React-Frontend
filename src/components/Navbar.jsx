@@ -6,12 +6,13 @@ import { useLibrary } from "../context/LibraryContext";
 import { useWish } from "../context/WishContext";
 import ThemeSwitcher from "./ThemeSwitcher";
 import { ShoppingCart, Heart, House, Store, Grid, Newspaper, BookOpen, Phone, Info } from "lucide-react";
+import { useUser } from "../context/UserContext";
 
 const Navbar = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isWishOpen, setIsWishOpen] = useState(false);
   const [wishPos, setWishPos] = useState({ top: 0, right: 0 });
-
+    const { user } = useUser()
   const { itemsInCart } = useCart();
   const { itemsInWish, updateWishlist } = useWish();
   const { libraryItems } = useLibrary();
@@ -63,7 +64,7 @@ const Navbar = () => {
         id="NavbarContainer"
         className={`${
           path.startsWith("/auth") ? "hidden" : ""
-        } sticky  top-0 w-screen z-[100] dark:text-gray-300`}
+        } sticky  top-0 w-screen z-40 dark:text-gray-300`}
       >
         <div
           id="Navbar"
@@ -123,10 +124,14 @@ const Navbar = () => {
 
               {/* User Icon */}
               <Link
-                to="/userprofile"
-                className="flex justify-center items-center h-10 w-10 rounded-full bg-gray-400"
+                to={`${!localStorage.getItem('Token')?'/auth/login':'/userprofile'}`}
+                className="flex justify-center items-center h-10 w-10 overflow-hidden rounded-full bg-gray-400"
               >
-                <i className="fa-regular fa-user"></i>
+                {
+                  user.pfp ? <img className="h-full w-full object-cover" src={user.pfp} alt="" />:<i className="fa-regular fa-user"></i>
+                }
+
+
               </Link>
             </div>
           </div>
@@ -142,7 +147,7 @@ const Navbar = () => {
             } transform transition-transform duration-300 ease-in-out lg:-translate-x-0   fixed lg:static  top-[36px] lg:top-[3.1vh] left-0 `}
           >
             <ul
-              className={`flex-col lg:flex-row z-50 lg:bg-transparent lg:dark:bg-transparent bg-white dark:bg-gray-900 text-black  dark:text-gray-300  dark:border-gray-800 border-b lg:border-0 lg:h-auto   h-screen w-fit flex lg:gap-8 gap-3  font-[400]  lg:items-center py-10 lg:w-auto lg:py-0 px-5 pr-10 lg:px-0 `}
+              className={`flex-col lg:flex-row z-40 lg:bg-transparent lg:dark:bg-transparent bg-white dark:bg-gray-900 text-black  dark:text-gray-300  dark:border-gray-800 border-b lg:border-0 lg:h-auto   h-screen w-fit flex lg:gap-8 gap-3  font-[400]  lg:items-center py-10 lg:w-auto lg:py-0 px-5 pr-10 lg:px-0 `}
             >
               <li>
                 {" "}
