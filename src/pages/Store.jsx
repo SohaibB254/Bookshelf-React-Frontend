@@ -1,15 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import booksData from "../data/books";
-import TrendingNow from "../components/TrendingNow";
-import OnSale from "../components/OnSale";
-import NewsLetter from "../components/NewsLetter";
-import Footer from "../components/Footer";
+import TrendingNow from "../components/sections/TrendingNow";
+import OnSale from "../components/sections/OnSale";
+import NewsLetter from "../components/common/NewsLetter";
+import Footer from "../components/common/Footer";
 import { Link, useLocation } from "react-router";
 import { useCart } from "../context/CartContext";
 import { useLibrary } from "../context/LibraryContext";
 import { useCheckout } from "../context/CheckoutContext";
-import Popup from "../components/Popup";
-import Dropdown from "../components/Dropdown";
+import Popup from "../components/common/Popup";
+import Dropdown from "../components/others/Dropdown";
 import { useWish } from "../context/WishContext";
 
 const Store = () => {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useTheme } from "../context/ThemeContext";
+import { useTheme } from "../../context/ThemeContext";
 import { Sun, Moon, Monitor } from "lucide-react";
 
 const ThemeSwitcher = () => {
@@ -19,6 +19,7 @@ const ThemeSwitcher = () => {
   return (
     <div className="relative">
       <button
+      name="THEME SWITCHER"
         onClick={() => setOpen((prev) => !prev)}
         className="flex items-center gap-2      transition"
       >
@@ -30,6 +31,7 @@ const ThemeSwitcher = () => {
         <div className="absolute right-0 mt-2 w-36 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-slate-300 dark:border-gray-800 z-50">
           {options.map((opt) => (
             <button
+            name="THEME SWITCHER"
               key={opt.value}
               onClick={() => handleSelect(opt.value)}
               className={`flex items-center gap-2 w-full px-3 py-2 text-left text-sm  hover:bg-slate-100 dark:hover:bg-slate-700 ${

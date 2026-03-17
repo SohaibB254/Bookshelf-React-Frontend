@@ -1,10 +1,8 @@
 import React from "react";
 import UserSidebar from "./UserSidebar";
-import Footer from "../../components/Footer";
-import { useUser } from "../../context/UserContext";
+import Footer from "../../components/common/Footer";
 
 const Profile = () => {
-  const { user } = useUser()
   return (
     <>
       <div className="flex">
@@ -18,7 +16,7 @@ const Profile = () => {
             <div className="py-8 px-4 flex flex-col gap-3">
                 <div id="username" >
                <h1>Name</h1>
-               <p className="text-zinc-400" >{user.name}</p>
+               <p className="text-zinc-400" >Steve</p>
             </div>
             <div id="userage" >
               <h1>Age</h1>
@@ -26,7 +24,7 @@ const Profile = () => {
             </div>
             <div id="usergender" >
               <h1>Gender</h1>
-              <p className="text-zinc-400">{user.gender}</p>
+              <p className="text-zinc-400">Male</p>
             </div>
             </div>
 
@@ -41,8 +39,8 @@ const Profile = () => {
                 <h1>Contact Info</h1>
                 <div className="text-zinc-400">
 
-                  <p className="cursor-default">Phone: {user.phone}</p>
-                  <p className="cursor-default">Email: {user.email}</p>
+                  <p className="cursor-default">Phone: +92 342 3254876</p>
+                  <p className="cursor-default">Email: example@gmail.com</p>
 
                 </div>
               </li>

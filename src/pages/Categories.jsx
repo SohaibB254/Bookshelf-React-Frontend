@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import booksData from "../data/books";
 import { Link, useLocation, useParams } from "react-router";
-import Paginations from "../components/Paginations";
-import Footer from "../components/Footer";
-import TrendingNow from "../components/TrendingNow";
+import Paginations from "../components/common/Paginations";
+import Footer from "../components/common/Footer";
+import TrendingNow from "../components/sections/TrendingNow";
 import { useCheckout } from "../context/CheckoutContext";
 import { useLibrary } from "../context/LibraryContext";
 import { useCart } from "../context/CartContext";
-import Popup from "../components/Popup";
+import Popup from "../components/common/Popup";
 import categoriesData from "../data/categories";
 import { useWish } from "../context/WishContext";
 const Categories = () => {

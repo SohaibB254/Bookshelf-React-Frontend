@@ -1,8 +1,8 @@
 import React from "react";
-import Services from "../components/Services";
-import NewsLetter from "../components/NewsLetter";
-import Footer from "../components/Footer";
-import Stats from "../components/Stats";
+import Services from "../components/sections/Services";
+import NewsLetter from "../components/common/NewsLetter";
+import Footer from "../components/common/Footer";
+import Stats from "../components/sections/Stats";
 import contactBg from '../assets/contact-bg.jpg'
 
 const Contact = () => {

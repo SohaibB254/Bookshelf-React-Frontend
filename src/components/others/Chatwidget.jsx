@@ -9,6 +9,7 @@ const ChatWidget = () => {
     <div className="fixed bottom-10 right-6 z-20">
       {/* Chat Button */}
       <button
+      name="AI CHAT BOX"
         onClick={() => setIsOpen(!isOpen)}
         className="bg-[var(--baseColor)] text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition"
       >

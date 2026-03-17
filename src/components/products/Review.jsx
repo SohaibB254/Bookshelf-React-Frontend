@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import bookReviews from "../data/reviews";
+import bookReviews from "../../data/reviews";
 
 const Review = () => {
   const [reviewCount, setReviewCount] = useState(3);

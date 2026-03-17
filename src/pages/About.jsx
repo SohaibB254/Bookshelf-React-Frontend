@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import NewsLetter from "../components/NewsLetter";
-import Footer from "../components/Footer";
+import NewsLetter from "../components/common/NewsLetter";
+import Footer from "../components/common/Footer";
 import { motion } from "motion/react";
-import ChatWidget from "../components/Chatwidget";
-import Stats from "../components/Stats";
-import OurMission from "../components/OurMission";
+import ChatWidget from "../components/others/Chatwidget";
+import Stats from "../components/sections/Stats";
+import OurMission from "../components/sections/OurMission";
 
 const About = () => {
   return (

@@ -1,5 +1,5 @@
 import React from 'react'
-import pdfBook from '../pdfs/test.pdf'
+import pdfBook from '../../pdfs/test.pdf'
 
 const ReaderPage = () => {
     return (

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
-import Footer from './Footer'
+import Footer from '../components/common/Footer'
 import { useCart } from '../context/CartContext'
 import { useCheckout } from '../context/CheckoutContext'
 

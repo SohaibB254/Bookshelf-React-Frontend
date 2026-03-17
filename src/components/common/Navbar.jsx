@@ -1,18 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Link, useLocation } from "react-router";
-import { useCart } from "../context/CartContext";
-import { useLibrary } from "../context/LibraryContext";
-import { useWish } from "../context/WishContext";
+import { useCart } from "../../context/CartContext";
+import { useLibrary } from "../../context/LibraryContext";
+import { useWish } from "../../context/WishContext";
 import ThemeSwitcher from "./ThemeSwitcher";
 import { ShoppingCart, Heart, House, Store, Grid, Newspaper, BookOpen, Phone, Info } from "lucide-react";
-import { useUser } from "../context/UserContext";
+import { useUser } from "../../context/UserContext";
 
 const Navbar = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isWishOpen, setIsWishOpen] = useState(false);
   const [wishPos, setWishPos] = useState({ top: 0, right: 0 });
-    const { user } = useUser()
+  const { user } = useUser()
   const { itemsInCart } = useCart();
   const { itemsInWish, updateWishlist } = useWish();
   const { libraryItems } = useLibrary();
@@ -66,7 +66,7 @@ const Navbar = () => {
           path.startsWith("/auth") ? "hidden" : ""
         } sticky  top-0 w-screen z-40 dark:text-gray-300`}
       >
-        <div
+        <nav
           id="Navbar"
           className="flex  backdrop-blur-md font-inter h-[10vh] text-[30px] items-center dark:bg-gray-900/50 dark:text-gray-300 bg-white/50 sm:w-screen justify-between px-8 sm:px-12"
         >
@@ -87,6 +87,7 @@ const Navbar = () => {
               <div className="items-center gap-4 flex">
                 {/* Cart Icon */}
                 <Link
+                aria-details="Link to user's cart"
                   className="flex items-center gap-2 group relative"
                   to="/cart"
                 >
@@ -124,18 +125,15 @@ const Navbar = () => {
 
               {/* User Icon */}
               <Link
-                to={`${!localStorage.getItem('Token')?'/auth/login':'/userprofile'}`}
+                aria-details="Link to user's profile"
+                to={'/userprofile'}
                 className="flex justify-center items-center h-10 w-10 overflow-hidden rounded-full bg-gray-400"
               >
-                {
-                  user.pfp ? <img className="h-full w-full object-cover" src={user.pfp} alt="" />:<i className="fa-regular fa-user"></i>
-                }
-
-
+                  <i className="fa-regular fa-user"></i>
               </Link>
             </div>
           </div>
-        </div>
+        </nav>
 
         {/* --- Lower Nav (Menu + ThemeSwitcher) --- */}
         <div className="bg-white/50 dark:bg-gray-900/50 dark:border-gray-800 backdrop-blur-md border-t w-full px-8 sm:px-12 text-base justify-between items-center flex flex-col-reverse lg:flex-row relative py-1 ">
@@ -152,22 +150,22 @@ const Navbar = () => {
               <li>
                 {" "}
                 <Link className=" flex gap-2 items-center" to="/" onClick={toggleNavbar}>
-                  Home <House size={18} className="lg:hidden block"/>
+                 <House size={18} className="lg:hidden block"/> Home
                 </Link>
               </li>
               <li>
                 <Link className="flex gap-2 items-center" to={"/categories/all"}>
-                Categories <Grid size={18} className="lg:hidden block"/>
+                <Grid size={18} className="lg:hidden block"/> Categories
                 </Link>
               </li>
               <li>
                 <Link className=" flex gap-2 items-center" onClick={toggleNavbar} to="/store/all">
-                  Store <Store size={18} className="lg:hidden block"/>
+                  <Store size={18} className="lg:hidden block"/>Store
                 </Link>
               </li>
               <li>
                 <Link className="flex gap-2 items-center" onClick={toggleNavbar} to={"/blog"}>
-                  Blog <Newspaper size={18} className="lg:hidden block"/>
+                 <Newspaper size={18} className="lg:hidden block"/>  Blog
                 </Link>
               </li>
               <li>
@@ -176,8 +174,8 @@ const Navbar = () => {
                   onClick={toggleNavbar}
                   to="/library"
                 >
-                  <span className="relative group">Library</span>
                   <BookOpen size={18} className="lg:hidden block"/>
+                  <span className="relative group">Library</span>
                   {libraryItems.length > 0 && (
                     <span
                       id="LibraryBadge"
@@ -191,13 +189,13 @@ const Navbar = () => {
               <li>
                 {" "}
                 <Link className="flex gap-2 items-center" onClick={toggleNavbar} to="/contact">
-                  Contact <Phone size={18} className="lg:hidden block"/>
+                 <Phone size={18} className="lg:hidden block"/> Contact
                 </Link>
               </li>
               <li>
                 {" "}
                 <Link className="flex gap-2 items-center" onClick={toggleNavbar} to="/about">
-                  About  <Info size={18} className="lg:hidden block"/>
+                 <Info size={18} className="lg:hidden block"/> About
                 </Link>
               </li>
             </ul>

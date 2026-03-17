@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router'
-import Footer from '../components/Footer'
+import Footer from '../components/common/Footer'
 import { blogsData } from '../data/blogs'
 const Blog = () => {
     const [shownBlog, setShownBlog] = useState(3)

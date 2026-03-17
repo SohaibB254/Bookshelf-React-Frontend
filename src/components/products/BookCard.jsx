@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { Link } from "react-router";
 import RelatedProducts from "./RelatedProducts";
 import Review from "./Review";
-import NewsLetter from "./NewsLetter";
-import Footer from "./Footer";
-import { useCheckout } from "../context/CheckoutContext";
-import { useCart } from "../context/CartContext";
-import Popup from "./Popup";
+import NewsLetter from "../common/NewsLetter";
+import Footer from "../common/Footer";
+import { useCheckout } from "../../context/CheckoutContext";
+import { useCart } from "../../context/CartContext";
+import Popup from "../common/Popup";
 import ShareModal from "./ShareModal";
 
 const BookCard = () => {

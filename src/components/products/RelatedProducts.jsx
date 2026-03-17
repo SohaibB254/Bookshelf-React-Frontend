@@ -1,8 +1,8 @@
 import React,{ useState } from "react";
-import booksData from "../data/books";
+import booksData from "../../data/books";
 import { Link } from "react-router";
-import { useCart } from '../context/CartContext'
-import Popup from "./Popup";
+import { useCart } from '../../context/CartContext'
+import Popup from "../common/Popup";
 
 
 const RelatedProducts = () => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router';
 import { useLibrary } from '../context/LibraryContext';
-import Footer from './Footer';
+import Footer from '../components/common/Footer';
 
 
 const Library = () => {
@@ -37,7 +37,7 @@ const Library = () => {
                       </div>
                     </div>
                       {/* Login Warning Modal */}
-                      
+
                   </div>
                 </div>
               })

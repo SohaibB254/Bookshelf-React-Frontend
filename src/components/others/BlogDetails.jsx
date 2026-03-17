@@ -1,6 +1,6 @@
 import React from "react";
-import Footer from "./Footer";
-import { blogsData } from "../data/blogs";
+import Footer from "../common/Footer";
+import { blogsData } from "../../data/blogs";
 import { Link, useParams } from "react-router";
 const BlogDetails = () => {
   const { id } = useParams()

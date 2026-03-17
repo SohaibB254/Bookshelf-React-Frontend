@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import booksData from "../data/books";
+import booksData from "../../data/books";
 import { Link, useLocation } from "react-router";
 import { motion } from "framer-motion";
-import { useCart } from '../context/CartContext'
-import Popup from "./Popup";
+import { useCart } from '../../context/CartContext'
+import Popup from "../common/Popup";
 
 const OnSale = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -104,7 +104,7 @@ const OnSale = () => {
                 <p className="text-zinc-500 my-1 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit placeat temporibus possimus earum delectus ex dicta ab assumenda quidem non.</p>
                  <h1 className="sm:text-2xl text-[var(--darker)] dark:text-[var(--lighter)] font-semibold    text-xl"> Rs: {elm.price}</h1>
                 <button onClick={()=>{addToCart(elm),handlePopup('cart')}} className="w-fit bg-[var(--baseColor)] hover:text-black transition p-2 px-4 text-white font-semibold my-2 rounded-md">
-                  Add To Cart 
+                  Add To Cart
                 </button>
               </div>
             </motion.div>
